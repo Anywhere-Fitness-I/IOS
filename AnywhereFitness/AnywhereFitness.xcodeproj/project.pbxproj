@@ -13,7 +13,26 @@
 		3FFF92822478AB9500E93A6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FFF92812478AB9500E93A6F /* Assets.xcassets */; };
 		3FFF92852478AB9500E93A6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FFF92832478AB9500E93A6F /* LaunchScreen.storyboard */; };
 		3FFF929C2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF929A2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld */; };
+		3FFF92A42478AFFF00E93A6F /* AnywhereFitnessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF92A32478AFFF00E93A6F /* AnywhereFitnessTests.swift */; };
+		3FFF92B22478B00D00E93A6F /* AnywhereFitnessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF92B12478B00D00E93A6F /* AnywhereFitnessUITests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3FFF92A62478AFFF00E93A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3FFF926D2478AB9200E93A6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FFF92742478AB9200E93A6F;
+			remoteInfo = AnywhereFitness;
+		};
+		3FFF92B42478B00D00E93A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3FFF926D2478AB9200E93A6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FFF92742478AB9200E93A6F;
+			remoteInfo = AnywhereFitness;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3FFF92752478AB9200E93A6F /* AnywhereFitness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnywhereFitness.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,10 +43,30 @@
 		3FFF92842478AB9500E93A6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FFF92862478AB9500E93A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FFF929B2478AF0900E93A6F /* AnywhereFitness.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnywhereFitness.xcdatamodel; sourceTree = "<group>"; };
+		3FFF92A12478AFFF00E93A6F /* AnywhereFitnessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnywhereFitnessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FFF92A32478AFFF00E93A6F /* AnywhereFitnessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnywhereFitnessTests.swift; sourceTree = "<group>"; };
+		3FFF92A52478AFFF00E93A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FFF92AF2478B00D00E93A6F /* AnywhereFitnessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnywhereFitnessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FFF92B12478B00D00E93A6F /* AnywhereFitnessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnywhereFitnessUITests.swift; sourceTree = "<group>"; };
+		3FFF92B32478B00D00E93A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3FFF92722478AB9200E93A6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FFF929E2478AFFF00E93A6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FFF92AC2478B00D00E93A6F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				3FFF92772478AB9200E93A6F /* AnywhereFitness */,
+				3FFF92A22478AFFF00E93A6F /* AnywhereFitnessTests */,
+				3FFF92B02478B00D00E93A6F /* AnywhereFitnessUITests */,
 				3FFF92762478AB9200E93A6F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				3FFF92752478AB9200E93A6F /* AnywhereFitness.app */,
+				3FFF92A12478AFFF00E93A6F /* AnywhereFitnessTests.xctest */,
+				3FFF92AF2478B00D00E93A6F /* AnywhereFitnessUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,6 +182,24 @@
 			path = MockData;
 			sourceTree = "<group>";
 		};
+		3FFF92A22478AFFF00E93A6F /* AnywhereFitnessTests */ = {
+			isa = PBXGroup;
+			children = (
+				3FFF92A32478AFFF00E93A6F /* AnywhereFitnessTests.swift */,
+				3FFF92A52478AFFF00E93A6F /* Info.plist */,
+			);
+			path = AnywhereFitnessTests;
+			sourceTree = "<group>";
+		};
+		3FFF92B02478B00D00E93A6F /* AnywhereFitnessUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3FFF92B12478B00D00E93A6F /* AnywhereFitnessUITests.swift */,
+				3FFF92B32478B00D00E93A6F /* Info.plist */,
+			);
+			path = AnywhereFitnessUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,6 +220,42 @@
 			productReference = 3FFF92752478AB9200E93A6F /* AnywhereFitness.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3FFF92A02478AFFF00E93A6F /* AnywhereFitnessTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FFF92A82478AFFF00E93A6F /* Build configuration list for PBXNativeTarget "AnywhereFitnessTests" */;
+			buildPhases = (
+				3FFF929D2478AFFF00E93A6F /* Sources */,
+				3FFF929E2478AFFF00E93A6F /* Frameworks */,
+				3FFF929F2478AFFF00E93A6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3FFF92A72478AFFF00E93A6F /* PBXTargetDependency */,
+			);
+			name = AnywhereFitnessTests;
+			productName = AnywhereFitnessTests;
+			productReference = 3FFF92A12478AFFF00E93A6F /* AnywhereFitnessTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3FFF92AE2478B00D00E93A6F /* AnywhereFitnessUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FFF92B62478B00D00E93A6F /* Build configuration list for PBXNativeTarget "AnywhereFitnessUITests" */;
+			buildPhases = (
+				3FFF92AB2478B00D00E93A6F /* Sources */,
+				3FFF92AC2478B00D00E93A6F /* Frameworks */,
+				3FFF92AD2478B00D00E93A6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3FFF92B52478B00D00E93A6F /* PBXTargetDependency */,
+			);
+			name = AnywhereFitnessUITests;
+			productName = AnywhereFitnessUITests;
+			productReference = 3FFF92AF2478B00D00E93A6F /* AnywhereFitnessUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -171,6 +268,14 @@
 				TargetAttributes = {
 					3FFF92742478AB9200E93A6F = {
 						CreatedOnToolsVersion = 11.5;
+					};
+					3FFF92A02478AFFF00E93A6F = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 3FFF92742478AB9200E93A6F;
+					};
+					3FFF92AE2478B00D00E93A6F = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 3FFF92742478AB9200E93A6F;
 					};
 				};
 			};
@@ -188,6 +293,8 @@
 			projectRoot = "";
 			targets = (
 				3FFF92742478AB9200E93A6F /* AnywhereFitness */,
+				3FFF92A02478AFFF00E93A6F /* AnywhereFitnessTests */,
+				3FFF92AE2478B00D00E93A6F /* AnywhereFitnessUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -200,6 +307,20 @@
 				3FFF92852478AB9500E93A6F /* LaunchScreen.storyboard in Resources */,
 				3FFF92822478AB9500E93A6F /* Assets.xcassets in Resources */,
 				3FFF92802478AB9200E93A6F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FFF929F2478AFFF00E93A6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FFF92AD2478B00D00E93A6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +337,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3FFF929D2478AFFF00E93A6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FFF92A42478AFFF00E93A6F /* AnywhereFitnessTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FFF92AB2478B00D00E93A6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FFF92B22478B00D00E93A6F /* AnywhereFitnessUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3FFF92A72478AFFF00E93A6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FFF92742478AB9200E93A6F /* AnywhereFitness */;
+			targetProxy = 3FFF92A62478AFFF00E93A6F /* PBXContainerItemProxy */;
+		};
+		3FFF92B52478B00D00E93A6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FFF92742478AB9200E93A6F /* AnywhereFitness */;
+			targetProxy = 3FFF92B42478B00D00E93A6F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3FFF927E2478AB9200E93A6F /* Main.storyboard */ = {
@@ -388,6 +538,84 @@
 			};
 			name = Release;
 		};
+		3FFF92A92478AFFF00E93A6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFBD923VWU;
+				INFOPLIST_FILE = AnywhereFitnessTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bharat.AnywhereFitnessTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnywhereFitness.app/AnywhereFitness";
+			};
+			name = Debug;
+		};
+		3FFF92AA2478AFFF00E93A6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFBD923VWU;
+				INFOPLIST_FILE = AnywhereFitnessTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bharat.AnywhereFitnessTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnywhereFitness.app/AnywhereFitness";
+			};
+			name = Release;
+		};
+		3FFF92B72478B00D00E93A6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFBD923VWU;
+				INFOPLIST_FILE = AnywhereFitnessUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bharat.AnywhereFitnessUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AnywhereFitness;
+			};
+			name = Debug;
+		};
+		3FFF92B82478B00D00E93A6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFBD923VWU;
+				INFOPLIST_FILE = AnywhereFitnessUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bharat.AnywhereFitnessUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AnywhereFitness;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -405,6 +633,24 @@
 			buildConfigurations = (
 				3FFF928A2478AB9500E93A6F /* Debug */,
 				3FFF928B2478AB9500E93A6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FFF92A82478AFFF00E93A6F /* Build configuration list for PBXNativeTarget "AnywhereFitnessTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FFF92A92478AFFF00E93A6F /* Debug */,
+				3FFF92AA2478AFFF00E93A6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FFF92B62478B00D00E93A6F /* Build configuration list for PBXNativeTarget "AnywhereFitnessUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FFF92B72478B00D00E93A6F /* Debug */,
+				3FFF92B82478B00D00E93A6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
