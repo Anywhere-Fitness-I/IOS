@@ -15,6 +15,7 @@
 		3FFF929C2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF929A2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld */; };
 		3FFF92A42478AFFF00E93A6F /* AnywhereFitnessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF92A32478AFFF00E93A6F /* AnywhereFitnessTests.swift */; };
 		3FFF92B22478B00D00E93A6F /* AnywhereFitnessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF92B12478B00D00E93A6F /* AnywhereFitnessUITests.swift */; };
+		3FFF92BC2478BD2000E93A6F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF92BB2478BD2000E93A6F /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3FFF92AF2478B00D00E93A6F /* AnywhereFitnessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnywhereFitnessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FFF92B12478B00D00E93A6F /* AnywhereFitnessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnywhereFitnessUITests.swift; sourceTree = "<group>"; };
 		3FFF92B32478B00D00E93A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FFF92BB2478BD2000E93A6F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				3FFF929A2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld */,
+				3FFF92BB2478BD2000E93A6F /* CoreDataStack.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				3FFF92792478AB9200E93A6F /* AppDelegate.swift in Sources */,
 				3FFF929C2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld in Sources */,
 				3FFF927B2478AB9200E93A6F /* SceneDelegate.swift in Sources */,
+				3FFF92BC2478BD2000E93A6F /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
