@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3FFF92792478AB9200E93A6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF92782478AB9200E93A6F /* AppDelegate.swift */; };
 		3FFF927B2478AB9200E93A6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF927A2478AB9200E93A6F /* SceneDelegate.swift */; };
-		3FFF927D2478AB9200E93A6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF927C2478AB9200E93A6F /* ViewController.swift */; };
 		3FFF92802478AB9200E93A6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FFF927E2478AB9200E93A6F /* Main.storyboard */; };
 		3FFF92822478AB9500E93A6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FFF92812478AB9500E93A6F /* Assets.xcassets */; };
 		3FFF92852478AB9500E93A6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FFF92832478AB9500E93A6F /* LaunchScreen.storyboard */; };
@@ -19,7 +18,6 @@
 		3FFF92752478AB9200E93A6F /* AnywhereFitness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnywhereFitness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FFF92782478AB9200E93A6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FFF927A2478AB9200E93A6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3FFF927C2478AB9200E93A6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3FFF927F2478AB9200E93A6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3FFF92812478AB9500E93A6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FFF92842478AB9500E93A6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,15 +54,86 @@
 		3FFF92772478AB9200E93A6F /* AnywhereFitness */ = {
 			isa = PBXGroup;
 			children = (
-				3FFF92782478AB9200E93A6F /* AppDelegate.swift */,
-				3FFF927A2478AB9200E93A6F /* SceneDelegate.swift */,
-				3FFF927C2478AB9200E93A6F /* ViewController.swift */,
-				3FFF927E2478AB9200E93A6F /* Main.storyboard */,
-				3FFF92812478AB9500E93A6F /* Assets.xcassets */,
-				3FFF92832478AB9500E93A6F /* LaunchScreen.storyboard */,
-				3FFF92862478AB9500E93A6F /* Info.plist */,
+				3FFF92992478ADCB00E93A6F /* MockData */,
+				3FFF92982478ADB900E93A6F /* Models */,
+				3FFF92972478AD7000E93A6F /* Networking */,
+				3FFF92962478AD6D00E93A6F /* CoreData */,
+				3FFF92952478AD6B00E93A6F /* Views */,
+				3FFF92942478AD6600E93A6F /* ViewControllers */,
+				3FFF928C2478ABD700E93A6F /* Application  */,
+				3FFF928D2478ABE000E93A6F /* Storyboards */,
+				3FFF928E2478ABF200E93A6F /* Resources */,
 			);
 			path = AnywhereFitness;
+			sourceTree = "<group>";
+		};
+		3FFF928C2478ABD700E93A6F /* Application  */ = {
+			isa = PBXGroup;
+			children = (
+				3FFF92782478AB9200E93A6F /* AppDelegate.swift */,
+				3FFF927A2478AB9200E93A6F /* SceneDelegate.swift */,
+			);
+			path = "Application ";
+			sourceTree = "<group>";
+		};
+		3FFF928D2478ABE000E93A6F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3FFF927E2478AB9200E93A6F /* Main.storyboard */,
+				3FFF92832478AB9500E93A6F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		3FFF928E2478ABF200E93A6F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3FFF92812478AB9500E93A6F /* Assets.xcassets */,
+				3FFF92862478AB9500E93A6F /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3FFF92942478AD6600E93A6F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3FFF92952478AD6B00E93A6F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3FFF92962478AD6D00E93A6F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		3FFF92972478AD7000E93A6F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		3FFF92982478ADB900E93A6F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3FFF92992478ADCB00E93A6F /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MockData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +207,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FFF927D2478AB9200E93A6F /* ViewController.swift in Sources */,
 				3FFF92792478AB9200E93A6F /* AppDelegate.swift in Sources */,
 				3FFF927B2478AB9200E93A6F /* SceneDelegate.swift in Sources */,
 			);
@@ -286,7 +354,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = AnywhereFitness/Info.plist;
+				INFOPLIST_FILE = AnywhereFitness/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +372,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = AnywhereFitness/Info.plist;
+				INFOPLIST_FILE = AnywhereFitness/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
