@@ -54,13 +54,13 @@
 		3FFF92772478AB9200E93A6F /* AnywhereFitness */ = {
 			isa = PBXGroup;
 			children = (
+				3FFF928C2478ABD700E93A6F /* Application  */,
+				3FFF92972478AD7000E93A6F /* Networking */,
 				3FFF92992478ADCB00E93A6F /* MockData */,
 				3FFF92982478ADB900E93A6F /* Models */,
-				3FFF92972478AD7000E93A6F /* Networking */,
 				3FFF92962478AD6D00E93A6F /* CoreData */,
 				3FFF92952478AD6B00E93A6F /* Views */,
 				3FFF92942478AD6600E93A6F /* ViewControllers */,
-				3FFF928C2478ABD700E93A6F /* Application  */,
 				3FFF928D2478ABE000E93A6F /* Storyboards */,
 				3FFF928E2478ABF200E93A6F /* Resources */,
 			);
