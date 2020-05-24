@@ -15,10 +15,9 @@
         <attribute name="lastname" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="role" optional="YES" attributeType="String"/>
-        <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Class" positionX="-45" positionY="27" width="128" height="133"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>
