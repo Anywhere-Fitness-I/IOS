@@ -23,8 +23,8 @@ extension User {
         self.init(context: context)
         
         self.id = id
-        self.firstname = firstname
-        self.lastname = lastname
+        self.firstName = firstName
+        self.lastName = lastName
         self.email = email
         self.password = password
         self.role = role
