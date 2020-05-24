@@ -9,3 +9,8 @@
 import Foundation
 
 
+struct UserRepresentation: Codable {
+    
+    var id: Int64?
+    var firstName
+}
