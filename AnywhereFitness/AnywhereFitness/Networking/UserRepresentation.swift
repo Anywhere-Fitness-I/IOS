@@ -12,10 +12,13 @@ import Foundation
 struct UserRepresentation: Codable {
     
     var id: Int64?
-    var email: String
     var firstname: String
     var lastname: String
+    var email: String
     var password: String?
+    var role: String
     
-    init(email: String, firstname: String, lastname: String)
+    init(email: String, firstname: String, lastname: String, password: String, id: Int64 = nil) {
+        self.id
+    }
 }

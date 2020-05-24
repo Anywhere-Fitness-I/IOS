@@ -14,21 +14,19 @@ extension User {
     
     
     @discardableResult convenience init(id: Int64,
+                                        firstName: String,
+                                        lastName: String,
                                         email: String,
-                                        firstname: String,
-                                        lastname: String,
-                                        role: String,
                                         password: String,
+                                        role: String,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         
         self.id = id
-        self.email = email
         self.firstname = firstname
         self.lastname = lastname
-        self.role = role
+        self.email = email
         self.password = password
-        
-        
+        self.role = role
     }
 }
