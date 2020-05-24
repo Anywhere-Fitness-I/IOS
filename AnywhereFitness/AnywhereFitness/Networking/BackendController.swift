@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class BackendController {
+    
+    private var baseURL: URL = URL(string: "https://anywhere-fit.herokuapp.com")!
+    
+    private var encoder = JSONEncoder()
+    private var decoder = JSONDecoder()
+    
+     let bgContext = CoreDataStack.shared.container.newBackgroundContext()
+}
