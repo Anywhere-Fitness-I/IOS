@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FB5B02E247B0FF800022892 /* User+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5B02D247B0FF800022892 /* User+Mock.swift */; };
+		3FB5B030247B12CE00022892 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5B02F247B12CE00022892 /* UserRepresentation.swift */; };
 		3FFF92792478AB9200E93A6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF92782478AB9200E93A6F /* AppDelegate.swift */; };
 		3FFF927B2478AB9200E93A6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF927A2478AB9200E93A6F /* SceneDelegate.swift */; };
 		3FFF92802478AB9200E93A6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FFF927E2478AB9200E93A6F /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3FB5B02D247B0FF800022892 /* User+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Mock.swift"; sourceTree = "<group>"; };
+		3FB5B02F247B12CE00022892 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		3FFF92752478AB9200E93A6F /* AnywhereFitness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnywhereFitness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FFF92782478AB9200E93A6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FFF927A2478AB9200E93A6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				3FFF92BF2478BF6F00E93A6F /* BackendController.swift */,
+				3FB5B02F247B12CE00022892 /* UserRepresentation.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 		3FFF92992478ADCB00E93A6F /* MockData */ = {
 			isa = PBXGroup;
 			children = (
+				3FB5B02D247B0FF800022892 /* User+Mock.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -361,10 +367,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FB5B02E247B0FF800022892 /* User+Mock.swift in Sources */,
 				3FFF92792478AB9200E93A6F /* AppDelegate.swift in Sources */,
 				3FFF929C2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld in Sources */,
 				3FFF92C02478BF6F00E93A6F /* BackendController.swift in Sources */,
 				3FFF927B2478AB9200E93A6F /* SceneDelegate.swift in Sources */,
+				3FB5B030247B12CE00022892 /* UserRepresentation.swift in Sources */,
 				3FFF92BC2478BD2000E93A6F /* CoreDataStack.swift in Sources */,
 				3FFF92BE2478BE0F00E93A6F /* User+Convenience.swift in Sources */,
 			);
