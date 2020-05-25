@@ -10,10 +10,15 @@ import Foundation
 
 let validUserJSON = """
 {
-  "id": 5,
-  "username": "tim_the_enchanter",
-  "password": "$2a$12$K4DW2jDwOORS5AN/qGYA..I.b1RZUBzqlIwpg2BJIIIBYASABTTAu",
-  "email": "enchanter_tim@gmail.com"
+  "message": "Welcome Bharat!",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo2LCJyb2xlIjoiY2xpZW50IiwiaWF0IjoxNTkwMzY2ODEyLCJleHAiOjE1OTI5NTg4MTJ9.yWW-XhXpmn9K0rSpK5LkoWUdft5VjkNm5hvLSCZnK2Q",
+  "user": {
+    "id": 6,
+    "firstName": "Bharat",
+    "lastName": "Kumar",
+    "email": "test12@test12.com",
+    "role": "client"
+  }
 }
 """.data(using: .utf8)
 

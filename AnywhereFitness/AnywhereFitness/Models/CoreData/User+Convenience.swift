@@ -12,7 +12,6 @@ import CoreData
 
 extension User {
     
-    
     @discardableResult convenience init(id: Int64,
                                         firstName: String,
                                         lastName: String,
