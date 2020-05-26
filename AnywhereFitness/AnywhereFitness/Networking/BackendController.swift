@@ -43,7 +43,7 @@ class BackendController {
         // swiftlint: enable all
     }
     
-    func signUp(firstName: String, lastName: String, email: String, password: String, role: [String], completion: @escaping (Bool, URLResponse?, Error?) -> Void) {
+    func signUp(firstName: String, lastName: String, email: String, password: String, role: String, completion: @escaping (Bool, URLResponse?, Error?) -> Void) {
         
         let newUser = UserRepresentation(firstName: firstName, lastName: lastName, email: email, password: password, role: role)
         
