@@ -78,27 +78,35 @@ class AnywhereFitnessTests: XCTestCase {
 
     func testCreatePost() {
            let expectCreatePost = expectation(description: "Testing create new post.")
-           backend.signIn(username: "Testing22", password: "test") { _ in
+        backend.signIn(email: "test@test.com", password: "pass") { _ in
                expectCreatePost.fulfill()
            }
            wait(for: [expectCreatePost], timeout: timeout)
-           let count = backend.userPosts.count
+        let count = backend.userCourse.count
            print(count)
            let createExpect = expectation(description: "Expectation for creating post")
-           backend.createPost(title: "New post for testing at 4 AM", post: "From testing grounds") { error in
-               XCTAssertNil(error)
+        backend.createClass(name: "Yoga Class",
+                            type: "Yoga",
+                            date: "Today",
+                            startTime: "Right now",
+                            duration: "A month",
+                            description: "A lot of relaxing exercises",
+                            intensityLevel: "easy",
+                            location: "san diego",
+                            maxClassSize: 10) { error in
+        
                createExpect.fulfill()
            }
            wait(for: [createExpect], timeout: timeout)
 
            let refetchUserExpect = expectation(description: "Last expectation for testing create post")
-           backend.forceLoadUserPosts { isEmpty, error in
+           backend.forceLoadInstructorClass { isEmpty, error in
                XCTAssertFalse(isEmpty)
                XCTAssertNil(error)
                refetchUserExpect.fulfill()
            }
            wait(for: [refetchUserExpect], timeout: timeout)
-           XCTAssertTrue(count < backend.userPosts.count)
+           XCTAssertTrue(count < backend.userCourse.count)
        }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class BackendController {
     
@@ -16,17 +17,25 @@ class BackendController {
     
     private var encoder = JSONEncoder()
     private var decoder = JSONDecoder()
+    
     private var token: Token?
     var dataLoader: DataLoader?
     
     let bgContext = CoreDataStack.shared.container.newBackgroundContext()
-     let operationQueue = OperationQueue()
+    let operationQueue = OperationQueue()
     
     init(dataLoader: DataLoader = URLSession.shared) {
         self.dataLoader = dataLoader
         
     }
-     var instructorId: Int64?
+    
+    var userCourse: [Course] = []
+    
+    var instructorId: Int64? {
+        didSet {
+            loadInstructorClass()
+        }
+    }
     var cache = Cache<Int64, Course>()
     var isSignedIn: Bool {
         // swiftlint: disable all
@@ -83,13 +92,13 @@ class BackendController {
     
     
     func signIn(email: String, password: String, completion: @escaping (Bool) -> Void) {
-
+        
         // Build EndPoint URL and create request with URL
         let requestURL = baseURL.appendingPathComponent(EndPoints.login.rawValue)
         var request = URLRequest(url: requestURL)
         request.httpMethod = Method.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         do {
             // Try to create a JSON from the passaed in parameters, and embedding it into requestHTTPBody.
             let jsonData = try jsonFromDict(email: email, password: password)
@@ -104,13 +113,13 @@ class BackendController {
                 completion(self.isSignedIn)
                 return
             }
-
+            
             guard let data = data else {
                 NSLog("Invalid data received while loggin in.")
                 completion(self.isSignedIn)
                 return
             }
-
+            
             self.bgContext.perform {
                 do {
                     let tokenResult = try self.decoder.decode(Token.self, from: data)
@@ -123,9 +132,9 @@ class BackendController {
                     completion(self.isSignedIn)
                 }
             }
-
+            
         })
-    
+        
     }
     
     private func storeUser(email: String, completion: @escaping (Error?) -> Void) {
@@ -133,29 +142,29 @@ class BackendController {
         var request = URLRequest(url: requestURL)
         request.httpMethod = Method.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         do {
             let data = try jsonFromUsername(email: email)
             request.httpBody = data
-
+            
         } catch {
             NSLog("Error creating json for finding user by username: \(error)")
             return
         }
-
+        
         dataLoader?.loadData(from: request) { data, _, error in
             if let error = error {
                 NSLog("Error couldn't fetch existing user: \(error)")
                 completion(error)
                 return
             }
-
+            
             guard let data = data else {
-                let error = HowtoError.badData("Invalid data returned from searching for a specific user.")
+                let error = AnywayError.badData("Invalid data returned from searching for a specific user.")
                 completion(error)
                 return
             }
-
+            
             do {
                 if let decodedUser = try self.decoder.decode([UserRepresentation].self, from: data).first {
                     completion(nil)
@@ -168,32 +177,32 @@ class BackendController {
     }
     
     private func jsonFromDict(email: String, password: String) throws -> Data? {
-           var dic: [String: String] = [:]
-           dic["email"] = email
-           dic["password"] = password
-
-           do {
-               let jsonData = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
-               return jsonData
-           } catch {
-               NSLog("Error Creating JSON from Dictionary. \(error)")
-               throw error
-           }
-       }
+        var dic: [String: String] = [:]
+        dic["email"] = email
+        dic["password"] = password
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+            return jsonData
+        } catch {
+            NSLog("Error Creating JSON from Dictionary. \(error)")
+            throw error
+        }
+    }
     
     private func jsonFromUsername(email: String) throws -> Data? {
-          var dic: [String: String] = [:]
-          dic["email"] = email
-
-          do {
-              let jsonData = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
-              return jsonData
-          } catch {
-              NSLog("Error Creating JSON From username dictionary. \(error)")
-              throw error
-          }
-
-      }
+        var dic: [String: String] = [:]
+        dic["email"] = email
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+            return jsonData
+        } catch {
+            NSLog("Error Creating JSON From username dictionary. \(error)")
+            throw error
+        }
+        
+    }
     //name
     //type
     //date
@@ -203,64 +212,181 @@ class BackendController {
     //intensityLevel
     //location
     //maxClassSize
-    func createClass(name: String, type: String, date: String, startTime: String, duration: String, description: String, intensityLevel: String, location: String, maxClassSize: String, completion: @escaping (Error?) -> Void) {
-       guard let id = instructorId,
-        let token = token else {
-               completion(HowtoError.noAuth("No userID stored in the controller. Can't create new post."))
-               return
-       }
-
+    func createClass(name: String,
+                     type: String,
+                     date: String,
+                     startTime: String,
+                     duration: String,
+                     description: String,
+                     intensityLevel: String,
+                     location: String,
+                     maxClassSize: Int64,
+                     completion: @escaping (Error?) -> Void) {
+        
+        guard let id = instructorId,
+            let token = token else {
+                completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
+                return
+        }
+        
         let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue)
-       var request = URLRequest(url: requestURL)
-       request.httpMethod = Method.post.rawValue
-       request.setValue(token.token, forHTTPHeaderField: "Authorization")
-       request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-       do {
-        let dict: [String: Any] = ["name": name, "type": type, "date": date, "startTime": startTime, "duration": duration, "description": description, "intensityLevel": intensityLevel, "location": location, "maxClassSize": maxClassSize, "instructorId": id]
-           request.httpBody = try jsonFromDicct(dict: dict)
-       } catch {
-           NSLog("Error turning dictionary to json: \(error)")
-           completion(error)
-       }
-
-       dataLoader?.loadData(from: request, completion: { data, _, error in
-           if let error = error {
-               NSLog("Error posting new post to database : \(error)")
-               completion(error)
-               return
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = Method.post.rawValue
+        request.setValue(token.token, forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let dict: [String: Any] = ["name": name,
+                                       "type": type,
+                                       "date": date,
+                                       "startTime": startTime,
+                                       "duration": duration,
+                                       "description": description,
+                                       "intensityLevel": intensityLevel,
+                                       "location": location,
+                                       "maxClassSize": maxClassSize,
+                                       "instructorId": id]
+            request.httpBody = try jsonFromDicct(dict: dict)
+        } catch {
+            NSLog("Error turning dictionary to json: \(error)")
+            completion(error)
+        }
+        
+        dataLoader?.loadData(from: request, completion: { data, _, error in
+            if let error = error {
+                NSLog("Error posting new post to database : \(error)")
+                completion(error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(AnywayError.badData("Server send bad data when creating new post."))
+                return
+            }
+            
+            self.bgContext.perform {
+                do {
+                    let course = try self.decoder.decode(ClassRepresentation.self, from: data)
+                    self.syncSingleCourse(with: course)
+                    completion(nil)
+                } catch {
+                    NSLog("Error decoding fetched posts from database: \(error)")
+                    completion(error)
+                }
+            }
+            
+        })
+    }
+    
+    
+    private func loadInstructorClass(completion: @escaping (Bool, Error?) -> Void = { _, _ in }) {
+        
+           guard let token = token else {
+                   completion(false, AnywayError.noAuth("UserID hasn't been assigned"))
+                   return
            }
+        let requestURL = baseURL.appendingPathComponent("\(EndPoints.instructorClass.rawValue)")
+           var request = URLRequest(url: requestURL)
+           request.httpMethod = Method.get.rawValue
+           request.setValue(token.token, forHTTPHeaderField: "Authorization")
 
-           guard let data = data else {
-               completion(HowtoError.badData("Server send bad data when creating new post."))
-               return
-           }
-
-           self.bgContext.perform {
-               do {
-                let course = try self.decoder.decode(ClassRepresentation.self, from: data)
-                   self.syncSingleCourse(with: course)
-                   completion(nil)
-               } catch {
-                   NSLog("Error decoding fetched posts from database: \(error)")
-                   completion(error)
+           dataLoader?.loadData(from: request) { data, _, error in
+               if let error = error {
+                   NSLog("Error fetching logged in user's posts : \(error)")
+                   completion(false, error)
+                   return
                }
-           }
 
-       })
-   }
+               guard let data = data else {
+                   completion(false, AnywayError.badData("Received bad data when fetching logged in user's posts array."))
+                   return
+               }
+
+               let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
+
+               let handleFetchedClass = BlockOperation {
+                   do {
+                       let decodedClass = try self.decoder.decode([ClassRepresentation].self, from: data)
+                       // Check if the user has no posts. And if so return right here.
+                       if decodedClass.isEmpty {
+                           NSLog("User has no posts in the database.")
+                           completion(true, nil)
+                           return
+                       }
+                       // If the decoded posts array isn't empty
+                       for course in decodedClass {
+                           guard let courseID = course.id else { return }
+                           // swiftlint:disable all
+                           let nsID = NSNumber(integerLiteral: Int(courseID))
+                           // swiftlint:enable all
+                           fetchRequest.predicate = NSPredicate(format: "id == %@", nsID)
+                           // If fetch request finds a post, add it to the array and update it in core data
+                           let foundClass = try self.bgContext.fetch(fetchRequest).first
+                           if let foundClass = foundClass {
+                               self.update(course: foundClass, with: course)
+                               // Check if post has already been added.
+                               if self.userCourse.first(where: { $0 == foundClass }) != nil {
+                                   NSLog("Post already added to user's posts.")
+                               } else {
+                                   self.userCourse.append(foundClass)
+                               }
+                           } else {
+                               //                             If the post isn't in core data, add it.
+                               if let newCourse = Course(representation: course, context: self.bgContext) {
+                                   if self.userCourse.first(where: { $0 == newCourse }) != nil {
+                                       NSLog("Post already added to user's posts.")
+                                   } else {
+                                       self.userCourse.append(newCourse)
+                                   }
+                               }
+                               //                            try self.savePost(by: id, from: post)
+                           }
+                       }
+                   } catch {
+                       NSLog("Error Decoding posts, Fetching from Coredata: \(error)")
+                       completion(false, error)
+                   }
+               }
+
+               let handleSaving = BlockOperation {
+                   // After going through the entire array, try to save context.
+                   // Make sure to do this in a separate do try catch so we know where things fail
+                   let handleSaving = BlockOperation {
+                       do {
+                           // After going through the entire array, try to save context.
+                           // Make sure to do this in a separate do try catch so we know where things fail
+                           try CoreDataStack.shared.save(context: self.bgContext)
+                           completion(false, nil)
+                       } catch {
+                           NSLog("Error saving context. \(error)")
+                           completion(false, error)
+                       }
+                   }
+                   self.operationQueue.addOperations([handleSaving], waitUntilFinished: true)
+               }
+               handleSaving.addDependency(handleFetchedClass)
+               self.operationQueue.addOperations([handleFetchedClass, handleSaving], waitUntilFinished: true)
+           }
+       }
+    
+    func forceLoadInstructorClass(completion: @escaping (Bool, Error?) -> Void) {
+        loadInstructorClass(completion: { isEmpty, error in
+            completion(isEmpty, error)
+        })
+    }
+    
     
     private func jsonFromDicct(dict: [String: Any]) throws -> Data? {
-           do {
-               let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
-               return jsonData
-           } catch {
-               NSLog("Error Creating JSON From username dictionary. \(error)")
-               throw error
-           }
-       }
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+            return jsonData
+        } catch {
+            NSLog("Error Creating JSON From username dictionary. \(error)")
+            throw error
+        }
+    }
     
-  
+    
     private func update(course: Course, with rep: ClassRepresentation) {
         course.name = rep.name
         course.type = rep.type
@@ -271,41 +397,41 @@ class BackendController {
         course.intensityLevel = rep.intensityLevel
         course.location = rep.location
         course.maxClassSize = rep.maxClassSize
-      }
+    }
     
     private func saveCourse(by userID: Int64, from representation: ClassRepresentation) throws {
-          if let newPost = Course(representation: representation, context: bgContext) {
-              let handleSaving = BlockOperation {
-                  do {
-                      // After going through the entire array, try to save context.
-                      // Make sure to do this in a separate do try catch so we know where things fail
-                      try CoreDataStack.shared.save(context: self.bgContext)
-                  } catch {
-                      NSLog("Error saving context.\(error)")
-                  }
-              }
-              operationQueue.addOperations([handleSaving], waitUntilFinished: false)
-              cache.cache(value: newPost, for: userID)
-          }
-      }
+        if let newPost = Course(representation: representation, context: bgContext) {
+            let handleSaving = BlockOperation {
+                do {
+                    // After going through the entire array, try to save context.
+                    // Make sure to do this in a separate do try catch so we know where things fail
+                    try CoreDataStack.shared.save(context: self.bgContext)
+                } catch {
+                    NSLog("Error saving context.\(error)")
+                }
+            }
+            operationQueue.addOperations([handleSaving], waitUntilFinished: false)
+            cache.cache(value: newPost, for: userID)
+        }
+    }
     
     func syncSingleCourse(with representation: ClassRepresentation) {
-           guard let id = representation.id else { return }
-
-           if let cachedCourse = self.cache.value(for: id) {
-               self.update(course: cachedCourse, with: representation)
-           } else {
-               do {
-                   try self.saveCourse(by: id, from: representation)
-               } catch {
-                   NSLog("Error syncinc single post: \(error)")
-                   return
-               }
-           }
-       }
+        guard let id = representation.id else { return }
+        
+        if let cachedCourse = self.cache.value(for: id) {
+            self.update(course: cachedCourse, with: representation)
+        } else {
+            do {
+                try self.saveCourse(by: id, from: representation)
+            } catch {
+                NSLog("Error syncinc single post: \(error)")
+                return
+            }
+        }
+    }
     //MARK: - Enums
     
-    private enum HowtoError: Error {
+    private enum AnywayError: Error {
         case noAuth(String)
         case badData(String)
     }
@@ -336,13 +462,13 @@ class BackendController {
 class Cache<Key: Hashable, Value> {
     private var cache: [Key: Value] = [ : ]
     private var queue = DispatchQueue(label: "Cache serial queue")
-
+    
     func cache(value: Value, for key: Key) {
         queue.async {
             self.cache[key] = value
         }
     }
-
+    
     func value(for key: Key) -> Value? {
         queue.sync {
             // swiftlint:disable all
