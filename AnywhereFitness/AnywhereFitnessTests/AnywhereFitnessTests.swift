@@ -75,5 +75,30 @@ class AnywhereFitnessTests: XCTestCase {
         XCTAssertTrue(backend.isSignedIn)
         
     }
+
+    func testCreatePost() {
+           let expectCreatePost = expectation(description: "Testing create new post.")
+           backend.signIn(username: "Testing22", password: "test") { _ in
+               expectCreatePost.fulfill()
+           }
+           wait(for: [expectCreatePost], timeout: timeout)
+           let count = backend.userPosts.count
+           print(count)
+           let createExpect = expectation(description: "Expectation for creating post")
+           backend.createPost(title: "New post for testing at 4 AM", post: "From testing grounds") { error in
+               XCTAssertNil(error)
+               createExpect.fulfill()
+           }
+           wait(for: [createExpect], timeout: timeout)
+
+           let refetchUserExpect = expectation(description: "Last expectation for testing create post")
+           backend.forceLoadUserPosts { isEmpty, error in
+               XCTAssertFalse(isEmpty)
+               XCTAssertNil(error)
+               refetchUserExpect.fulfill()
+           }
+           wait(for: [refetchUserExpect], timeout: timeout)
+           XCTAssertTrue(count < backend.userPosts.count)
+       }
     
 }
