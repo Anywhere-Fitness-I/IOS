@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F04C671247D9DE3002CF6B1 /* Class+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F04C670247D9DE3002CF6B1 /* Class+Convenience.swift */; };
+		3F04C673247DA46B002CF6B1 /* ClassRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F04C672247DA46B002CF6B1 /* ClassRepresentation.swift */; };
 		3FB5B02E247B0FF800022892 /* User+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5B02D247B0FF800022892 /* User+Mock.swift */; };
 		3FB5B030247B12CE00022892 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5B02F247B12CE00022892 /* UserRepresentation.swift */; };
 		3FB5B032247B1A8A00022892 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5B031247B1A8A00022892 /* DataLoader.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		3F04C670247D9DE3002CF6B1 /* Class+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+Convenience.swift"; sourceTree = "<group>"; };
+		3F04C672247DA46B002CF6B1 /* ClassRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRepresentation.swift; sourceTree = "<group>"; };
 		3FB5B02D247B0FF800022892 /* User+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Mock.swift"; sourceTree = "<group>"; };
 		3FB5B02F247B12CE00022892 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		3FB5B031247B1A8A00022892 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				3FFF92BF2478BF6F00E93A6F /* BackendController.swift */,
 				3FB5B02F247B12CE00022892 /* UserRepresentation.swift */,
+				3F04C672247DA46B002CF6B1 /* ClassRepresentation.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 			files = (
 				3FB5B02E247B0FF800022892 /* User+Mock.swift in Sources */,
 				3FB5B034247B1B5B00022892 /* Token.swift in Sources */,
+				3F04C673247DA46B002CF6B1 /* ClassRepresentation.swift in Sources */,
 				3FFF92792478AB9200E93A6F /* AppDelegate.swift in Sources */,
 				3FFF929C2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld in Sources */,
 				3FFF92C02478BF6F00E93A6F /* BackendController.swift in Sources */,

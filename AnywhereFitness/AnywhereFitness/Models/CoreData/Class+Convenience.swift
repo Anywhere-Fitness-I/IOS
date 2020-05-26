@@ -21,7 +21,17 @@ import CoreData
 //maxClassSize
 extension Class {
     
-    @discardableResult convenience init(id: Int64, name: String, type: String, date: Date = Date(), startTime: String, duration: String, overview: String, intensityLevel: String, location: String, maxClassSize: Int64, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init(id: Int64,
+                                        name: String,
+                                        type: String,
+                                        date: String,
+                                        startTime: String,
+                                        duration: String,
+                                        overview: String,
+                                        intensityLevel: String,
+                                        location: String,
+                                        maxClassSize: Int64,
+                                        context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
         self.init(context: context)
         self.id = id
