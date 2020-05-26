@@ -45,15 +45,17 @@ class AnywhereFitnessTests: XCTestCase {
     
     func testSignUp() {
         let expectSignUp = expectation(description: "got it")
-        backend.signUp(firstName: "Mera", lastName: "Naam", email: "Naam@gmail.com", password: "Naam123", role: [Role.instructor.rawValue]) { newUser, response, _ in
+        backend.signUp(firstName: "Bhawnish", lastName: "Kumar", email: "mohan12@gmail.com", password: "mohan123", role: [Role.instructor.rawValue]) { newUser, response, _ in
             if let response = response as? HTTPURLResponse,
             response.statusCode == 500 {
                 NSLog("User already exists in the database. Therefore user data was sent successfully to database.")
                 expectSignUp.fulfill()
                 return
-                
+
             }
+            
             XCTAssertTrue(newUser)
+            expectSignUp.fulfill()
 
         }
         expectSignUp.fulfill()
