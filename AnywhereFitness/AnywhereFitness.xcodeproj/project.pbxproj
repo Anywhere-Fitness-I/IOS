@@ -26,8 +26,7 @@
 		7987E254247DC9F3007EDD42 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E253247DC9F3007EDD42 /* FirstViewController.swift */; };
 		7987E257247DCA5D007EDD42 /* ClientClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E256247DCA5D007EDD42 /* ClientClassTableViewController.swift */; };
 		7987E259247DCA7C007EDD42 /* InstructorClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E258247DCA7C007EDD42 /* InstructorClassTableViewController.swift */; };
-		7987E25C247DCB28007EDD42 /* InstructorLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E25B247DCB28007EDD42 /* InstructorLogInViewController.swift */; };
-		7987E25E247DCB3F007EDD42 /* ClientLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E25D247DCB3F007EDD42 /* ClientLogInViewController.swift */; };
+		7987E25E247DCB3F007EDD42 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E25D247DCB3F007EDD42 /* LogInViewController.swift */; };
 		7987E260247DCBD7007EDD42 /* ClientClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */; };
 		7987E262247DCBE8007EDD42 /* InstructorClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */; };
 /* End PBXBuildFile section */
@@ -75,8 +74,7 @@
 		7987E253247DC9F3007EDD42 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstViewController.swift; path = AnywhereFitness/ViewControllers/FirstViewController.swift; sourceTree = SOURCE_ROOT; };
 		7987E256247DCA5D007EDD42 /* ClientClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientClassTableViewController.swift; path = AnywhereFitness/TableViewController/ClientClassTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		7987E258247DCA7C007EDD42 /* InstructorClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorClassTableViewController.swift; sourceTree = "<group>"; };
-		7987E25B247DCB28007EDD42 /* InstructorLogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorLogInViewController.swift; sourceTree = "<group>"; };
-		7987E25D247DCB3F007EDD42 /* ClientLogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientLogInViewController.swift; sourceTree = "<group>"; };
+		7987E25D247DCB3F007EDD42 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientClassDetailViewController.swift; sourceTree = "<group>"; };
 		7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorClassViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,8 +253,7 @@
 		7987E25A247DCAEB007EDD42 /* LogInViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7987E25B247DCB28007EDD42 /* InstructorLogInViewController.swift */,
-				7987E25D247DCB3F007EDD42 /* ClientLogInViewController.swift */,
+				7987E25D247DCB3F007EDD42 /* LogInViewController.swift */,
 			);
 			path = LogInViewControllers;
 			sourceTree = "<group>";
@@ -415,11 +412,10 @@
 			files = (
 				3FB5B02E247B0FF800022892 /* User+Mock.swift in Sources */,
 				7987E260247DCBD7007EDD42 /* ClientClassDetailViewController.swift in Sources */,
-				7987E25E247DCB3F007EDD42 /* ClientLogInViewController.swift in Sources */,
+				7987E25E247DCB3F007EDD42 /* LogInViewController.swift in Sources */,
 				3FB5B034247B1B5B00022892 /* Token.swift in Sources */,
 				7987E262247DCBE8007EDD42 /* InstructorClassViewController.swift in Sources */,
 				3FFF92792478AB9200E93A6F /* AppDelegate.swift in Sources */,
-				7987E25C247DCB28007EDD42 /* InstructorLogInViewController.swift in Sources */,
 				7987E254247DC9F3007EDD42 /* FirstViewController.swift in Sources */,
 				3FFF929C2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld in Sources */,
 				3FFF92C02478BF6F00E93A6F /* BackendController.swift in Sources */,
@@ -605,7 +601,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = AnywhereFitness/Resources/Info.plist;
+				INFOPLIST_FILE = "/Users/mainbitch/Documents/Build Week/IOS/AnywhereFitness/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -624,7 +620,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = AnywhereFitness/Resources/Info.plist;
+				INFOPLIST_FILE = "/Users/mainbitch/Documents/Build Week/IOS/AnywhereFitness/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
