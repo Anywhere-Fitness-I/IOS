@@ -58,10 +58,10 @@ class ClassRepresentation: Codable {
     }
     
     required init(from decoder: Decoder) throws {
-         let container = try decoder.container(keyedBy: CodingKeys.self)
-         id = try container.decode(Int64.self, forKey: .id)
-         name = try container.decode(String.self, forKey: .name)
-         type = try container.decode(String.self, forKey: .type)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int64.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        type = try container.decode(String.self, forKey: .type)
         date = try container.decode(String.self, forKey: .date)
         startTime = try container.decode(String.self, forKey: .startTime)
         duration = try container.decode(String.self, forKey: .duration)
@@ -69,6 +69,6 @@ class ClassRepresentation: Codable {
         intensityLevel = try container.decode(String.self, forKey: .intensityLevel)
         location = try container.decode(String.self, forKey: .location)
         maxClassSize = try container.decode(Int64.self, forKey: .maxClassSize)
-     }
+    }
     
 }

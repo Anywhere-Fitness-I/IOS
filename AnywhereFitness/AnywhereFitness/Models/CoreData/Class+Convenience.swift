@@ -46,4 +46,23 @@ extension Class {
         self.maxClassSize = maxClassSize
         
     }
+    @discardableResult convenience init?(representation: ClassRepresentation,
+                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+
+        guard let id = representation.id else {
+            NSLog("Representation passed in with invalid id")
+            return nil
+        }
+        self.init(id: id,
+                  name: representation.name,
+                  type: representation.type,
+                  date: representation.date,
+                  startTime: representation.startTime,
+                  duration: representation.duration,
+                  overview: representation.description,
+                  intensityLevel: representation.intensityLevel,
+                  location: representation.location,
+                  maxClassSize: representation.maxClassSize,
+                  context: context)
+    }
 }
