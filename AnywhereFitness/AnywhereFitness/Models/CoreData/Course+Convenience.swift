@@ -19,7 +19,7 @@ import CoreData
 //intensityLevel
 //location
 //maxClassSize
-extension Class {
+extension Course {
     
     @discardableResult convenience init(id: Int64,
                                         name: String,
@@ -31,6 +31,7 @@ extension Class {
                                         intensityLevel: String,
                                         location: String,
                                         maxClassSize: Int64,
+                                        instructorId: Int64,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
         self.init(context: context)
@@ -44,6 +45,7 @@ extension Class {
         self.intensityLevel = intensityLevel
         self.location = location
         self.maxClassSize = maxClassSize
+        self.instructorId = instructorId
         
     }
     @discardableResult convenience init?(representation: ClassRepresentation,
@@ -63,6 +65,7 @@ extension Class {
                   intensityLevel: representation.intensityLevel,
                   location: representation.location,
                   maxClassSize: representation.maxClassSize,
+                  instructorId: representation.instructorId,
                   context: context)
     }
 }
