@@ -19,20 +19,13 @@ class LogInViewController: UIViewController {
     
     var backEndController = BackendController.shared
     
-    @IBOutlet weak var clientInstructorSegue: UISegmentedControl!
-    
-    @IBOutlet weak var signUpLogInSegue: UISegmentedControl!
-    
-    @IBOutlet weak var firstNameTextField: UITextField!
-    
-    @IBOutlet weak var lastNameTextField: UITextField!
-    
-    @IBOutlet weak var emailTextField: UITextField!
-    
-    
-    @IBOutlet weak var passwordTextField: UITextField!
-    
-    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet private var clientInstructorSegue: UISegmentedControl!
+    @IBOutlet private var signUpLogInSegue: UISegmentedControl!
+    @IBOutlet private var firstNameTextField: UITextField!
+    @IBOutlet private var lastNameTextField: UITextField!
+    @IBOutlet private var emailTextField: UITextField!
+    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var signUpButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -73,13 +66,14 @@ class LogInViewController: UIViewController {
             
             let email = emailTextField.text,
             
-            let password = passwordTextField.text else {return}
+            let password = passwordTextField.text else { return }
         
         let clientIndex = clientSegmentedControl.selectedSegmentIndex
         
         let role = ClientType.allCases[clientIndex]
         
-        backEndController.signUp(firstName: firstName, lastName: lastName, email: email, password: password, role: role.rawValue) { signUpResult, response, error in
+        backEndController.signUp(
+        firstName: firstName, lastName: lastName, email: email, password: password, role: role.rawValue) { signUpResult, response, error in
             DispatchQueue.main.async {
                 if let error = error {
                     self.showAlertMessage(title: "Try Again", message: "Error Signing Up or Signing In", actiontitle: "Ok")
@@ -103,10 +97,9 @@ class LogInViewController: UIViewController {
         
         guard let email = emailTextField.text,
             let clientSegmentedControl = clientInstructorSegue,
-            let password = passwordTextField.text else {return}
+            let password = passwordTextField.text else { return }
         
     
-        
         backEndController.signIn(email: email, password: password) { signInResult in
             DispatchQueue.main.async {
                 if signInResult {
@@ -120,9 +113,7 @@ class LogInViewController: UIViewController {
                     default:
                         break
                     }
-                    
-                    
-                    
+                
                     self.showAlertMessage(title: "Sucess", message: "Sucess Logging In", actiontitle: "Ok")
                 } else {
                     self.showAlertMessage(title: "Try Again", message: "Problem Signing In", actiontitle: "Ok")
@@ -140,8 +131,6 @@ class LogInViewController: UIViewController {
         endAlert.addAction(endAction)
         present(endAlert, animated: true, completion: nil)
     }
-    
-    
     
     // MARK: - Navigation
     
