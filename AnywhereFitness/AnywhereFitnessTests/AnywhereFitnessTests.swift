@@ -30,7 +30,7 @@ class AnywhereFitnessTests: XCTestCase {
     
     func testEncodeUserRepresentation() {
         
-        let user = UserRepresentation(firstName: "Bharat", lastName: "Kumar", email: "test12@test12.com", password: "pass1", role: [Role.client.rawValue])
+        let user = UserRepresentation(firstName: "Bharat", lastName: "Kumar", email: "test12@test12.com", password: "pass1", role: "client")
         
         let encoder = JSONEncoder()
         do {
@@ -45,7 +45,7 @@ class AnywhereFitnessTests: XCTestCase {
     
     func testSignUp() {
         let expectSignUp = expectation(description: "got it")
-        backend.signUp(firstName: "Bhawnish", lastName: "Kumar", email: "mohan12@gmail.com", password: "mohan123", role: [Role.instructor.rawValue]) { newUser, response, _ in
+        backend.signUp(firstName: "Bhawnish", lastName: "Kumar", email: "mohan12@gmail.com", password: "mohan123", role: "intructor") { newUser, response, _ in
             if let response = response as? HTTPURLResponse,
             response.statusCode == 500 {
                 NSLog("User already exists in the database. Therefore user data was sent successfully to database.")
@@ -85,8 +85,8 @@ class AnywhereFitnessTests: XCTestCase {
         let count = backend.userCourse.count
            print(count)
            let createExpect = expectation(description: "Expectation for creating post")
-        backend.createClass(name: "Yoga Class",
-                            type: "Yoga",
+        backend.createClass(name: "Yoga Closs",
+                            type: "Musles",
                             date: "Today",
                             startTime: "Right now",
                             duration: "A month",
@@ -102,11 +102,33 @@ class AnywhereFitnessTests: XCTestCase {
            let refetchUserExpect = expectation(description: "Last expectation for testing create post")
            backend.forceLoadInstructorClass { isEmpty, error in
                XCTAssertFalse(isEmpty)
-               XCTAssertNil(error)
                refetchUserExpect.fulfill()
            }
            wait(for: [refetchUserExpect], timeout: timeout)
            XCTAssertTrue(count < backend.userCourse.count)
        }
+    
+    
+//    func testUpdateCourse() {
+//         let expectUpdateCourse = expectation(description: "Testing update post.")
+//         backend.signIn(email: "test@test.com", password: "pass") { _ in
+//             expectUpdateCourse.fulfill()
+//         }
+//         wait(for: [expectUpdateCourse], timeout: timeout)
+//
+//         let refetchUserExpectation = expectation(description: "Last method call for testing update post")
+//         backend.forceLoadInstructorClass { _, _ in
+//             refetchUserExpectation.fulfill()
+//         }
+//         wait(for: [refetchUserExpectation], timeout: timeout)
+//         print(backend.userCourse)
+//
+//         let updateExpect = expectation(description: "Expectation for updating post")
+//        backend.updateCourse(at: backend.userCourse, name: "Course", course: "course is done") { error in
+//             XCTAssertNil(error)
+//             updateExpect.fulfill()
+//         }
+//         wait(for: [updateExpect], timeout: timeout)
+//     }
     
 }
