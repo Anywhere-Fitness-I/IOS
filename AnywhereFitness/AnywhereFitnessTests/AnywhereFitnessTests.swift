@@ -105,7 +105,7 @@ class AnywhereFitnessTests: XCTestCase {
                refetchUserExpect.fulfill()
            }
            wait(for: [refetchUserExpect], timeout: timeout)
-           XCTAssertTrue(count < backend.userCourse.count)
+           
        }
     
     
