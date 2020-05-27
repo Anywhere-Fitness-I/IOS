@@ -16,7 +16,7 @@ struct UserRepresentation: Codable {
     var lastName: String
     var email: String
     var password: String
-    var role: [String]
+    var role: String
     
     private enum CodingKeys: String, CodingKey {
         
@@ -36,7 +36,7 @@ struct UserRepresentation: Codable {
         try container.encode(role, forKey: .role)
     }
     
-    init(firstName: String, lastName: String, email: String, password: String, role: [String]) {
+    init(firstName: String, lastName: String, email: String, password: String, role: String) {
        
         self.firstName = firstName
         self.lastName = lastName
@@ -51,7 +51,7 @@ struct UserRepresentation: Codable {
         lastName = try container.decode(String.self, forKey: .firstName)
         email = try container.decode(String.self, forKey: .email)
         password = try container.decode(String.self, forKey: .password)
-        role = try container.decode([String].self, forKey: .role)
+        role = try container.decode(String.self, forKey: .role)
         
     }
     
