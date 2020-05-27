@@ -420,11 +420,11 @@
 				7987E260247DCBD7007EDD42 /* ClientClassDetailViewController.swift in Sources */,
 				7987E25E247DCB3F007EDD42 /* LogInViewController.swift in Sources */,
 				3FB5B034247B1B5B00022892 /* Token.swift in Sources */,
-<<<<<<< HEAD
+
 				7987E262247DCBE8007EDD42 /* InstructorClassViewController.swift in Sources */,
-=======
+
 				3F04C673247DA46B002CF6B1 /* ClassRepresentation.swift in Sources */,
->>>>>>> bharatWorking
+
 				3FFF92792478AB9200E93A6F /* AppDelegate.swift in Sources */,
 				7987E254247DC9F3007EDD42 /* FirstViewController.swift in Sources */,
 				3FFF929C2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld in Sources */,
