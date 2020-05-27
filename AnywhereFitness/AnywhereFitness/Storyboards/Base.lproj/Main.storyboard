@@ -272,7 +272,7 @@
                                             <segment title="Instructor"/>
                                         </segments>
                                         <color key="tintColor" red="0.32489488620000001" green="0.48177522569999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="selectedSegmentTintColor" red="0.32489488620000001" green="0.48177522569999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="selectedSegmentTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="clientInstructorSegmentedControl:" destination="qnC-Cq-Jz4" eventType="valueChanged" id="SV7-uG-qg6"/>
                                         </connections>
