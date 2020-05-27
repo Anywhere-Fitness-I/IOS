@@ -163,7 +163,7 @@
             <objects>
                 <viewController id="Keg-qm-rhS" customClass="ClientClassDetailViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iis-0A-S3J">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="Bfw-Tj-sso">
@@ -262,7 +262,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YMn-gG-glT">
-                                <rect key="frame" x="20" y="118" width="374" height="408.5"/>
+                                <rect key="frame" x="20" y="118" width="374" height="478.5"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eDb-mO-Yei">
                                         <rect key="frame" x="106.5" y="0.0" width="161" height="32"/>
@@ -272,7 +272,7 @@
                                             <segment title="Instructor"/>
                                         </segments>
                                         <color key="tintColor" red="0.32489488620000001" green="0.48177522569999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="selectedSegmentTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="selectedSegmentTintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="clientInstructorSegmentedControl:" destination="qnC-Cq-Jz4" eventType="valueChanged" id="SV7-uG-qg6"/>
                                         </connections>
@@ -306,6 +306,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TKM-Zn-402">
                                                 <rect key="frame" x="0.0" y="54" width="334" height="34"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -337,6 +338,19 @@
                                             <action selector="signUpSignIn:" destination="qnC-Cq-Jz4" eventType="touchUpInside" id="VoI-3G-yDG"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iec-gi-NuW">
+                                        <rect key="frame" x="163.5" y="428.5" width="47" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="7Ve-NZ-SF6"/>
+                                        </constraints>
+                                        <state key="normal" title="Sign In">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signIn:" destination="qnC-Cq-Jz4" eventType="touchUpInside" id="QsI-kp-nua"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="6hz-KG-gno" firstAttribute="leading" secondItem="YMn-gG-glT" secondAttribute="leading" constant="20" id="8h7-N2-R75"/>
@@ -362,7 +376,8 @@
                         <outlet property="passwordTextField" destination="nwP-yj-7sH" id="J3Y-DE-AdU"/>
                         <outlet property="signUpButton" destination="ecw-BD-HQ7" id="JIk-Zj-7QH"/>
                         <outlet property="signUpLogInSegue" destination="QeY-Ui-ig5" id="DvH-cK-5XO"/>
-                        <segue destination="b8d-md-CoN" kind="show" id="mg0-7n-uRt"/>
+                        <segue destination="b8d-md-CoN" kind="show" identifier="signedInSegue" id="mg0-7n-uRt"/>
+                        <segue destination="Q3K-qq-eZ1" kind="show" identifier="clientSegue" id="0O2-of-YJQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ab4-tj-3wO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
