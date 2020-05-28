@@ -31,8 +31,9 @@
 		7987E25E247DCB3F007EDD42 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E25D247DCB3F007EDD42 /* LogInViewController.swift */; };
 		7987E260247DCBD7007EDD42 /* ClientClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */; };
 		7987E262247DCBE8007EDD42 /* InstructorClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */; };
-		7987E266247EF7C1007EDD42 /* TeachingClassesTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E265247EF7C1007EDD42 /* TeachingClassesTableTableViewController.swift */; };
 		7987E268247F0101007EDD42 /* CreateAClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E267247F0101007EDD42 /* CreateAClassViewController.swift */; };
+		79DE44E62480241600ACEF15 /* InstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DE44E52480241600ACEF15 /* InstructorTableViewCell.swift */; };
+		79DE44E82480311800ACEF15 /* ClientCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DE44E72480311800ACEF15 /* ClientCourseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,8 +84,9 @@
 		7987E25D247DCB3F007EDD42 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientClassDetailViewController.swift; sourceTree = "<group>"; };
 		7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorClassViewController.swift; sourceTree = "<group>"; };
-		7987E265247EF7C1007EDD42 /* TeachingClassesTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachingClassesTableTableViewController.swift; sourceTree = "<group>"; };
 		7987E267247F0101007EDD42 /* CreateAClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAClassViewController.swift; sourceTree = "<group>"; };
+		79DE44E52480241600ACEF15 /* InstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorTableViewCell.swift; sourceTree = "<group>"; };
+		79DE44E72480311800ACEF15 /* ClientCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCourseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,14 +139,13 @@
 			children = (
 				3FFF928E2478ABF200E93A6F /* Resources */,
 				7987E264247EF78D007EDD42 /* CreateAClassView */,
-				7987E263247EF771007EDD42 /* TeachingClassesTableView */,
 				7987E25A247DCAEB007EDD42 /* LogInViewControllers */,
 				7987E255247DCA12007EDD42 /* TableViewController */,
 				3FFF928C2478ABD700E93A6F /* Application  */,
 				3FFF92972478AD7000E93A6F /* Networking */,
 				3FFF92992478ADCB00E93A6F /* MockData */,
 				3FFF92982478ADB900E93A6F /* Models */,
-				3FFF92952478AD6B00E93A6F /* Views */,
+				79DE44E42480240200ACEF15 /* Views */,
 				3FFF92942478AD6600E93A6F /* ViewControllers */,
 				3FFF928D2478ABE000E93A6F /* Storyboards */,
 			);
@@ -186,13 +187,6 @@
 				7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		3FFF92952478AD6B00E93A6F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		3FFF92962478AD6D00E93A6F /* CoreData */ = {
@@ -270,20 +264,21 @@
 			path = LogInViewControllers;
 			sourceTree = "<group>";
 		};
-		7987E263247EF771007EDD42 /* TeachingClassesTableView */ = {
-			isa = PBXGroup;
-			children = (
-				7987E265247EF7C1007EDD42 /* TeachingClassesTableTableViewController.swift */,
-			);
-			path = TeachingClassesTableView;
-			sourceTree = "<group>";
-		};
 		7987E264247EF78D007EDD42 /* CreateAClassView */ = {
 			isa = PBXGroup;
 			children = (
 				7987E267247F0101007EDD42 /* CreateAClassViewController.swift */,
 			);
 			path = CreateAClassView;
+			sourceTree = "<group>";
+		};
+		79DE44E42480240200ACEF15 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				79DE44E52480241600ACEF15 /* InstructorTableViewCell.swift */,
+				79DE44E72480311800ACEF15 /* ClientCourseTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,9 +433,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79DE44E62480241600ACEF15 /* InstructorTableViewCell.swift in Sources */,
 				7987E268247F0101007EDD42 /* CreateAClassViewController.swift in Sources */,
-				7987E266247EF7C1007EDD42 /* TeachingClassesTableTableViewController.swift in Sources */,
 				3FB5B02E247B0FF800022892 /* User+Mock.swift in Sources */,
+				79DE44E82480311800ACEF15 /* ClientCourseTableViewCell.swift in Sources */,
 				7987E260247DCBD7007EDD42 /* ClientClassDetailViewController.swift in Sources */,
 				7987E25E247DCB3F007EDD42 /* LogInViewController.swift in Sources */,
 				3FB5B034247B1B5B00022892 /* Token.swift in Sources */,
@@ -633,7 +629,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = "$(SRCROOT)/AnywhereFitness/Resources/Info.plist";
+				INFOPLIST_FILE = "/Users/bhawnishkumar/Documents/DevelopmentiOS16/Anywhere fitness/IOS/AnywhereFitness/AnywhereFitness/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -652,7 +648,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = "$(SRCROOT)/AnywhereFitness/Resources/Info.plist";
+				INFOPLIST_FILE = "/Users/bhawnishkumar/Documents/DevelopmentiOS16/Anywhere fitness/IOS/AnywhereFitness/AnywhereFitness/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
