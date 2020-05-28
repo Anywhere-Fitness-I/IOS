@@ -5,9 +5,9 @@
 // Created by Enzo Jimenez-Soto on 5/26/20.
 // Copyright © 2020 Bhawnish Kumar. All rights reserved.
 //
+
 import UIKit
 import CoreData
-
 
 class InstructorClassTableViewController: UITableViewController {
   var backendController = BackendController.shared
