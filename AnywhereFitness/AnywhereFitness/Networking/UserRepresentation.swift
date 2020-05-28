@@ -11,7 +11,7 @@ import Foundation
 
 struct UserRepresentation: Codable {
     
-    
+    var id: Int64?
     var firstName: String
     var lastName: String
     var email: String
@@ -25,6 +25,7 @@ struct UserRepresentation: Codable {
         case email
         case password
         case role
+        case id
         
     }
     func encode(to encoder: Encoder) throws {
@@ -36,8 +37,8 @@ struct UserRepresentation: Codable {
         try container.encode(role, forKey: .role)
     }
     
-    init(firstName: String, lastName: String, email: String, password: String, role: String) {
-       
+    init(firstName: String, lastName: String, email: String, password: String, role: String, id: Int64? = nil) {
+        self.id = id
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -47,6 +48,8 @@ struct UserRepresentation: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        let decodedID = try container.decode(Int.self, forKey: .id)
+        id = Int64(decodedID)
         firstName = try container.decode(String.self, forKey: .firstName)
         lastName = try container.decode(String.self, forKey: .firstName)
         email = try container.decode(String.self, forKey: .email)
