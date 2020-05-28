@@ -26,15 +26,18 @@ class LogInViewController: UIViewController {
     @IBOutlet private var emailTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
     @IBOutlet private var signUpButton: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Do any additional setup after loading the view.
     }
     
     @IBAction func clientInstructorSegmentedControl(_ sender: UISegmentedControl) {
+        
     }
     
     @IBAction func signUpSignInSegementedControl(_ sender: UISegmentedControl) {
@@ -43,13 +46,17 @@ class LogInViewController: UIViewController {
         case 0:
             firstNameTextField.isHidden = false
             lastNameTextField.isHidden = false
+            //signInButton.isHidden = true
             signUpButton.setTitle("Sign Up", for: .normal)
+            //signUpButton.isHidden = false
+            
             
         case 1:
             firstNameTextField.isHidden = true
             lastNameTextField.isHidden = true
+            //signUpButton.isHidden = true
             
-            signUpButton.setTitle("Sign In", for: .normal)
+            signInButton.setTitle("Sign In", for: .normal)
         default:
             break
         }
