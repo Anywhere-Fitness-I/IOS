@@ -589,7 +589,7 @@ class BackendController {
         // Our only DELETE endpoint utilizes query parameters.
         // Must use a new URL to construct commponents
         
-        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathExtension("\(course.id)")
+        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathExtension("\(id)")
         var request = URLRequest(url: requestURL)
         request.httpMethod = Method.delete.rawValue
         request.setValue(token.token, forHTTPHeaderField: "Authorization")
