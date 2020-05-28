@@ -105,10 +105,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="dDd-TD-FP7">
-                                            <rect key="frame" x="12" y="11" width="235.5" height="103.5"/>
+                                            <rect key="frame" x="15" y="11" width="232.5" height="103.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Class Name                         " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmd-VK-viY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="235.5" height="26.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="232.5" height="26.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -133,18 +133,28 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5k-Zf-Mp0">
+                                            <rect key="frame" x="328" y="93" width="65.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="dDd-TD-FP7" firstAttribute="leading" secondItem="Ivs-Du-TCm" secondAttribute="leading" constant="12" id="05f-Yt-r86"/>
+                                        <constraint firstItem="dDd-TD-FP7" firstAttribute="leading" secondItem="Ivs-Du-TCm" secondAttribute="leading" constant="15" id="05f-Yt-r86"/>
+                                        <constraint firstItem="R5k-Zf-Mp0" firstAttribute="top" secondItem="Ivs-Du-TCm" secondAttribute="top" constant="93" id="0cP-af-D1o"/>
                                         <constraint firstAttribute="trailing" secondItem="dDd-TD-FP7" secondAttribute="trailing" constant="166.5" id="P95-Gb-8mc"/>
+                                        <constraint firstItem="R5k-Zf-Mp0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dDd-TD-FP7" secondAttribute="trailing" constant="8" symbolic="YES" id="YcB-Ia-XCg"/>
                                         <constraint firstAttribute="bottom" secondItem="dDd-TD-FP7" secondAttribute="bottom" constant="10.5" id="gfU-Gp-1c6"/>
                                         <constraint firstItem="dDd-TD-FP7" firstAttribute="top" secondItem="Ivs-Du-TCm" secondAttribute="top" constant="11" id="qAr-5y-tk2"/>
+                                        <constraint firstAttribute="trailing" secondItem="R5k-Zf-Mp0" secondAttribute="trailing" constant="20.5" id="xhz-lp-Ogq"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="classNameLabel" destination="jmd-VK-viY" id="tsm-4y-ucD"/>
                                     <outlet property="dateLabel" destination="0hx-Iw-MGT" id="opE-ie-JTt"/>
                                     <outlet property="instructorLabel" destination="9gg-V0-qNw" id="F1S-U5-JDl"/>
+                                    <outlet property="locationLabel" destination="R5k-Zf-Mp0" id="Ckf-bK-Wau"/>
                                     <outlet property="timeLabel" destination="okq-no-CNg" id="2CT-Pt-3gk"/>
                                     <segue destination="Keg-qm-rhS" kind="show" id="NyQ-5L-mqy"/>
                                 </connections>
