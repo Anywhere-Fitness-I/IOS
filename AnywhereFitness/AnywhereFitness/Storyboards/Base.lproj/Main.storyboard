@@ -402,7 +402,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="instructorClassCell" rowHeight="84" id="Jsz-RJ-EOf">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="instructorClassCell" rowHeight="84" id="Jsz-RJ-EOf" customClass="InstructorCourseTableViewCell" customModule="AnywhereFitness" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jsz-RJ-EOf" id="5q0-JQ-DAj">
@@ -439,6 +439,12 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="classNameLabel" destination="vp2-TF-R2o" id="RA8-0F-MOI"/>
+                                    <outlet property="dateLabel" destination="vlK-nM-ww6" id="y4q-Kw-upa"/>
+                                    <outlet property="locationLabel" destination="LLk-pZ-m2k" id="3qA-9s-uDS"/>
+                                    <outlet property="timeLabel" destination="fWG-5Y-fZh" id="KCy-a9-fMn"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
