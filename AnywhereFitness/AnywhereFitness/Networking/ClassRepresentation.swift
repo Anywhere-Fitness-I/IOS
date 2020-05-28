@@ -28,7 +28,7 @@ class ClassRepresentation: Codable {
     var intensityLevel: String
     var location: String
     var maxClassSize: Int64
-    var instructorId: Int64
+    var instructorId: Int64?
     
     enum CodingKeys: String, CodingKey {
         case id
