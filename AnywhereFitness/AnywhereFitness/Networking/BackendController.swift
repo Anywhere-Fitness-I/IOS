@@ -225,8 +225,7 @@ class BackendController {
                      maxClassSize: Int64,
                      completion: @escaping (Error?) -> Void) {
         
-        guard let id = instructorId,
-            let token = token else {
+        guard let token = token else {
                 completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
                 return
         }
@@ -247,7 +246,7 @@ class BackendController {
                                        "intensityLevel": intensityLevel,
                                        "location": location,
                                        "maxClassSize": maxClassSize,
-                                       "instructorId": id]
+                                           ]
             request.httpBody = try jsonFromDicct(dict: dict)
         } catch {
             NSLog("Error turning dictionary to json: \(error)")
@@ -279,6 +278,7 @@ class BackendController {
             
         })
     }
+
     
     
     private func loadInstructorClass(completion: @escaping (Bool, Error?) -> Void = { _, _ in }) {

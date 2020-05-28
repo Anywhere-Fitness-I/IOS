@@ -101,11 +101,10 @@ class AnywhereFitnessTests: XCTestCase {
 
            let refetchUserExpect = expectation(description: "Last expectation for testing create post")
            backend.forceLoadInstructorClass { isEmpty, error in
-               XCTAssertFalse(isEmpty)
+             
                refetchUserExpect.fulfill()
            }
            wait(for: [refetchUserExpect], timeout: timeout)
-           
        }
     
     
