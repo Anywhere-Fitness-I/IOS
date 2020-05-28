@@ -278,8 +278,63 @@ class BackendController {
             
         })
     }
-
     
+    
+    func createMyClass(name: String,
+                        date: String,
+                        startTime: String,
+                        location: String,
+                        completion: @escaping (Error?) -> Void) {
+           
+           guard let token = token else {
+                   completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
+                   return
+           }
+           
+           let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue)
+           var request = URLRequest(url: requestURL)
+           request.httpMethod = Method.post.rawValue
+           request.setValue(token.token, forHTTPHeaderField: "Authorization")
+           request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+           
+           do {
+               let dict: [String: Any] = ["name": name,
+                                          "date": date,
+                                          "startTime": startTime,
+                                          "location": location
+                                              ]
+               request.httpBody = try jsonFromDicct(dict: dict)
+           } catch {
+               NSLog("Error turning dictionary to json: \(error)")
+               completion(error)
+           }
+           
+           dataLoader?.loadData(from: request, completion: { data, _, error in
+               if let error = error {
+                   NSLog("Error posting new course to database : \(error)")
+                   completion(error)
+                   return
+               }
+               
+               guard let data = data else {
+                   completion(AnywayError.badData("Server send bad data when creating new course."))
+                   return
+               }
+               
+               self.bgContext.perform {
+                   do {
+                       let course = try self.decoder.decode(ClassRepresentation.self, from: data)
+                       self.syncSingleCourse(with: course)
+                       completion(nil)
+                   } catch {
+                       NSLog("Error decoding fetched course from database: \(error)")
+                       completion(error)
+                   }
+               }
+               
+           })
+       }
+
     
     private func loadInstructorClass(completion: @escaping (Bool, Error?) -> Void = { _, _ in }) {
         

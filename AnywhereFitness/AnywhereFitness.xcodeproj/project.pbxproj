@@ -625,7 +625,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = "/Users/mainbitch/Documents/Build Week/IOS/AnywhereFitness/Resources/Info.plist";
+				INFOPLIST_FILE = "/Users/bhawnishkumar/Documents/DevelopmentiOS16/Anywhere fitness/IOS/AnywhereFitness/AnywhereFitnessTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -644,7 +644,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = "/Users/mainbitch/Documents/Build Week/IOS/AnywhereFitness/Resources/Info.plist";
+				INFOPLIST_FILE = "/Users/bhawnishkumar/Documents/DevelopmentiOS16/Anywhere fitness/IOS/AnywhereFitness/AnywhereFitnessTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
