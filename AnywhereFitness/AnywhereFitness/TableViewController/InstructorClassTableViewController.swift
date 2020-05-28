@@ -13,22 +13,21 @@ class InstructorClassTableViewController: UITableViewController {
     
     var backendController = BackendController.shared
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Course> = {
-      let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
-      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-      let context = CoreDataStack.shared.mainContext
-      let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-      frc.delegate = self
-      try? frc.performFetch()
-      return frc
-    }()
-        
     
-    
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        backendController.forceLoadInstructorClass { loaded, _ in
+            if loaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.reloadData()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -41,7 +40,7 @@ class InstructorClassTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
+        return backendController.userCourse.count
     }
 
     
