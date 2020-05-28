@@ -538,7 +538,7 @@ class BackendController {
                 self.bgContext.perform {
                     for course in representations {
                         // First if it's in the cache
-                        guard let id = course.id else { return }
+                        guard let id = course.instructorId else { return }
 
                         if self.cache.value(for: id) != nil {
                             let cachedCourse = self.cache.value(for: id)!
