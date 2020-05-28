@@ -225,8 +225,7 @@ class BackendController {
                      maxClassSize: Int64,
                      completion: @escaping (Error?) -> Void) {
         
-        guard let id = instructorId,
-            let token = token else {
+        guard let token = token else {
                 completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
                 return
         }
@@ -246,8 +245,7 @@ class BackendController {
                                        "description": description,
                                        "intensityLevel": intensityLevel,
                                        "location": location,
-                                       "maxClassSize": maxClassSize,
-                                       "id": id
+                                       "maxClassSize": maxClassSize
                                            ]
             request.httpBody = try jsonFromDicct(dict: dict)
         } catch {
@@ -360,7 +358,7 @@ class BackendController {
                 completion(false, AnywayError.badData("Received bad data when fetching logged in user's course array."))
                 return
             }
-            
+            // changed 
             let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
             
             let handleFetchedClass = BlockOperation {
