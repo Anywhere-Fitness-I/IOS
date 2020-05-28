@@ -45,7 +45,7 @@ class AnywhereFitnessTests: XCTestCase {
     
     func testSignUp() {
         let expectSignUp = expectation(description: "got it")
-        backend.signUp(firstName: "Bhawnish", lastName: "Kumar", email: "mohan12@gmail.com", password: "mohan123", role: "intructor") { newUser, response, _ in
+        backend.signUp(firstName: "Bhawnish", lastName: "Kumar", email: "bharat@gmail.com", password: "bharat123", role: "intructor") { newUser, response, _ in
             if let response = response as? HTTPURLResponse,
             response.statusCode == 500 {
                 NSLog("User already exists in the database. Therefore user data was sent successfully to database.")
@@ -66,7 +66,7 @@ class AnywhereFitnessTests: XCTestCase {
     func testSignIn() {
         let expectSignIn = expectation(description: "got it")
         
-        backend.signIn(email: "test@test.com", password: "pass") { logged in
+        backend.signIn(email: "bharat@gmail.com", password: "bharat123") { logged in
             XCTAssertTrue(logged)
             expectSignIn.fulfill()
         }
