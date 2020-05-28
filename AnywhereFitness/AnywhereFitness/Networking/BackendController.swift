@@ -340,8 +340,7 @@ class BackendController {
     
     private func loadInstructorClass(completion: @escaping (Bool, Error?) -> Void = { _, _ in }) {
         
-        guard let id = instructorId,
-            let  token = token else {
+        guard let  token = token else {
                 completion(false, AnywayError.noAuth("UserID hasn't been assigned"))
                 return
         }
@@ -375,7 +374,7 @@ class BackendController {
                     }
                     // If the decoded posts array isn't empty
                     for course in decodedClass {
-                        guard let courseID = course.id else { return }
+                        guard let courseID = course.instructorId else { return }
                         // swiftlint:disable all
                         let nsID = NSNumber(integerLiteral: Int(courseID))
                         // swiftlint:enable all
