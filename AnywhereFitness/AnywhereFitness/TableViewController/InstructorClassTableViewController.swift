@@ -75,17 +75,31 @@ class InstructorClassTableViewController: UITableViewController {
    return true
    }
    */
-  /*
+  
    // Override to support editing the table view.
    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
    if editingStyle == .delete {
-   // Delete the row from the data source
-   tableView.deleteRows(at: [indexPath], with: .fade)
-   } else if editingStyle == .insert {
-   // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    let course = backendController.userCourse[indexPath.row]
+    if backendController.isSignedIn {
+    backendController.deleteCourse(course: course) { result, error in
+        if let error = error {
+            NSLog("Error in deleting: \(error)")
+            return
+        }
+        if let result = result {
+            if result {
+                DispatchQueue.main.async {
+                    if let indexOf = self.backendController.userCourse.firstIndex(of: course) {
+                        self.backendController.userCourse.remove(at: indexOf)
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
    }
    }
-   */
+    }
   /*
    // Override to support rearranging the table view.
    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
