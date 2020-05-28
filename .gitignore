@@ -1,11 +1,22 @@
 # Created by https://www.gitignore.io/api/git,macos,swift
 # Edit at https://www.gitignore.io/?templates=git,macos,swift
 
+<<<<<<< HEAD
+# Created by https://www.gitignore.io/api/git,macos,swift
+# Edit at https://www.gitignore.io/?templates=git,macos,swift
+
 ### Git ###
 # Created by git for backups. To disable backups in Git:
 # $ git config --global mergetool.keepBackup false
 *.orig
 
+=======
+### Git ###
+# Created by git for backups. To disable backups in Git:
+# $ git config --global mergetool.keepBackup false
+*.orig
+
+>>>>>>> bharatWorking
 # Created by git when using merge tools for conflicts
 *.BACKUP.*
 *.BASE.*
@@ -123,6 +134,13 @@ fastlane/test_output
 
 iOSInjectionProject/
 
+<<<<<<< HEAD
 # End of https://www.gitignore.io/api/git,macos,swift
+=======
+# End of https://www.gitignore.io/api/git,macos,swift
+<<<<<<< HEAD
 
 README.md
+=======
+>>>>>>> bharatWorking
+>>>>>>> enzoWorking

@@ -25,6 +25,14 @@
 		3FFF92BC2478BD2000E93A6F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF92BB2478BD2000E93A6F /* CoreDataStack.swift */; };
 		3FFF92BE2478BE0F00E93A6F /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF92BD2478BE0F00E93A6F /* User+Convenience.swift */; };
 		3FFF92C02478BF6F00E93A6F /* BackendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF92BF2478BF6F00E93A6F /* BackendController.swift */; };
+		7987E254247DC9F3007EDD42 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E253247DC9F3007EDD42 /* FirstViewController.swift */; };
+		7987E257247DCA5D007EDD42 /* ClientClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E256247DCA5D007EDD42 /* ClientClassTableViewController.swift */; };
+		7987E259247DCA7C007EDD42 /* InstructorClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E258247DCA7C007EDD42 /* InstructorClassTableViewController.swift */; };
+		7987E25E247DCB3F007EDD42 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E25D247DCB3F007EDD42 /* LogInViewController.swift */; };
+		7987E260247DCBD7007EDD42 /* ClientClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */; };
+		7987E262247DCBE8007EDD42 /* InstructorClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */; };
+		7987E266247EF7C1007EDD42 /* TeachingClassesTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E265247EF7C1007EDD42 /* TeachingClassesTableTableViewController.swift */; };
+		7987E268247F0101007EDD42 /* CreateAClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E267247F0101007EDD42 /* CreateAClassViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +77,14 @@
 		3FFF92BB2478BD2000E93A6F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		3FFF92BD2478BE0F00E93A6F /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		3FFF92BF2478BF6F00E93A6F /* BackendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendController.swift; sourceTree = "<group>"; };
+		7987E253247DC9F3007EDD42 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstViewController.swift; path = AnywhereFitness/ViewControllers/FirstViewController.swift; sourceTree = SOURCE_ROOT; };
+		7987E256247DCA5D007EDD42 /* ClientClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientClassTableViewController.swift; path = AnywhereFitness/TableViewController/ClientClassTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		7987E258247DCA7C007EDD42 /* InstructorClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorClassTableViewController.swift; sourceTree = "<group>"; };
+		7987E25D247DCB3F007EDD42 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientClassDetailViewController.swift; sourceTree = "<group>"; };
+		7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorClassViewController.swift; sourceTree = "<group>"; };
+		7987E265247EF7C1007EDD42 /* TeachingClassesTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachingClassesTableTableViewController.swift; sourceTree = "<group>"; };
+		7987E267247F0101007EDD42 /* CreateAClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAClassViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				3FFF92772478AB9200E93A6F /* AnywhereFitness */,
+				3FFF928E2478ABF200E93A6F /* Resources */,
 				3FFF92A22478AFFF00E93A6F /* AnywhereFitnessTests */,
 				3FFF92B02478B00D00E93A6F /* AnywhereFitnessUITests */,
 				3FFF92762478AB9200E93A6F /* Products */,
@@ -119,6 +136,10 @@
 		3FFF92772478AB9200E93A6F /* AnywhereFitness */ = {
 			isa = PBXGroup;
 			children = (
+				7987E264247EF78D007EDD42 /* CreateAClassView */,
+				7987E263247EF771007EDD42 /* TeachingClassesTableView */,
+				7987E25A247DCAEB007EDD42 /* LogInViewControllers */,
+				7987E255247DCA12007EDD42 /* TableViewController */,
 				3FFF928C2478ABD700E93A6F /* Application  */,
 				3FFF92972478AD7000E93A6F /* Networking */,
 				3FFF92992478ADCB00E93A6F /* MockData */,
@@ -126,7 +147,6 @@
 				3FFF92952478AD6B00E93A6F /* Views */,
 				3FFF92942478AD6600E93A6F /* ViewControllers */,
 				3FFF928D2478ABE000E93A6F /* Storyboards */,
-				3FFF928E2478ABF200E93A6F /* Resources */,
 			);
 			path = AnywhereFitness;
 			sourceTree = "<group>";
@@ -143,8 +163,8 @@
 		3FFF928D2478ABE000E93A6F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				3FFF927E2478AB9200E93A6F /* Main.storyboard */,
 				3FFF92832478AB9500E93A6F /* LaunchScreen.storyboard */,
+				3FFF927E2478AB9200E93A6F /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -161,6 +181,9 @@
 		3FFF92942478AD6600E93A6F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7987E253247DC9F3007EDD42 /* FirstViewController.swift */,
+				7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */,
+				7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -228,6 +251,39 @@
 				3FFF92B32478B00D00E93A6F /* Info.plist */,
 			);
 			path = AnywhereFitnessUITests;
+			sourceTree = "<group>";
+		};
+		7987E255247DCA12007EDD42 /* TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7987E256247DCA5D007EDD42 /* ClientClassTableViewController.swift */,
+				7987E258247DCA7C007EDD42 /* InstructorClassTableViewController.swift */,
+			);
+			path = TableViewController;
+			sourceTree = "<group>";
+		};
+		7987E25A247DCAEB007EDD42 /* LogInViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7987E25D247DCB3F007EDD42 /* LogInViewController.swift */,
+			);
+			path = LogInViewControllers;
+			sourceTree = "<group>";
+		};
+		7987E263247EF771007EDD42 /* TeachingClassesTableView */ = {
+			isa = PBXGroup;
+			children = (
+				7987E265247EF7C1007EDD42 /* TeachingClassesTableTableViewController.swift */,
+			);
+			path = TeachingClassesTableView;
+			sourceTree = "<group>";
+		};
+		7987E264247EF78D007EDD42 /* CreateAClassView */ = {
+			isa = PBXGroup;
+			children = (
+				7987E267247F0101007EDD42 /* CreateAClassViewController.swift */,
+			);
+			path = CreateAClassView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,10 +438,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7987E268247F0101007EDD42 /* CreateAClassViewController.swift in Sources */,
+				7987E266247EF7C1007EDD42 /* TeachingClassesTableTableViewController.swift in Sources */,
 				3FB5B02E247B0FF800022892 /* User+Mock.swift in Sources */,
+				7987E260247DCBD7007EDD42 /* ClientClassDetailViewController.swift in Sources */,
+				7987E25E247DCB3F007EDD42 /* LogInViewController.swift in Sources */,
 				3FB5B034247B1B5B00022892 /* Token.swift in Sources */,
+				7987E262247DCBE8007EDD42 /* InstructorClassViewController.swift in Sources */,
 				3F04C673247DA46B002CF6B1 /* ClassRepresentation.swift in Sources */,
 				3FFF92792478AB9200E93A6F /* AppDelegate.swift in Sources */,
+				7987E254247DC9F3007EDD42 /* FirstViewController.swift in Sources */,
 				3FFF929C2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld in Sources */,
 				3FFF92C02478BF6F00E93A6F /* BackendController.swift in Sources */,
 				3FFF927B2478AB9200E93A6F /* SceneDelegate.swift in Sources */,
@@ -393,8 +455,10 @@
 				3FFF92BC2478BD2000E93A6F /* CoreDataStack.swift in Sources */,
 				3F04C671247D9DE3002CF6B1 /* Course+Convenience.swift in Sources */,
 				3FFF92BE2478BE0F00E93A6F /* User+Convenience.swift in Sources */,
+				7987E257247DCA5D007EDD42 /* ClientClassTableViewController.swift in Sources */,
 				3FB5B032247B1A8A00022892 /* DataLoader.swift in Sources */,
 				3FD5848D247B8A5A00EB6853 /* UserModel.swift in Sources */,
+				7987E259247DCA7C007EDD42 /* InstructorClassTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,7 +633,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = AnywhereFitness/Resources/Info.plist;
+				INFOPLIST_FILE = "/Users/mainbitch/Documents/Build Week/IOS/AnywhereFitness/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -587,7 +652,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = AnywhereFitness/Resources/Info.plist;
+				INFOPLIST_FILE = "/Users/mainbitch/Documents/Build Week/IOS/AnywhereFitness/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
