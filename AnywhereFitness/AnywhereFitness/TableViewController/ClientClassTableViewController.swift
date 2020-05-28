@@ -36,7 +36,10 @@ class ClientClassTableViewController: UITableViewController {
         }
         self.fetchResultController = frc
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
