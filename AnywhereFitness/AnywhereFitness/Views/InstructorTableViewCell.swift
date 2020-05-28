@@ -6,6 +6,7 @@
 // Copyright © 2020 Bhawnish Kumar. All rights reserved.
 //
 import UIKit
+
 class InstructorCourseTableViewCell: UITableViewCell {
   var backendController = BackendController.shared
   var course: Course? {
