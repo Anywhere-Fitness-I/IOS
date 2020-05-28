@@ -116,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				3FFF92772478AB9200E93A6F /* AnywhereFitness */,
-				3FFF928E2478ABF200E93A6F /* Resources */,
 				3FFF92A22478AFFF00E93A6F /* AnywhereFitnessTests */,
 				3FFF92B02478B00D00E93A6F /* AnywhereFitnessUITests */,
 				3FFF92762478AB9200E93A6F /* Products */,
@@ -136,6 +135,7 @@
 		3FFF92772478AB9200E93A6F /* AnywhereFitness */ = {
 			isa = PBXGroup;
 			children = (
+				3FFF928E2478ABF200E93A6F /* Resources */,
 				7987E264247EF78D007EDD42 /* CreateAClassView */,
 				7987E263247EF771007EDD42 /* TeachingClassesTableView */,
 				7987E25A247DCAEB007EDD42 /* LogInViewControllers */,
@@ -633,7 +633,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = "/Users/bhawnishkumar/Documents/DevelopmentiOS16/Anywhere fitness/IOS/AnywhereFitness/AnywhereFitnessTests/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AnywhereFitness/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -652,7 +652,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = "/Users/bhawnishkumar/Documents/DevelopmentiOS16/Anywhere fitness/IOS/AnywhereFitness/AnywhereFitnessTests/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AnywhereFitness/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
