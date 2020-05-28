@@ -46,7 +46,16 @@ class ClientClassTableViewController: UITableViewController {
         
         setUpFetchResultController()
         if backendController.isSignedIn {
-           
+            backendController.syncCourse { error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        NSLog("Error trying to fetch course: \(error)")
+                        
+                    } else {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
         }
         
         // Uncomment the following line to preserve selection between presentations

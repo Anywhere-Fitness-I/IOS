@@ -160,7 +160,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="pLW-jR-q1o"/>
                     <connections>
-                        <outlet property="classSearchBar" destination="WvI-Pf-9bl" id="ARe-s7-GhY"/>
+                        <outlet property="searchClassBar" destination="WvI-Pf-9bl" id="fEe-Zn-XzS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a74-Jn-Z0x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
