@@ -33,6 +33,7 @@
 		7987E262247DCBE8007EDD42 /* InstructorClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */; };
 		7987E268247F0101007EDD42 /* CreateAClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E267247F0101007EDD42 /* CreateAClassViewController.swift */; };
 		79DE44E62480241600ACEF15 /* InstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DE44E52480241600ACEF15 /* InstructorTableViewCell.swift */; };
+		79DE44E82480311800ACEF15 /* ClientCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DE44E72480311800ACEF15 /* ClientCourseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorClassViewController.swift; sourceTree = "<group>"; };
 		7987E267247F0101007EDD42 /* CreateAClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAClassViewController.swift; sourceTree = "<group>"; };
 		79DE44E52480241600ACEF15 /* InstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorTableViewCell.swift; sourceTree = "<group>"; };
+		79DE44E72480311800ACEF15 /* ClientCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCourseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				79DE44E52480241600ACEF15 /* InstructorTableViewCell.swift */,
+				79DE44E72480311800ACEF15 /* ClientCourseTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				79DE44E62480241600ACEF15 /* InstructorTableViewCell.swift in Sources */,
 				7987E268247F0101007EDD42 /* CreateAClassViewController.swift in Sources */,
 				3FB5B02E247B0FF800022892 /* User+Mock.swift in Sources */,
+				79DE44E82480311800ACEF15 /* ClientCourseTableViewCell.swift in Sources */,
 				7987E260247DCBD7007EDD42 /* ClientClassDetailViewController.swift in Sources */,
 				7987E25E247DCB3F007EDD42 /* LogInViewController.swift in Sources */,
 				3FB5B034247B1B5B00022892 /* Token.swift in Sources */,
@@ -625,7 +629,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = "/Users/bhawnishkumar/Documents/DevelopmentiOS16/Anywhere fitness/IOS/AnywhereFitness/AnywhereFitness/Resources/Info.plist";
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -644,7 +648,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = "/Users/bhawnishkumar/Documents/DevelopmentiOS16/Anywhere fitness/IOS/AnywhereFitness/AnywhereFitness/Resources/Info.plist";
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
