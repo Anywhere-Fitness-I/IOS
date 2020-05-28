@@ -225,7 +225,8 @@ class BackendController {
                      maxClassSize: Int64,
                      completion: @escaping (Error?) -> Void) {
         
-        guard let token = token else {
+        guard let id = instructorId,
+            let token = token else {
                 completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
                 return
         }
@@ -246,6 +247,7 @@ class BackendController {
                                        "intensityLevel": intensityLevel,
                                        "location": location,
                                        "maxClassSize": maxClassSize,
+                                       "id": id
                                            ]
             request.httpBody = try jsonFromDicct(dict: dict)
         } catch {
