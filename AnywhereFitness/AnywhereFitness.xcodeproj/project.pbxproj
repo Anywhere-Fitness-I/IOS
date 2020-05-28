@@ -135,8 +135,8 @@
 		3FFF92772478AB9200E93A6F /* AnywhereFitness */ = {
 			isa = PBXGroup;
 			children = (
-				79DE44E42480240200ACEF15 /* Views */,
 				3FFF928E2478ABF200E93A6F /* Resources */,
+				79DE44E42480240200ACEF15 /* Views */,
 				7987E264247EF78D007EDD42 /* CreateAClassView */,
 				7987E25A247DCAEB007EDD42 /* LogInViewControllers */,
 				7987E255247DCA12007EDD42 /* TableViewController */,
