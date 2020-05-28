@@ -589,13 +589,8 @@ class BackendController {
         // Our only DELETE endpoint utilizes query parameters.
         // Must use a new URL to construct commponents
         
-        var requestURL = URLComponents(string: "https://anywhere-fit.herokuapp.com/api/client/reservations/\(course.id)/delete")!
-        
-        requestURL.queryItems = [
-            URLQueryItem(name: "classId", value: String(id))
-        ]
-        
-        var request = URLRequest(url: requestURL.url!)
+        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathExtension("\(course.id)")
+        var request = URLRequest(url: requestURL)
         request.httpMethod = Method.delete.rawValue
         request.setValue(token.token, forHTTPHeaderField: "Authorization")
         
