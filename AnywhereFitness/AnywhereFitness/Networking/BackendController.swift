@@ -518,6 +518,50 @@ class BackendController {
             }
         })
     }
+    func syncCourse(completion: @escaping (Error?) -> Void) {
+        var representations: [ClassRepresentation] = []
+        do {
+            try fetchAllClasses { classes, error in
+                if let error = error {
+                    NSLog("Error fetching all posts to sync : \(error)")
+                    completion(error)
+                    return
+                }
+
+                guard let fetchedClass = classes else {
+                    completion(AnywayError.badData("Posts array couldn't be unwrapped"))
+                    return
+                }
+                representations = fetchedClass
+
+                // Use this context to initialize new posts into core data.
+                self.bgContext.perform {
+                    for course in representations {
+                        // First if it's in the cache
+                        guard let id = course.id else { return }
+
+                        if self.cache.value(for: id) != nil {
+                            let cachedCourse = self.cache.value(for: id)!
+                            self.update(course: cachedCourse, with: course)
+                        } else {
+                            do {
+                                try self.saveCourse(by: id, from: course)
+                            } catch {
+                                completion(error)
+                                return
+                            }
+                        }
+                    }
+                }// context.perform
+                completion(nil)
+            }// Fetch closure
+
+        } catch {
+            completion(error)
+        }
+    }
+    
+    
     
     func deleteCourse(course: Course, completion: @escaping (Bool?, Error?) -> Void) {
             guard let id = instructorId,
