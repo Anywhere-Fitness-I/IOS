@@ -97,19 +97,13 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllClassesCell" rowHeight="125" id="V6C-D0-zWg" customClass="AllClassesTableViewCell" customModule="AnywhereFitness" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllClassesCell" rowHeight="125" id="V6C-D0-zWg" customClass="ClientCourseTableViewCell" customModule="AnywhereFitness" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V6C-D0-zWg" id="Ivs-Du-TCm">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZd-ip-zAM">
-                                            <rect key="frame" x="305" y="44" width="89" height="36"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
-                                            <state key="normal" title="Add Class"/>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hx-Iw-MGT">
                                             <rect key="frame" x="12" y="94" width="36" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -141,14 +135,10 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="addClassButton" destination="ZZd-ip-zAM" id="bpR-dB-ZLg"/>
-                                    <outlet property="className" destination="jmd-VK-viY" id="rOp-w1-Jl9"/>
-                                    <outlet property="classNameLabel" destination="0hx-Iw-MGT" id="RGi-w5-GO9"/>
-                                    <outlet property="dateLabel" destination="0hx-Iw-MGT" id="ECa-3w-rzV"/>
-                                    <outlet property="instructorLabel" destination="9gg-V0-qNw" id="tqB-k9-xIt"/>
-                                    <outlet property="instructorName" destination="9gg-V0-qNw" id="M1H-7u-Ypp"/>
-                                    <outlet property="time" destination="okq-no-CNg" id="FQB-9F-ZIo"/>
-                                    <outlet property="timeLabel" destination="okq-no-CNg" id="kZk-Ge-BCh"/>
+                                    <outlet property="classNameLabel" destination="jmd-VK-viY" id="tsm-4y-ucD"/>
+                                    <outlet property="dateLabel" destination="0hx-Iw-MGT" id="opE-ie-JTt"/>
+                                    <outlet property="instructorLabel" destination="9gg-V0-qNw" id="F1S-U5-JDl"/>
+                                    <outlet property="timeLabel" destination="okq-no-CNg" id="2CT-Pt-3gk"/>
                                     <segue destination="Keg-qm-rhS" kind="show" id="NyQ-5L-mqy"/>
                                 </connections>
                             </tableViewCell>
@@ -165,7 +155,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a74-Jn-Z0x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4051" y="-413"/>
+            <point key="canvasLocation" x="3647.826086956522" y="-439.28571428571428"/>
         </scene>
         <!--Client Class Detail View Controller-->
         <scene sceneID="OxE-Is-AXE">
@@ -492,7 +482,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3l-l7-vcT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3724.6376811594205" y="630.80357142857144"/>
+            <point key="canvasLocation" x="3588" y="550"/>
         </scene>
         <!--CreateA Class View Controller-->
         <scene sceneID="EhT-PO-LBe">
