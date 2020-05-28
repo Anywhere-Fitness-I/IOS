@@ -11,6 +11,7 @@ import UIKit
 class ClientClassDetailViewController: UIViewController {
     
     var backendController = BackendController.shared
+    var course: Course?
     
     
 
@@ -26,11 +27,14 @@ class ClientClassDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
+       
+        }
         
         
 
         // Do any additional setup after loading the view.
-    }
+    
     
 
     /*
@@ -43,4 +47,18 @@ class ClientClassDetailViewController: UIViewController {
     }
     */
 
+    
+   private func updateViews() {
+        guard let course = course else { return }
+        
+        classNameLabel.text = course.name
+        classTypeLabel.text = course.type
+        intensityLabel.text = course.intensityLevel
+        instructorNameLabel.text = String(course.instructorId)
+        dateLabel.text = course.date
+        locationLabel.text = course.location
+        durationLabel.text = course.duration
+        descriptionLaebl.text = course.description
+    }
 }
+
