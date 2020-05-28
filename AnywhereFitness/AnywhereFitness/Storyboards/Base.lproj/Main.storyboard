@@ -610,7 +610,7 @@
                                     <outlet property="dateLabel" destination="vlK-nM-ww6" id="y4q-Kw-upa"/>
                                     <outlet property="locationLabel" destination="LLk-pZ-m2k" id="3qA-9s-uDS"/>
                                     <outlet property="timeLabel" destination="fWG-5Y-fZh" id="KCy-a9-fMn"/>
-                                    <segue destination="KGC-CZ-jBf" kind="show" id="cSo-5C-l1C"/>
+                                    <segue destination="KGC-CZ-jBf" kind="show" identifier="instructorClassDetailSegue" id="cSo-5C-l1C"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

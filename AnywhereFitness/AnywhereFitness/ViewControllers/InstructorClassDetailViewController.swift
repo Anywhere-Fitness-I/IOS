@@ -12,7 +12,16 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
     
     let context = CoreDataStack.shared.mainContext
     
+    var course: Course?
+    
     var backendController = BackendController.shared
+    
+    private let timeFormatter: DateFormatter = {
+      let formatter = DateFormatter()
+      formatter.locale = Locale(identifier: "en_US")
+      formatter.dateFormat = "h:mm a"
+      return formatter
+    }()
     
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -32,6 +41,25 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
     var typeData = ["Choose a workout", "Long Distance Running", "Cycling", "Cardio", "Strength Training", "Yoga", "Sprinting" ]
     var intensityData = ["Choose an intensity", "Light", "Medium", "Hard"]
     var durationData = ["Choose a duration", "20 minutes", "30 minutes", "40 minutes", "50 minutes", "60 minutes", "70 minutes", "80 minutes", "90 minutes" ]
+    
+    func updateViews() {
+        guard let course = course,
+            let courseDate = course.date else { return }
+        
+        
+        classNameTextField.text = course.name
+        instructorNameTextField.text = String(course.instructorId)
+        locationTextField.text = course.location
+        classTypeTextField.text = course.type
+        intensityLevelTextField.text = course.intensityLevel
+        classDurationTextField.text = course.duration
+        maxClassSizeTextField.text = String(course.maxClassSize)
+        classDescriptionTextView.text = course.description
+        var dateString = dateFormatter.string(from: datePicker.date)
+        dateString = courseDate
+        
+        
+    }
     
     
     // MARK: - Outlets
@@ -69,6 +97,7 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         classDurationTextField.inputView = durationPicker
         datePicker.minuteInterval = 15
         dismissPickerView()
+        updateViews()
         
         // Do any additional setup after loading the view.
     }
@@ -76,7 +105,10 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
     // MARK: - Methods & Functions
     @IBAction func editTapped(_ sender: UIBarButtonItem) {
         
+        guard let course = course else { return }
+        
         let dateString = dateFormatter.string(from: datePicker.date)
+        let startTime = timeFormatter.string(from: datePicker.date)
         
         guard let className = classNameTextField.text, !className.isEmpty else { return }
         guard let instructorName = instructorNameTextField.text, !instructorName.isEmpty else { return }
@@ -90,25 +122,25 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         
         
         
-        backendController.createClass(name: className, type: type, date: dateString,
-                                      startTime: dateString, duration: duration, description: description, intensityLevel: intensity, location: location, maxClassSize: classSize) { error in
+        backendController.updateCourse(at: course,
+                                       name: className,
+                                       type: type,
+                                       date: dateString,
+                                       startTime: startTime,
+                                       duration: duration,
+                                       description: description,
+                                       intensityLevel: intensity,
+                                       location: location,
+                                       maxClassSize: classSize) { error in
             if let error = error {
-                NSLog("Error creating Class: \(error)")
+                NSLog("Error editing class: \(error)")
                 return
             }
             DispatchQueue.main.async {
-                self.showAlertMessage(title: "Created class", message: "Class created", actiontitle: "Ok")
-                //TO DO Perform segue
+                self.navigationController?.popViewController(animated: true)
             }
         }
         
-        do {
-            try CoreDataStack.shared.mainContext.save()
-            
-        } catch {
-            NSLog("Error Saving Class: \(error)")
-            return
-        }
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
@@ -179,11 +211,7 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         present(endAlert, animated: true, completion: nil)
     }
     
-    func updateViews() {
-        
-        
-    }
-    
+
     
     /*
      // MARK: - Navigation
