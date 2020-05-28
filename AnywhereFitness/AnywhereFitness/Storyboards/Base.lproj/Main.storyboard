@@ -886,10 +886,10 @@
             </objects>
             <point key="canvasLocation" x="940.57971014492762" y="124.55357142857142"/>
         </scene>
-        <!--Instructor Class Detail View Controller-->
+        <!--Instructor Class Detail Controller-->
         <scene sceneID="WyA-95-zJP">
             <objects>
-                <viewController id="KGC-CZ-jBf" customClass="InstructorClassDetailViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KGC-CZ-jBf" customClass="InstructorClassDetailController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3qh-MV-uLy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1098,18 +1098,22 @@
                         <viewLayoutGuide key="safeArea" id="s8T-0f-BWH"/>
                     </view>
                     <navigationItem key="navigationItem" id="LNQ-01-LMX">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="KCj-Bg-o0b"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="KCj-Bg-o0b">
+                            <connections>
+                                <action selector="editTapped:" destination="KGC-CZ-jBf" id="hHe-Sh-U8R"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="classDescriptionTextView" destination="fRe-O1-aMR" id="Jxy-j6-d8s"/>
-                        <outlet property="classDurationTextField" destination="cRJ-DI-ahQ" id="CMQ-ah-abX"/>
-                        <outlet property="classNameTextField" destination="KRe-k3-cOs" id="lcD-X4-aiO"/>
-                        <outlet property="classTypeTextField" destination="2Qz-Cx-haJ" id="g6C-ZJ-I7u"/>
-                        <outlet property="datePicker" destination="Z6Y-Pg-A9x" id="3iC-Vk-xF3"/>
-                        <outlet property="instructorNameTextField" destination="bUY-6m-Pm7" id="QuQ-FD-MSA"/>
-                        <outlet property="intensityLevelTextField" destination="OPG-IC-rbl" id="ik2-SL-v5O"/>
-                        <outlet property="locationTextField" destination="BUh-HH-kIs" id="xON-tW-oNe"/>
-                        <outlet property="maxClassSizeTextField" destination="BM6-1p-ueH" id="y2l-UK-S59"/>
+                        <outlet property="classDescriptionTextView" destination="fRe-O1-aMR" id="zaP-ok-Dyf"/>
+                        <outlet property="classDurationTextField" destination="cRJ-DI-ahQ" id="U4R-IA-iZj"/>
+                        <outlet property="classNameTextField" destination="KRe-k3-cOs" id="SXb-RU-T4N"/>
+                        <outlet property="classTypeTextField" destination="2Qz-Cx-haJ" id="k2n-3L-IGe"/>
+                        <outlet property="datePicker" destination="Z6Y-Pg-A9x" id="kQG-Cf-Y7Y"/>
+                        <outlet property="instructorNameTextField" destination="bUY-6m-Pm7" id="khC-bE-T0B"/>
+                        <outlet property="intensityLevelTextField" destination="OPG-IC-rbl" id="MmP-LA-kWY"/>
+                        <outlet property="locationTextField" destination="BUh-HH-kIs" id="sDs-Yx-nXg"/>
+                        <outlet property="maxClassSizeTextField" destination="BM6-1p-ueH" id="E4Z-nN-9TU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cSL-dT-MAI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

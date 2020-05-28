@@ -74,7 +74,7 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
     }
     
     // MARK: - Methods & Functions
-    @IBAction func saveTapped(_ sender: UIBarButtonItem) {
+    @IBAction func editTapped(_ sender: UIBarButtonItem) {
         
         let dateString = dateFormatter.string(from: datePicker.date)
         

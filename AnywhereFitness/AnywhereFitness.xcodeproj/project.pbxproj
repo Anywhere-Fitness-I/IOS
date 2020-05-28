@@ -31,7 +31,7 @@
 		7987E25E247DCB3F007EDD42 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E25D247DCB3F007EDD42 /* LogInViewController.swift */; };
 		7987E260247DCBD7007EDD42 /* ClientClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */; };
 		7987E268247F0101007EDD42 /* CreateAClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E267247F0101007EDD42 /* CreateAClassViewController.swift */; };
-		79AF318624806BA8000EB184 /* TeachingClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF318524806BA8000EB184 /* TeachingClassDetailViewController.swift */; };
+		79AF318624806BA8000EB184 /* InstructorClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF318524806BA8000EB184 /* InstructorClassDetailViewController.swift */; };
 		79DE44E62480241600ACEF15 /* InstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DE44E52480241600ACEF15 /* InstructorTableViewCell.swift */; };
 		79DE44E82480311800ACEF15 /* ClientCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DE44E72480311800ACEF15 /* ClientCourseTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -84,7 +84,7 @@
 		7987E25D247DCB3F007EDD42 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientClassDetailViewController.swift; sourceTree = "<group>"; };
 		7987E267247F0101007EDD42 /* CreateAClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAClassViewController.swift; sourceTree = "<group>"; };
-		79AF318524806BA8000EB184 /* TeachingClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachingClassDetailViewController.swift; sourceTree = "<group>"; };
+		79AF318524806BA8000EB184 /* InstructorClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorClassDetailViewController.swift; sourceTree = "<group>"; };
 		79DE44E52480241600ACEF15 /* InstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorTableViewCell.swift; sourceTree = "<group>"; };
 		79DE44E72480311800ACEF15 /* ClientCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCourseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,7 +184,7 @@
 			children = (
 				7987E253247DC9F3007EDD42 /* FirstViewController.swift */,
 				7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */,
-				79AF318524806BA8000EB184 /* TeachingClassDetailViewController.swift */,
+				79AF318524806BA8000EB184 /* InstructorClassDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -452,7 +452,7 @@
 				3FFF92BE2478BE0F00E93A6F /* User+Convenience.swift in Sources */,
 				7987E257247DCA5D007EDD42 /* ClientClassTableViewController.swift in Sources */,
 				3FB5B032247B1A8A00022892 /* DataLoader.swift in Sources */,
-				79AF318624806BA8000EB184 /* TeachingClassDetailViewController.swift in Sources */,
+				79AF318624806BA8000EB184 /* InstructorClassDetailViewController.swift in Sources */,
 				3FD5848D247B8A5A00EB6853 /* UserModel.swift in Sources */,
 				7987E259247DCA7C007EDD42 /* InstructorClassTableViewController.swift in Sources */,
 			);
