@@ -32,7 +32,7 @@
 		7987E260247DCBD7007EDD42 /* ClientClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */; };
 		7987E262247DCBE8007EDD42 /* InstructorClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */; };
 		7987E268247F0101007EDD42 /* CreateAClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E267247F0101007EDD42 /* CreateAClassViewController.swift */; };
-		7987E26A247F73AC007EDD42 /* InstructorCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987E269247F73AC007EDD42 /* InstructorCourseTableViewCell.swift */; };
+		79DE44E62480241600ACEF15 /* InstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DE44E52480241600ACEF15 /* InstructorTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +84,7 @@
 		7987E25F247DCBD7007EDD42 /* ClientClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientClassDetailViewController.swift; sourceTree = "<group>"; };
 		7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorClassViewController.swift; sourceTree = "<group>"; };
 		7987E267247F0101007EDD42 /* CreateAClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAClassViewController.swift; sourceTree = "<group>"; };
-		7987E269247F73AC007EDD42 /* InstructorCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InstructorCourseTableViewCell.swift; path = Resources/InstructorCourseTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		79DE44E52480241600ACEF15 /* InstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +143,7 @@
 				3FFF92972478AD7000E93A6F /* Networking */,
 				3FFF92992478ADCB00E93A6F /* MockData */,
 				3FFF92982478ADB900E93A6F /* Models */,
-				3FFF92952478AD6B00E93A6F /* Views */,
+				79DE44E42480240200ACEF15 /* Views */,
 				3FFF92942478AD6600E93A6F /* ViewControllers */,
 				3FFF928D2478ABE000E93A6F /* Storyboards */,
 			);
@@ -185,14 +185,6 @@
 				7987E261247DCBE8007EDD42 /* InstructorClassViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		3FFF92952478AD6B00E93A6F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				7987E269247F73AC007EDD42 /* InstructorCourseTableViewCell.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		3FFF92962478AD6D00E93A6F /* CoreData */ = {
@@ -276,6 +268,14 @@
 				7987E267247F0101007EDD42 /* CreateAClassViewController.swift */,
 			);
 			path = CreateAClassView;
+			sourceTree = "<group>";
+		};
+		79DE44E42480240200ACEF15 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				79DE44E52480241600ACEF15 /* InstructorTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79DE44E62480241600ACEF15 /* InstructorTableViewCell.swift in Sources */,
 				7987E268247F0101007EDD42 /* CreateAClassViewController.swift in Sources */,
 				3FB5B02E247B0FF800022892 /* User+Mock.swift in Sources */,
 				7987E260247DCBD7007EDD42 /* ClientClassDetailViewController.swift in Sources */,
@@ -440,7 +441,6 @@
 				3FFF92792478AB9200E93A6F /* AppDelegate.swift in Sources */,
 				7987E254247DC9F3007EDD42 /* FirstViewController.swift in Sources */,
 				3FFF929C2478AF0900E93A6F /* AnywhereFitness.xcdatamodeld in Sources */,
-				7987E26A247F73AC007EDD42 /* InstructorCourseTableViewCell.swift in Sources */,
 				3FFF92C02478BF6F00E93A6F /* BackendController.swift in Sources */,
 				3FFF927B2478AB9200E93A6F /* SceneDelegate.swift in Sources */,
 				3FB5B030247B12CE00022892 /* UserRepresentation.swift in Sources */,
