@@ -625,11 +625,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-<<<<<<< HEAD
+
 				INFOPLIST_FILE = "$(SRCROOT)/AnywhereFitness/Resources/Info.plist";
-=======
+
 				INFOPLIST_FILE = "/Users/mainbitch/Documents/Build Week/IOS/AnywhereFitness/Resources/Info.plist";
->>>>>>> enzoWorking
+
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -648,11 +648,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-<<<<<<< HEAD
+
 				INFOPLIST_FILE = "$(SRCROOT)/AnywhereFitness/Resources/Info.plist";
-=======
+
 				INFOPLIST_FILE = "/Users/mainbitch/Documents/Build Week/IOS/AnywhereFitness/Resources/Info.plist";
->>>>>>> enzoWorking
+
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
