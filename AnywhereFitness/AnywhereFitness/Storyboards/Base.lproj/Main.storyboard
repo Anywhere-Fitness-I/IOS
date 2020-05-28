@@ -450,7 +450,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ONP-po-2dl">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="N8M-9a-omo" kind="show" id="4ts-x7-wNn"/>
+                                <segue destination="N8M-9a-omo" kind="show" identifier="createClassSegue" id="4ts-x7-wNn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
