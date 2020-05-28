@@ -11,13 +11,15 @@ import CoreData
 
 class InstructorClassTableViewController: UITableViewController {
     
+    var backendController = BackendController.shared
+    
     lazy var fetchedResultsController: NSFetchedResultsController<Course> = {
       let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
       fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
       let context = CoreDataStack.shared.mainContext
       let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
       frc.delegate = self
-      try! frc.performFetch()
+      try? frc.performFetch()
       return frc
     }()
         
@@ -44,10 +46,11 @@ class InstructorClassTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "instructorClassCell", for: indexPath)
-
-        // Configure the cell...
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "instructorClassCell", for: indexPath) as? InstructorCourseTableViewCell else { return UITableViewCell() }
+        cell.course = backendController.userCourse[indexPath.row]
+        
+        
+      
         return cell
     }
     
