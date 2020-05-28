@@ -360,7 +360,7 @@ class BackendController {
                 completion(false, AnywayError.badData("Received bad data when fetching logged in user's course array."))
                 return
             }
-            
+            // changed 
             let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
             
             let handleFetchedClass = BlockOperation {
