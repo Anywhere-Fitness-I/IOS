@@ -43,7 +43,12 @@ class BackendController {
         // swiftlint: enable all
     }
     
-    func signUp(firstName: String, lastName: String, email: String, password: String, role: String, completion: @escaping (Bool, URLResponse?, Error?) -> Void) {
+    func signUp(firstName: String,
+                lastName: String,
+                email: String,
+                password: String,
+                role: String,
+                completion: @escaping (Bool, URLResponse?, Error?) -> Void) {
         
         let newUser = UserRepresentation(firstName: firstName, lastName: lastName, email: email, password: password, role: role)
         
@@ -538,7 +543,7 @@ class BackendController {
         })
     }
     
-<<<<<<< Updated upstream
+
     
     func classReservation(completion: @escaping (Error?) -> Void) throws {
         
@@ -572,16 +577,14 @@ class BackendController {
             
             do {
                 let courses = try self.decoder.decode([ClassRepresentation].self, from: data)
-                completion(courses as! Error)
+                completion(courses as? Error)
             } catch {
                 NSLog("Couldn't decode array of course from server: \(error)")
                 completion(error)
             }
         })
     }
-=======
-   
->>>>>>> Stashed changes
+
     
     
     func syncCourse(completion: @escaping (Error?) -> Void) {

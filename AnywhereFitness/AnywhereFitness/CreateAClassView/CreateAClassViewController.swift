@@ -56,6 +56,7 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet private var descriptionLabel: UILabel!
     @IBOutlet private var dateLabel: UILabel!
     
+    @IBOutlet weak var imageRunning: UIStackView!
     
     
     

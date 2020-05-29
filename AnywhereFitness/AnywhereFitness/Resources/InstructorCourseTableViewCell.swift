@@ -10,7 +10,7 @@ import UIKit
 
 class InstructorCourseTableViewCell: UITableViewCell {
     
-    var backendController = BackendController.shared
+    var backendController = BackendController.
     var course: Course? {
         didSet {
             updateViews()
@@ -28,8 +28,6 @@ class InstructorCourseTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
-
     
     func updateViews() {
         

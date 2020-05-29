@@ -171,7 +171,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="pLW-jR-q1o">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="HrZ-rq-Dh1">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="HrZ-rq-Dh1">
                             <rect key="frame" x="117.5" y="5.5" width="179" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -899,6 +899,7 @@
                         <outlet property="dateLabel" destination="IGF-Or-I49" id="1Fc-Z1-xR7"/>
                         <outlet property="datePicker" destination="jep-sE-Hwn" id="j5u-U9-aoQ"/>
                         <outlet property="descriptionLabel" destination="7aW-dw-YEk" id="RCU-iN-qI9"/>
+                        <outlet property="imageRunning" destination="Kb2-0T-WPk" id="PbD-fe-fWS"/>
                         <outlet property="instructorNameLabel" destination="2Ig-8f-7wx" id="P9v-Dc-823"/>
                         <outlet property="instructorNameTextField" destination="zca-yF-UZg" id="tfJ-p4-4MH"/>
                         <outlet property="intensityLevelTextField" destination="J9c-PS-CUt" id="ulH-Eq-tyU"/>
@@ -1160,6 +1161,7 @@
                         <outlet property="classTypeTextField" destination="2Qz-Cx-haJ" id="k2n-3L-IGe"/>
                         <outlet property="dateLabel" destination="oqS-57-lfY" id="A14-7u-AZ2"/>
                         <outlet property="datePicker" destination="Z6Y-Pg-A9x" id="kQG-Cf-Y7Y"/>
+                        <outlet property="deadLiftImage" destination="EHs-82-AaX" id="uFc-0L-VpT"/>
                         <outlet property="descriptionLabel" destination="yoU-Qb-AtM" id="95f-6q-rfw"/>
                         <outlet property="instructorNameLabel" destination="r1D-Uc-MkT" id="4ln-2I-yeo"/>
                         <outlet property="instructorNameTextField" destination="bUY-6m-Pm7" id="khC-bE-T0B"/>

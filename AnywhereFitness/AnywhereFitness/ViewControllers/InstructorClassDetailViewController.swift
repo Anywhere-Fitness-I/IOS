@@ -85,6 +85,7 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
     @IBOutlet private var descriptionLabel: UILabel!
     @IBOutlet private var dateLabel: UILabel!
     
+    @IBOutlet weak var deadLiftImage: UIImageView!
     
     
     
@@ -111,6 +112,8 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         datePicker.minuteInterval = 15
         dismissPickerView()
         updateViews()
+        deadLiftImage.alpha = 0.75
+        
         
         let strokeTextAttributes: [NSAttributedString.Key: Any] = [
             .strokeColor: UIColor.black,
@@ -178,7 +181,6 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
     
     
     
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 1 {
             return typeData.count
@@ -243,7 +245,6 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         present(endAlert, animated: true, completion: nil)
     }
     
-
     
     /*
      // MARK: - Navigation
