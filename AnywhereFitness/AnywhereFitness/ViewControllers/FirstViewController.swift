@@ -8,23 +8,28 @@
 
 import UIKit
 
+
 class FirstViewController: UIViewController {
 
-
+    @IBOutlet private var anywhereFitnessLabel: UILabel!
+    @IBOutlet private var lookingForClassesLabel: UIButton!
+    @IBOutlet private var coachingClassesLabel: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    let strokeTextAttributes: [NSAttributedString.Key: Any] = [
+        .strokeColor: UIColor.black,
+        .foregroundColor: UIColor.systemIndigo,
+        .strokeWidth: -2.2,
+        ]
 
+    anywhereFitnessLabel.attributedText = NSAttributedString(string: "ANYWHERE FITNESS", attributes: strokeTextAttributes)
+        
+        //lookingForClassesLabel.attributedText = NSAttributedString(string: "LOOKING FOR CLASSES", attributes: strokeTextAttributes)
+        
         // Do any additional setup after loading the view.
     }
-    
-
-    
-    
-    
-
-    
-    
     
     // MARK: - Navigation
 /*

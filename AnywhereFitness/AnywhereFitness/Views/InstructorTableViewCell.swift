@@ -30,5 +30,8 @@ class InstructorCourseTableViewCell: UITableViewCell {
     locationLabel.text = course.location
     dateLabel.text = course.date
     timeLabel.text = course.startTime
+    
+    classNameLabel.layer.borderColor = UIColor.white.cgColor
+    classNameLabel.layer.borderWidth = 3.0
   }
 }

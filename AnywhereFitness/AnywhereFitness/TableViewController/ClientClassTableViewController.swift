@@ -15,6 +15,7 @@ class ClientClassTableViewController: UITableViewController {
     var fetchResultController: NSFetchedResultsController<Course>!
     
     
+    @IBOutlet weak var allClassesSegmentedControl: UISegmentedControl!
     @IBOutlet weak var searchClassBar: UISearchBar!
     
      private func setUpFetchResultController(with predicate: NSPredicate = NSPredicate(value: true)) {
@@ -40,6 +41,52 @@ class ClientClassTableViewController: UITableViewController {
         super.viewWillAppear(true)
         self.tableView.reloadData()
     }
+    
+    @IBAction func classesSegmentedControl(_ sender: UISegmentedControl) {
+        
+        
+        switch allClassesSegmentedControl.selectedSegmentIndex {
+               case 0:
+                   if backendController.isSignedIn {
+                       backendController.syncCourse { error in
+                           DispatchQueue.main.async {
+                               if let error = error {
+                                   NSLog("Error trying to fetch course: \(error)")
+                                   
+                               } else {
+                                   self.tableView.reloadData()
+                               }
+                           }
+                       }
+                   }
+               case 1:
+                   if backendController.isSignedIn {
+                       backendController.syncReservation { error in
+                                     DispatchQueue.main.async {
+                                         if let error = error {
+                                             NSLog("Error trying to fetch course: \(error)")
+                                             
+                                         } else {
+                                             self.tableView.reloadData()
+                                         }
+                                     }
+                                 }
+                             }
+                   
+               default:
+                   break
+                   
+               }
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,18 +95,10 @@ class ClientClassTableViewController: UITableViewController {
         searchBar(searchClassBar, textDidChange: "")
         
         setUpFetchResultController()
-        if backendController.isSignedIn {
-            backendController.syncCourse { error in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        NSLog("Error trying to fetch course: \(error)")
-                        
-                    } else {
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-        }
+        classesSegmentedControl(allClassesSegmentedControl)
+       
+      
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
