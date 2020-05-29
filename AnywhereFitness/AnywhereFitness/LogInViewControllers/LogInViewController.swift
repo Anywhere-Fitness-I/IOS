@@ -41,7 +41,6 @@ class LogInViewController: UIViewController {
         signUpButton.layer.cornerRadius = 12
         
         
-        
         // Do any additional setup after loading the view.
     }
     
@@ -106,11 +105,11 @@ class LogInViewController: UIViewController {
                     
                 }
                 if let response = response {
-                    self.showAlertMessage(title: "Sign Up Sucessful", message: "Sign Up Sucessful", actiontitle: "Ok")
+                    self.showAlertMessage(title: "Error Signing Up", message: "User Already Exists", actiontitle: "Ok")
                     return
                 }
                 if signUpResult {
-                    self.showAlertMessage(title: "Sign Up Unsucessful", message: "Error Signing Up Please Try Again", actiontitle: "Ok")
+                    self.showAlertMessage(title: "Sign Up Sucessful", message: "Signing Up Sucessful", actiontitle: "Ok")
                     
                 }
                 return

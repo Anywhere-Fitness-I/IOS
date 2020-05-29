@@ -15,14 +15,12 @@ class InstructorCourseTableViewCell: UITableViewCell {
     }
   }
   var id: Int64?
-  @IBOutlet weak var classNameLabel: UILabel!
-  @IBOutlet weak var locationLabel: UILabel!
-  @IBOutlet weak var dateLabel: UILabel!
-  @IBOutlet weak var timeLabel: UILabel!
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    // Initialization code
-  }
+  @IBOutlet private var classNameLabel: UILabel!
+  @IBOutlet private var locationLabel: UILabel!
+  @IBOutlet private var dateLabel: UILabel!
+  @IBOutlet private var timeLabel: UILabel!
+    
+
   func updateViews() {
     guard let course = course
       else { return }

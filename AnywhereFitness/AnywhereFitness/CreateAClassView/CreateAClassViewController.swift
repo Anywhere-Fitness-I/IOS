@@ -63,13 +63,7 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet private var maxClassSizeLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
     @IBOutlet private var dateLabel: UILabel!
-    
-    @IBOutlet weak var imageFitness: UIImageView!
-    
-    
-    
-    
-    
+    @IBOutlet private var imageFitness: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,10 +85,6 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
         classDurationTextField.inputView = durationPicker
         datePicker.minuteInterval = 15
         dismissPickerView()
-        
-        
-        
-        
         
         let strokeTextAttributes: [NSAttributedString.Key: Any] = [
                    .strokeColor: UIColor.white,
@@ -230,16 +220,5 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+
 }

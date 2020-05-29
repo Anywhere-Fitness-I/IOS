@@ -44,7 +44,8 @@ class InstructorClassTableViewController: UITableViewController {
     return backendController.userCourse.count
   }
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "instructorClassCell", for: indexPath) as? InstructorCourseTableViewCell else { return UITableViewCell() }
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "instructorClassCell",
+                                                   for: indexPath) as? InstructorCourseTableViewCell else { return UITableViewCell() }
     cell.course = backendController.userCourse[indexPath.row]
     return cell
   }

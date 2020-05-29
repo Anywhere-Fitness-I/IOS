@@ -10,9 +10,6 @@ import UIKit
 
 class ClientCourseTableViewCell: UITableViewCell {
     
-  
-    
-    
     
     private let timeFormatter: DateFormatter = {
        let formatter = DateFormatter()
@@ -21,13 +18,11 @@ class ClientCourseTableViewCell: UITableViewCell {
        return formatter
      }()
      
-    
-  
-    @IBOutlet weak var classNameLabel: UILabel!
-    @IBOutlet weak var instructorLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet private var classNameLabel: UILabel!
+    @IBOutlet private var instructorLabel: UILabel!
+    @IBOutlet private var dateLabel: UILabel!
+    @IBOutlet private var timeLabel: UILabel!
+    @IBOutlet private var locationLabel: UILabel!
     
     var backendController = BackendController.shared
     var course: Course? {
@@ -37,15 +32,13 @@ class ClientCourseTableViewCell: UITableViewCell {
         
     }
     
-    
-
     override func awakeFromNib() {
         super.awakeFromNib()
         
         
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -106,28 +106,4 @@ class AnywhereFitnessTests: XCTestCase {
            }
            wait(for: [refetchUserExpect], timeout: timeout)
        }
-    
-    
-//    func testUpdateCourse() {
-//         let expectUpdateCourse = expectation(description: "Testing update post.")
-//         backend.signIn(email: "test@test.com", password: "pass") { _ in
-//             expectUpdateCourse.fulfill()
-//         }
-//         wait(for: [expectUpdateCourse], timeout: timeout)
-//
-//         let refetchUserExpectation = expectation(description: "Last method call for testing update post")
-//         backend.forceLoadInstructorClass { _, _ in
-//             refetchUserExpectation.fulfill()
-//         }
-//         wait(for: [refetchUserExpectation], timeout: timeout)
-//         print(backend.userCourse)
-//
-//         let updateExpect = expectation(description: "Expectation for updating post")
-//        backend.updateCourse(at: backend.userCourse, name: "gym", type: "12", date: "12", startTime: "12", duration: "12", description: "12", intensityLevel: "12", location: "12", maxClassSize: 12) { error in
-//             XCTAssertNil(error)
-//             updateExpect.fulfill()
-//         }
-//         wait(for: [updateExpect], timeout: timeout)
-//     }
-    
 }

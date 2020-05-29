@@ -222,7 +222,7 @@ class BackendController {
     //location
     //maxClassSize
     
-    //MARK: - Instructor Methods
+    // MARK: - Instructor Methods
     func createClass(name: String,
                      type: String,
                      date: String,
@@ -367,7 +367,8 @@ class BackendController {
                 completion(false, AnywayError.badData("Received bad data when fetching logged in user's course array."))
                 return
             }
-            // changed 
+    
+            
             let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
             
             let handleFetchedClass = BlockOperation {
@@ -548,7 +549,6 @@ class BackendController {
     }
     
 
-    
     func syncCourse(completion: @escaping (Error?) -> Void) {
         var representations: [ClassRepresentation] = []
         do {
