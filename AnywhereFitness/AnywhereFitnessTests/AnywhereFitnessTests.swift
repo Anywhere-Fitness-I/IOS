@@ -107,7 +107,7 @@ class AnywhereFitnessTests: XCTestCase {
            }
            wait(for: [refetchUserExpect], timeout: timeout)
        }
-<<<<<<< HEAD
+
     
     
     func testUpdateCourse() {
@@ -243,6 +243,5 @@ class AnywhereFitnessTests: XCTestCase {
        }
     
     
-=======
->>>>>>> enzoWorking
+
 }

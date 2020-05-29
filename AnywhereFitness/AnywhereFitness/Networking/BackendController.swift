@@ -222,11 +222,11 @@ class BackendController {
     //location
     //maxClassSize
     
-<<<<<<< HEAD
+
 // MARK: - Instructor Methods
-=======
+
     // MARK: - Instructor Methods
->>>>>>> enzoWorking
+
     func createClass(name: String,
                      type: String,
                      date: String,
