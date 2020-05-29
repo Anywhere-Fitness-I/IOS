@@ -28,4 +28,21 @@ extension User {
         self.password = password
         self.role = role
     }
+    
+    @discardableResult convenience init?(representation: UserRepresentation,
+                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+
+        guard let id = representation.id else {
+            NSLog("Representation passed in with invalid id")
+            return nil
+        }
+        self.init(id: id,
+                  firstName: representation.firstName,
+                  lastName: representation.lastName,
+                  email: representation.email,
+                  password: representation.password,
+                  role: representation.role,
+                  context: context)
+    }
+
 }

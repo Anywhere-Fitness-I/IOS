@@ -121,7 +121,7 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         guard let description = classDescriptionTextView.text, !description.isEmpty else { return }
         
         
-        
+        if backendController.isSignedIn {
         backendController.updateCourse(at: course,
                                        name: className,
                                        type: type,
@@ -139,6 +139,7 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
             DispatchQueue.main.async {
                 self.navigationController?.popViewController(animated: true)
             }
+        }
         }
         
         navigationController?.dismiss(animated: true, completion: nil)
