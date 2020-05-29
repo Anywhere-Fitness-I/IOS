@@ -484,7 +484,7 @@ class BackendController {
     }
     
     
-    func classReservation(completion: @escaping ([ClassRepresentation]?, Error?) -> Void) throws {
+    func classReservation(completion: @escaping (Error?) -> Void) throws {
         
         // If there's no token, user isn't authorized. Throw custom error.
         guard let token = BackendController.token else {
@@ -504,22 +504,22 @@ class BackendController {
             
             if let error = error {
                 NSLog("Error fetching all existing courses from server : \(error)")
-                completion(nil, error)
+                completion(error)
                 return
             }
             
             // use badData when unwrapping data from server.
             guard let data = data else {
-                completion(nil, AnywayError.badData("Bad data received from server"))
+                completion(AnywayError.badData("Bad data received from server"))
                 return
             }
             
             do {
                 let courses = try self.decoder.decode([ClassRepresentation].self, from: data)
-                completion(courses, nil)
+                completion(courses as! Error)
             } catch {
                 NSLog("Couldn't decode array of course from server: \(error)")
-                completion(nil, error)
+                completion(error)
             }
         })
     }
