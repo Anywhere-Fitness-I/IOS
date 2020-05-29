@@ -62,7 +62,7 @@ extension Course {
                   date: representation.date,
                   startTime: representation.startTime,
                   duration: representation.duration,
-                  overview: representation.description,
+                  overview: representation.overview,
                   intensityLevel: representation.intensityLevel,
                   location: representation.location,
                   maxClassSize: representation.maxClassSize,
