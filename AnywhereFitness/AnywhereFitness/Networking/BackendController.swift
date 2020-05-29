@@ -128,7 +128,7 @@ class BackendController {
             self.bgContext.perform {
                 do {
                     let tokenResult = try self.decoder.decode(Token.self, from: data)
-                    BackendController.self.token = tokenResult
+                    BackendController.token = tokenResult
                     self.storeUser(email: email) { _ in
                         completion(self.isSignedIn)
                     }
@@ -143,7 +143,7 @@ class BackendController {
     }
     
     private func storeUser(email: String, completion: @escaping (Error?) -> Void) {
-        let requestURL = baseURL.appendingPathComponent(EndPoints.userSearch.rawValue)
+        let requestURL = baseURL.appendingPathComponent(EndPoints.login.rawValue)
         var request = URLRequest(url: requestURL)
         request.httpMethod = Method.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -157,12 +157,13 @@ class BackendController {
             return
         }
         
-        dataLoader?.loadData(from: request) { data, _, error in
+        dataLoader?.loadData(from: request) { data, response, error in
             if let error = error {
                 NSLog("Error couldn't fetch existing user: \(error)")
                 completion(error)
                 return
             }
+            
             
             guard let data = data else {
                 let error = AnywayError.badData("Invalid data returned from searching for a specific user.")
@@ -593,7 +594,7 @@ class BackendController {
     
     
     func deleteCourse(course: Course, completion: @escaping (Bool?, Error?) -> Void) {
-        guard let id = instructorId,
+        guard
             let token = BackendController.token else {
                 completion(nil, AnywayError.noAuth("User not logged in."))
                 return
@@ -605,7 +606,7 @@ class BackendController {
         let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathExtension("\(course.id)")
         var request = URLRequest(url: requestURL)
         request.httpMethod = Method.delete.rawValue
-        request.setValue(token.token, forHTTPHeaderField: "Authorization")
+        request.setValue(BackendController.token?.token, forHTTPHeaderField: "Authorization")
         
         dataLoader?.loadData(from: request, completion: { data, _, error in
             if let error = error {
