@@ -18,6 +18,7 @@ import Foundation
 //location
 //maxClassSize
 class ClassRepresentation: Codable {
+    
     var id: Int64?
     var name: String
     var type: String
@@ -28,7 +29,7 @@ class ClassRepresentation: Codable {
     var intensityLevel: String
     var location: String
     var maxClassSize: Int64
-    var instructorId: Int64
+   
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -41,7 +42,7 @@ class ClassRepresentation: Codable {
         case intensityLevel
         case location
         case maxClassSize
-        case instructorId
+        
         
     }
     
@@ -56,7 +57,7 @@ class ClassRepresentation: Codable {
         try container.encode(intensityLevel, forKey: .intensityLevel)
         try container.encode(location, forKey: .location)
         try container.encode(maxClassSize, forKey: .maxClassSize)
-        try container.encode(instructorId, forKey: .instructorId)
+       
         
     }
     
@@ -72,7 +73,7 @@ class ClassRepresentation: Codable {
         intensityLevel = try container.decode(String.self, forKey: .intensityLevel)
         location = try container.decode(String.self, forKey: .location)
         maxClassSize = try container.decode(Int64.self, forKey: .maxClassSize)
-        instructorId = try container.decode(Int64.self, forKey: .instructorId)
+
     }
     
 }

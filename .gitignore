@@ -138,4 +138,15 @@ iOSInjectionProject/
 # End of https://www.gitignore.io/api/git,macos,swift
 =======
 # End of https://www.gitignore.io/api/git,macos,swift
+<<<<<<< HEAD
+
+README.md
+=======
 >>>>>>> bharatWorking
+>>>>>>> enzoWorking
+
+AnywhereFitness/AnywhereFitness.xcodeproj/project.pbxproj
+
+AnywhereFitness/AnywhereFitness/TableViewController/ClientClassTableViewController.swift
+
+AnywhereFitness/AnywhereFitness/Networking/BackendController.swift

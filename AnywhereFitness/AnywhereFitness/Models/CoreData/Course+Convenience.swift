@@ -31,7 +31,6 @@ extension Course {
                                         intensityLevel: String,
                                         location: String,
                                         maxClassSize: Int64,
-                                        instructorId: Int64,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
         self.init(context: context)
@@ -45,7 +44,6 @@ extension Course {
         self.intensityLevel = intensityLevel
         self.location = location
         self.maxClassSize = maxClassSize
-        self.instructorId = instructorId
         
     }
     @discardableResult convenience init?(representation: ClassRepresentation,
@@ -65,7 +63,6 @@ extension Course {
                   intensityLevel: representation.intensityLevel,
                   location: representation.location,
                   maxClassSize: representation.maxClassSize,
-                  instructorId: representation.instructorId,
                   context: context)
     }
 }
