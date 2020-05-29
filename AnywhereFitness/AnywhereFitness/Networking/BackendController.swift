@@ -538,6 +538,7 @@ class BackendController {
         })
     }
     
+<<<<<<< Updated upstream
     
     func classReservation(completion: @escaping (Error?) -> Void) throws {
         
@@ -578,6 +579,9 @@ class BackendController {
             }
         })
     }
+=======
+   
+>>>>>>> Stashed changes
     
     
     func syncCourse(completion: @escaping (Error?) -> Void) {
