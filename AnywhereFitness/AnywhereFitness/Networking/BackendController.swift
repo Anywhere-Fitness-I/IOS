@@ -18,7 +18,7 @@ class BackendController {
     private var encoder = JSONEncoder()
     private var decoder = JSONDecoder()
     
-    static var token: Token?
+    private var token: Token?
     var dataLoader: DataLoader?
     
     let bgContext = CoreDataStack.shared.container.newBackgroundContext()
@@ -39,7 +39,7 @@ class BackendController {
     var cache = Cache<Int64, Course>()
     var isSignedIn: Bool {
         // swiftlint: disable all
-        return BackendController.token != nil
+        return token != nil
         // swiftlint: enable all
     }
     
@@ -123,7 +123,7 @@ class BackendController {
             self.bgContext.perform {
                 do {
                     let tokenResult = try self.decoder.decode(Token.self, from: data)
-                    BackendController.self.token = tokenResult
+                    self.token = tokenResult
                     self.storeUser(email: email) { _ in
                         completion(self.isSignedIn)
                     }
@@ -226,7 +226,7 @@ class BackendController {
                      maxClassSize: Int64,
                      completion: @escaping (Error?) -> Void) {
         
-        guard let token = BackendController.token else {
+        guard let token = token else {
             completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
             return
         }
@@ -281,12 +281,65 @@ class BackendController {
     }
     
     
-    
+    func createMyClass(name: String,
+                       date: String,
+                       startTime: String,
+                       location: String,
+                       completion: @escaping (Error?) -> Void) {
+        
+        guard let token = token else {
+            completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
+            return
+        }
+        
+        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue)
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = Method.post.rawValue
+        request.setValue(token.token, forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let dict: [String: Any] = ["name": name,
+                                       "date": date,
+                                       "startTime": startTime,
+                                       "location": location
+            ]
+            request.httpBody = try jsonFromDicct(dict: dict)
+        } catch {
+            NSLog("Error turning dictionary to json: \(error)")
+            completion(error)
+        }
+        
+        dataLoader?.loadData(from: request, completion: { data, _, error in
+            if let error = error {
+                NSLog("Error posting new course to database : \(error)")
+                completion(error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(AnywayError.badData("Server send bad data when creating new course."))
+                return
+            }
+            
+            self.bgContext.perform {
+                do {
+                    let course = try self.decoder.decode(ClassRepresentation.self, from: data)
+                    self.syncSingleCourse(with: course)
+                    completion(nil)
+                } catch {
+                    NSLog("Error decoding fetched course from database: \(error)")
+                    completion(error)
+                }
+            }
+            
+        })
+    }
     
     
     private func loadInstructorClass(completion: @escaping (Bool, Error?) -> Void = { _, _ in }) {
         
-        guard let  token = BackendController.token else {
+        guard let  token = token else {
             completion(false, AnywayError.noAuth("UserID hasn't been assigned"))
             return
         }
@@ -385,12 +438,13 @@ class BackendController {
                       intensityLevel: String,
                       location: String,
                       maxClassSize: Int64, completion: @escaping (Error?) -> Void) {
-        guard let token = BackendController.token else {
+        guard let id = instructorId,
+            let token = token else {
                 completion(AnywayError.noAuth("User is not logged in."))
                 return
         }
         
-        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathComponent("/\(course.id)")
+        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathComponent("/\(course.instructorId)")
         
         
         var request = URLRequest(url: requestURL)
@@ -407,7 +461,8 @@ class BackendController {
                                        "description": description,
                                        "intensityLevel": intensityLevel,
                                        "location": location,
-                                       "maxClassSize": maxClassSize]
+                                       "maxClassSize": maxClassSize,
+                                       "id": id]
             request.httpBody = try jsonFromDicct(dict: dict)
         } catch {
             NSLog("Error turning dictionary to json: \(error)")
@@ -446,7 +501,7 @@ class BackendController {
     func fetchAllClasses(completion: @escaping ([ClassRepresentation]?, Error?) -> Void) throws {
         
         // If there's no token, user isn't authorized. Throw custom error.
-        guard let token = BackendController.token else {
+        guard let token = token else {
             throw AnywayError.noAuth("No token in controller. User isn't logged in.")
         }
         
@@ -487,7 +542,7 @@ class BackendController {
     func classReservation(completion: @escaping (Error?) -> Void) throws {
         
         // If there's no token, user isn't authorized. Throw custom error.
-        guard let token = BackendController.token else {
+        guard let token = token else {
             throw AnywayError.noAuth("No token in controller. User isn't logged in.")
         }
         
@@ -568,52 +623,10 @@ class BackendController {
         }
     }
     
-    func syncReservation(completion: @escaping (Error?) -> Void) {
-        var representations: [ClassRepresentation] = []
-        do {
-            try classReservation { classes, error in
-                if let error = error {
-                    NSLog("Error fetching all posts to sync : \(error)")
-                    completion(error)
-                    return
-                }
-                
-                guard let fetchedClass = classes else {
-                    completion(AnywayError.badData("Posts array couldn't be unwrapped"))
-                    return
-                }
-                representations = fetchedClass
-                
-                // Use this context to initialize new posts into core data.
-                self.bgContext.perform {
-                    for course in representations {
-                        // First if it's in the cache
-                        guard let id = course.id else { return }
-                        
-                        if self.cache.value(for: id) != nil {
-                            let cachedCourse = self.cache.value(for: id)!
-                            self.update(course: cachedCourse, with: course)
-                        } else {
-                            do {
-                                try self.saveCourse(by: id, from: course)
-                            } catch {
-                                completion(error)
-                                return
-                            }
-                        }
-                    }
-                }// context.perform
-                completion(nil)
-            }// Fetch closure
-            
-        } catch {
-            completion(error)
-        }
-    }
-    
     
     func deleteCourse(course: Course, completion: @escaping (Bool?, Error?) -> Void) {
-        guard let token = BackendController.token else {
+        guard let id = instructorId,
+            let token = token else {
                 completion(nil, AnywayError.noAuth("User not logged in."))
                 return
         }
@@ -682,7 +695,7 @@ class BackendController {
         course.date = rep.date
         course.startTime = rep.startTime
         course.duration = rep.duration
-        course.overview = rep.overview
+        course.overview = rep.description
         course.intensityLevel = rep.intensityLevel
         course.location = rep.location
         course.maxClassSize = rep.maxClassSize
@@ -762,7 +775,7 @@ class BackendController {
     }
     func injectToken(_ token: String) {
         let token = Token(token: token)
-        BackendController.self.token = token
+        self.token = token
     }
     
 }
