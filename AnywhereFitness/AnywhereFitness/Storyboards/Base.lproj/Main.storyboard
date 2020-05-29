@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="workout_classroom" translatesAutoresizingMaskIntoConstraints="NO" id="Zrt-f6-8bm">
-                                <rect key="frame" x="-300" y="0.0" width="1350" height="1036"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="workout_classroom" translatesAutoresizingMaskIntoConstraints="NO" id="Zrt-f6-8bm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ANYWHERE FITNESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6J-UC-GXo">
                                 <rect key="frame" x="20" y="100" width="374" height="35"/>
@@ -51,7 +51,9 @@
                             </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Zrt-f6-8bm" secondAttribute="bottom" id="2XT-Yc-PNi"/>
                             <constraint firstItem="QW7-0a-J8q" firstAttribute="top" secondItem="t6J-UC-GXo" secondAttribute="bottom" constant="240" id="9Uf-bj-I90"/>
+                            <constraint firstItem="Zrt-f6-8bm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="GdA-sG-bdQ"/>
                             <constraint firstItem="Zrt-f6-8bm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GhT-qU-vzR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QW7-0a-J8q" secondAttribute="trailing" constant="8" id="H9L-Lb-ZXL"/>
                             <constraint firstItem="QW7-0a-J8q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="LUt-g2-cBs"/>
@@ -59,8 +61,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QW7-0a-J8q" secondAttribute="bottom" constant="340" id="ToH-WZ-Hpx"/>
                             <constraint firstItem="t6J-UC-GXo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="UWI-b7-QSh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t6J-UC-GXo" secondAttribute="trailing" constant="20" id="Wt9-bh-ikJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Zrt-f6-8bm" secondAttribute="trailing" id="YSa-r3-8SM"/>
                             <constraint firstAttribute="trailing" secondItem="Zrt-f6-8bm" secondAttribute="trailing" id="h2R-Qc-4cy"/>
                             <constraint firstItem="Zrt-f6-8bm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mJm-oB-kr9"/>
+                            <constraint firstItem="Zrt-f6-8bm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qkJ-se-QF1"/>
                             <constraint firstAttribute="bottom" secondItem="Zrt-f6-8bm" secondAttribute="bottom" id="uDe-tq-xWA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
