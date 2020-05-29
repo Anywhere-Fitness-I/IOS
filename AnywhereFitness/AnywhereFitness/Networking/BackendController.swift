@@ -444,7 +444,9 @@ class BackendController {
                 return
         }
         
-        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathComponent("\(course.id)")
+        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathComponent("/\(course.instructorId)")
+        
+        
         var request = URLRequest(url: requestURL)
         request.httpMethod = Method.put.rawValue
         request.setValue(token.token, forHTTPHeaderField: "Authorization")
@@ -460,7 +462,7 @@ class BackendController {
                                        "intensityLevel": intensityLevel,
                                        "location": location,
                                        "maxClassSize": maxClassSize,
-                                       "instructorId": id]
+                                       "id": id]
             request.httpBody = try jsonFromDicct(dict: dict)
         } catch {
             NSLog("Error turning dictionary to json: \(error)")
@@ -535,6 +537,49 @@ class BackendController {
             }
         })
     }
+    
+    
+    func classReservation(completion: @escaping ([ClassRepresentation]?, Error?) -> Void) throws {
+        
+        // If there's no token, user isn't authorized. Throw custom error.
+        guard let token = token else {
+            throw AnywayError.noAuth("No token in controller. User isn't logged in.")
+        }
+        
+        let requestURL = baseURL.appendingPathComponent(EndPoints.clientReservation.rawValue)
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = Method.get.rawValue
+        request.setValue(token.token, forHTTPHeaderField: "Authorization")
+        
+        dataLoader?.loadData(from: request, completion: { data, response, error in
+            // Always log the status code response from server.
+            if let response = response as? HTTPURLResponse {
+                NSLog("Server responded with: \(response.statusCode)")
+            }
+            
+            if let error = error {
+                NSLog("Error fetching all existing courses from server : \(error)")
+                completion(nil, error)
+                return
+            }
+            
+            // use badData when unwrapping data from server.
+            guard let data = data else {
+                completion(nil, AnywayError.badData("Bad data received from server"))
+                return
+            }
+            
+            do {
+                let courses = try self.decoder.decode([ClassRepresentation].self, from: data)
+                completion(courses, nil)
+            } catch {
+                NSLog("Couldn't decode array of course from server: \(error)")
+                completion(nil, error)
+            }
+        })
+    }
+    
+    
     func syncCourse(completion: @escaping (Error?) -> Void) {
         var representations: [ClassRepresentation] = []
         do {
@@ -577,7 +622,6 @@ class BackendController {
             completion(error)
         }
     }
-    
     
     
     func deleteCourse(course: Course, completion: @escaping (Bool?, Error?) -> Void) {
@@ -624,6 +668,8 @@ class BackendController {
             
         })
     }
+    
+    
     
     func forceLoadInstructorClass(completion: @escaping (Bool, Error?) -> Void) {
         loadInstructorClass(completion: { isEmpty, error in
