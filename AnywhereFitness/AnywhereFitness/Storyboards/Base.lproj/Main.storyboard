@@ -382,22 +382,24 @@
                         <outlet property="instructorNameLabel" destination="8ao-2P-Smy" id="ykP-BB-kNj"/>
                         <outlet property="intensityLabel" destination="wBO-uS-KQt" id="jre-1z-b65"/>
                         <outlet property="locationLabel" destination="Hte-Jh-8JC" id="X0g-lr-nTZ"/>
+                        <segue destination="gcO-5k-rYH" kind="show" identifier="paymentMethodSegue" id="XUe-uu-wMe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yD6-s7-w7z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4646" y="-439"/>
         </scene>
-        <!--View Controller-->
+        <!--Payment View Controller-->
         <scene sceneID="XYd-L8-hBp">
             <objects>
-                <viewController id="gcO-5k-rYH" sceneMemberID="viewController">
+                <viewController id="gcO-5k-rYH" customClass="PaymentViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z0K-CB-i8B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="MYl-Df-G3Y"/>
                     </view>
+                    <navigationItem key="navigationItem" id="nRo-5U-D7J"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gfX-ph-RwU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
