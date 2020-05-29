@@ -94,21 +94,20 @@ class AnywhereFitnessTests: XCTestCase {
                             description: "A lot of relaxing exercises",
                             intensityLevel: "easy",
                             location: "san diego",
-                            maxClassSize: 10) { error in
+                            maxClassSize: 10) { _ in
         
                createExpect.fulfill()
            }
            wait(for: [createExpect], timeout: timeout)
 
            let refetchUserExpect = expectation(description: "Last expectation for testing create course")
-           backend.forceLoadInstructorClass { isEmpty, error in
+           backend.forceLoadInstructorClass { _, _ in
              
                refetchUserExpect.fulfill()
            }
            wait(for: [refetchUserExpect], timeout: timeout)
        }
-<<<<<<< HEAD
-    
+
     
     func testUpdateCourse() {
          let expectUpdateCourse = expectation(description: "Testing update course.")
@@ -242,7 +241,5 @@ class AnywhereFitnessTests: XCTestCase {
            wait(for: [deletePostExpect], timeout: timeout)
        }
     
-    
-=======
->>>>>>> enzoWorking
+
 }

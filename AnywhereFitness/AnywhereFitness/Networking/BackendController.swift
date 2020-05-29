@@ -33,7 +33,7 @@ class BackendController {
     
     var instructorId: Int64? {
         didSet {
-            loadInstructorClass()
+            loadClass()
         }
     }
     var cache = Cache<Int64, Course>()
@@ -157,7 +157,7 @@ class BackendController {
             return
         }
         
-        dataLoader?.loadData(from: request) { data, response, error in
+        dataLoader?.loadData(from: request) { data, _, error in
             if let error = error {
                 NSLog("Error couldn't fetch existing user: \(error)")
                 completion(error)
@@ -173,8 +173,6 @@ class BackendController {
             
             do {
                 if let decodedUser = try self.decoder.decode([UserRepresentation].self, from: data).first {
-                    let jsonString = String.init(data: data, encoding: .utf8)
-                    print(jsonString!)
                     self.instructorId = decodedUser.id
                     completion(nil)
                 }
@@ -222,11 +220,7 @@ class BackendController {
     //location
     //maxClassSize
     
-<<<<<<< HEAD
-// MARK: - Instructor Methods
-=======
-    // MARK: - Instructor Methods
->>>>>>> enzoWorking
+
     func createClass(name: String,
                      type: String,
                      date: String,
@@ -349,7 +343,7 @@ class BackendController {
     }
     
     
-    private func loadInstructorClass(
+    private func loadClass(
         completion: @escaping (Bool,
         Error?) -> Void = { _, _ in }) {
         
@@ -646,7 +640,7 @@ class BackendController {
     
 
     func forceLoadInstructorClass(completion: @escaping (Bool, Error?) -> Void) {
-        loadInstructorClass(completion: { isEmpty, error in
+        loadClass(completion: { isEmpty, error in
             completion(isEmpty, error)
         })
     }
