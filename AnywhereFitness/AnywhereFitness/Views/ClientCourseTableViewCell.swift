@@ -40,7 +40,7 @@ class ClientCourseTableViewCell: UITableViewCell {
     private func updateViews() {
         guard let course = course else { return }
         classNameLabel.text = course.name
-        instructorLabel.text = String(course.instructorId)
+        instructorLabel.text = String(course.id)
         dateLabel.text = course.date
         timeLabel.text = course.startTime
         locationLabel.text = course.location

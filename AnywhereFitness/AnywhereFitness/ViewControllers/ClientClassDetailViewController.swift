@@ -60,7 +60,7 @@ class ClientClassDetailViewController: UIViewController {
         classNameLabel.text = course.name
         classTypeLabel.text = course.type
         intensityLabel.text = course.intensityLevel
-        instructorNameLabel.text = String(course.instructorId)
+        instructorNameLabel.text = String(course.id)
         dateLabel.text = course.date
         locationLabel.text = course.location
         durationLabel.text = course.duration

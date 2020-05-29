@@ -48,7 +48,7 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         
         
         classNameTextField.text = course.name
-        instructorNameTextField.text = String(course.instructorId)
+        instructorNameTextField.text = String(course.id)
         locationTextField.text = course.location
         classTypeTextField.text = course.type
         intensityLevelTextField.text = course.intensityLevel

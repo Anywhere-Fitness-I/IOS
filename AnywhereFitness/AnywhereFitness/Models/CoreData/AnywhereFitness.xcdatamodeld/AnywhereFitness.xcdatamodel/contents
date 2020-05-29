@@ -4,7 +4,6 @@
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="duration" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="instructorId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="intensityLevel" attributeType="String"/>
         <attribute name="location" attributeType="String"/>
         <attribute name="maxClassSize" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -22,7 +21,7 @@
         <attribute name="role" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Course" positionX="-45" positionY="27" width="128" height="208"/>
+        <element name="Course" positionX="-45" positionY="27" width="128" height="193"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>
