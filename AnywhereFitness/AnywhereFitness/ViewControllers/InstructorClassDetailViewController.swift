@@ -112,7 +112,7 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         datePicker.minuteInterval = 15
         dismissPickerView()
         updateViews()
-        deadLiftImage.alpha = 0.75
+        deadLiftImage.alpha = 0.80
         
         
         let strokeTextAttributes: [NSAttributedString.Key: Any] = [

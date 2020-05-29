@@ -14,6 +14,14 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     var backendController = BackendController.shared
     
+    private let timeFormatter: DateFormatter = {
+       let formatter = DateFormatter()
+       formatter.locale = Locale(identifier: "en_US")
+       formatter.dateFormat = "h:mm a"
+       return formatter
+     }()
+     
+    
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US")
@@ -56,7 +64,10 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet private var descriptionLabel: UILabel!
     @IBOutlet private var dateLabel: UILabel!
     
-    @IBOutlet weak var imageRunning: UIStackView!
+    @IBOutlet weak var imageFitness: UIImageView!
+    
+    
+    
     
     
     
@@ -81,9 +92,13 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
         datePicker.minuteInterval = 15
         dismissPickerView()
         
+        
+        
+        
+        
         let strokeTextAttributes: [NSAttributedString.Key: Any] = [
-                   .strokeColor: UIColor.black,
-                   .foregroundColor: UIColor.white,
+                   .strokeColor: UIColor.white,
+                   .foregroundColor: UIColor.black,
                    .strokeWidth: -2.8,
                    ]
 
@@ -104,6 +119,7 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
         
         let dateString = dateFormatter.string(from: datePicker.date)
+        let timeString = timeFormatter.string(from: datePicker.date)
         
         guard let className = classNameTextField.text, !className.isEmpty else { return }
         guard let instructorName = instructorNameTextField.text, !instructorName.isEmpty else { return }
@@ -119,7 +135,7 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
         backendController.createClass(name: className,
                                       type: type,
                                       date: dateString,
-                                      startTime: dateString,
+                                      startTime: timeString,
                                       duration: duration,
                                       description: description,
                                       intensityLevel: intensity,

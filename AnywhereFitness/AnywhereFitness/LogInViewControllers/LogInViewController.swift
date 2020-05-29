@@ -101,7 +101,7 @@ class LogInViewController: UIViewController {
         firstName: firstName, lastName: lastName, email: email, password: password, role: role.rawValue) { signUpResult, response, error in
             DispatchQueue.main.async {
                 if let error = error {
-                    self.showAlertMessage(title: "Try Again", message: "Error Signing Up or Signing In", actiontitle: "Ok")
+                    self.showAlertMessage(title: "Error Signing In", message: "Plese Try Again", actiontitle: "Ok")
                     return
                     
                 }

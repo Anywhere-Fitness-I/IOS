@@ -10,7 +10,19 @@ import UIKit
 
 class ClientCourseTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var addClassButton: UIButton!
+  
+    
+    
+    
+    private let timeFormatter: DateFormatter = {
+       let formatter = DateFormatter()
+       formatter.locale = Locale(identifier: "en_US")
+       formatter.dateFormat = "h:mm a"
+       return formatter
+     }()
+     
+    
+  
     @IBOutlet weak var classNameLabel: UILabel!
     @IBOutlet weak var instructorLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -22,12 +34,15 @@ class ClientCourseTableViewCell: UITableViewCell {
         didSet {
             updateViews()
         }
+        
     }
     
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
         // Initialization code
     }
 
@@ -39,11 +54,15 @@ class ClientCourseTableViewCell: UITableViewCell {
     
     private func updateViews() {
         guard let course = course else { return }
+        
+        let timeString = timeFormatter.string(for: course.startTime)
         classNameLabel.text = course.name
         instructorLabel.text = String(course.id)
         dateLabel.text = course.date
         timeLabel.text = course.startTime
         locationLabel.text = course.location
+        
+        
     }
 
 }

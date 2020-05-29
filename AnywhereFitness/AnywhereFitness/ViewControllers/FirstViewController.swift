@@ -26,6 +26,10 @@ class FirstViewController: UIViewController {
 
     anywhereFitnessLabel.attributedText = NSAttributedString(string: "ANYWHERE FITNESS", attributes: strokeTextAttributes)
         
+        lookingForClassesLabel.layer.cornerRadius = 15
+        coachingClassesLabel.layer.cornerRadius = 15
+
+        
         //lookingForClassesLabel.attributedText = NSAttributedString(string: "LOOKING FOR CLASSES", attributes: strokeTextAttributes)
         
         // Do any additional setup after loading the view.
