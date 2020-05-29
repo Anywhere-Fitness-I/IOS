@@ -15,7 +15,6 @@ class ClientClassTableViewController: UITableViewController {
     var fetchResultController: NSFetchedResultsController<Course>!
     
     
-    @IBOutlet weak var allClassesSegmentedControl: UISegmentedControl!
     @IBOutlet weak var searchClassBar: UISearchBar!
     
      private func setUpFetchResultController(with predicate: NSPredicate = NSPredicate(value: true)) {
@@ -41,6 +40,7 @@ class ClientClassTableViewController: UITableViewController {
         super.viewWillAppear(true)
         self.tableView.reloadData()
     }
+<<<<<<< HEAD
     
     @IBAction func classesSegmentedControl(_ sender: UISegmentedControl) {
         
@@ -87,6 +87,8 @@ class ClientClassTableViewController: UITableViewController {
     
     
     
+=======
+>>>>>>> parent of 2dbdba5... updated imageView
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,10 +97,24 @@ class ClientClassTableViewController: UITableViewController {
         searchBar(searchClassBar, textDidChange: "")
         
         setUpFetchResultController()
+<<<<<<< HEAD
         classesSegmentedControl(allClassesSegmentedControl)
        
       
-        
+=======
+        if backendController.isSignedIn {
+            backendController.syncCourse { error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        NSLog("Error trying to fetch course: \(error)")
+                        
+                    } else {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+>>>>>>> parent of 2dbdba5... updated imageView
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
