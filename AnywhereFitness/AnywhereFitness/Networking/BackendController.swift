@@ -67,7 +67,7 @@ class BackendController {
             return
         }
         
-        dataLoader?.loadData(from: request) { data, response, error in
+        dataLoader?.loadData(from: request) { _, response, error in
             
             if let error = error {
                 NSLog("Error sending sign up parameters to server : \(error)")
@@ -81,14 +81,14 @@ class BackendController {
                 return
             }
             
-            guard let data = data else { return }
+//            guard let data = data else { return }
             
-            do {
-                _ = try self.decoder.decode(UserRepresentation.self, from: data)
-            } catch {
-                NSLog("Error decoding data: \(error)")
-                completion(false, nil, error)
-            }
+//            do {
+//                _ = try self.decoder.decode(UserRepresentation.self, from: data)
+//            } catch {
+//                NSLog("Error decoding data: \(error)")
+//                completion(false, nil, error)
+//            }
             
             // We'll only get down here if everything went right
             completion(true, nil, nil)
@@ -172,6 +172,8 @@ class BackendController {
             
             do {
                 if let decodedUser = try self.decoder.decode([UserRepresentation].self, from: data).first {
+                    let jsonString = String.init(data: data, encoding: .utf8)
+                    print(jsonString!)
                     self.instructorId = decodedUser.id
                     completion(nil)
                 }
