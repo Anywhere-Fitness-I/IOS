@@ -123,7 +123,7 @@ class AnywhereFitnessTests: XCTestCase {
 //         print(backend.userCourse)
 //
 //         let updateExpect = expectation(description: "Expectation for updating post")
-//        backend.updateCourse(at: backend.userCourse, name: "Course", course: "course is done") { error in
+//        backend.updateCourse(at: backend.userCourse, name: "gym", type: "12", date: "12", startTime: "12", duration: "12", description: "12", intensityLevel: "12", location: "12", maxClassSize: 12) { error in
 //             XCTAssertNil(error)
 //             updateExpect.fulfill()
 //         }
