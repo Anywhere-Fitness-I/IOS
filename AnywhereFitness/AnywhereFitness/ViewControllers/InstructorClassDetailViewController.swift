@@ -64,6 +64,8 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
     
     // MARK: - Outlets
     
+    @IBOutlet weak var fitnessImage: UIImageView!
+    
     @IBOutlet private var classNameTextField: UITextField!
     @IBOutlet private var instructorNameTextField: UITextField!
     @IBOutlet private var locationTextField: UITextField!
@@ -127,6 +129,8 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         maxClassSizeLabel.attributedText = NSAttributedString(string: "Max Class Size:", attributes: strokeTextAttributes)
         descriptionLabel.attributedText = NSAttributedString(string: "Description:", attributes: strokeTextAttributes)
         dateLabel.attributedText = NSAttributedString(string: "Date:", attributes: strokeTextAttributes)
+        
+        fitnessImage.alpha = 0.7
         
         
         
