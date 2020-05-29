@@ -217,7 +217,7 @@ class BackendController {
     //location
     //maxClassSize
     
-    //MARK: - Instructor Methods
+// MARK: - Instructor Methods
     func createClass(name: String,
                      type: String,
                      date: String,
@@ -340,7 +340,9 @@ class BackendController {
     }
     
     
-    private func loadInstructorClass(completion: @escaping (Bool, Error?) -> Void = { _, _ in }) {
+    private func loadInstructorClass(
+        completion: @escaping (Bool,
+        Error?) -> Void = { _, _ in }) {
         
         guard let  token = BackendController.token else {
             completion(false, AnywayError.noAuth("UserID hasn't been assigned"))
@@ -600,7 +602,7 @@ class BackendController {
         let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathExtension("\(course.id)")
         var request = URLRequest(url: requestURL)
         request.httpMethod = Method.delete.rawValue
-        request.setValue(BackendController.token?.token, forHTTPHeaderField: "Authorization")
+        request.setValue(token.token, forHTTPHeaderField: "Authorization")
         
         dataLoader?.loadData(from: request, completion: { data, _, error in
             if let error = error {
@@ -740,7 +742,14 @@ class BackendController {
         BackendController.self.token = token
     }
     
+      func loggedUserID() -> Int64? {
+            // swiftlint:disable all
+            return self.instructorId
+            // swiftlint:enable all
+        }
+    
 }
+
 
 class Cache<Key: Hashable, Value> {
     private var cache: [Key: Value] = [ : ]
