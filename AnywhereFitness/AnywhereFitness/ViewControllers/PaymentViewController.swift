@@ -1,14 +1,14 @@
 //
-//  InstructorClassViewController.swift
+//  PaymentViewController.swift
 //  AnywhereFitness
 //
-//  Created by Enzo Jimenez-Soto on 5/26/20.
+//  Created by Enzo Jimenez-Soto on 5/28/20.
 //  Copyright © 2020 Bhawnish Kumar. All rights reserved.
 //
 
 import UIKit
 
-class InstructorClassViewController: UIViewController {
+class PaymentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

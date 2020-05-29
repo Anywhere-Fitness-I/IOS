@@ -75,17 +75,31 @@ class InstructorClassTableViewController: UITableViewController {
    return true
    }
    */
-  /*
+  
    // Override to support editing the table view.
    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
    if editingStyle == .delete {
-   // Delete the row from the data source
-   tableView.deleteRows(at: [indexPath], with: .fade)
-   } else if editingStyle == .insert {
-   // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    let course = backendController.userCourse[indexPath.row]
+    if backendController.isSignedIn {
+    backendController.deleteCourse(course: course) { result, error in
+        if let error = error {
+            NSLog("Error in deleting: \(error)")
+            return
+        }
+        if let result = result {
+            if result {
+                DispatchQueue.main.async {
+                    if let indexOf = self.backendController.userCourse.firstIndex(of: course) {
+                        self.backendController.userCourse.remove(at: indexOf)
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
    }
    }
-   */
+    }
   /*
    // Override to support rearranging the table view.
    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -98,14 +112,18 @@ class InstructorClassTableViewController: UITableViewController {
    return true
    }
    */
-  /*
+  
    // MARK: - Navigation
    // In a storyboard-based application, you will often want to do a little preparation before navigation
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
+    if segue.identifier == "instructorClassDetailSegue" {
+        if let detailVC = segue.destination as? InstructorClassDetailController,
+            let indexPath = tableView.indexPathForSelectedRow {
+            detailVC.course = backendController.userCourse[indexPath.row]
+        }
+    }
    }
-   */
+   
 }
 extension InstructorClassTableViewController: NSFetchedResultsControllerDelegate {
   //  this is the warning the tableview that the fetch controller is goijng to makechanges in the tableview.
