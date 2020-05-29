@@ -14,7 +14,8 @@ class ClientClassDetailViewController: UIViewController {
     var course: Course?
     
     
-
+    @IBOutlet weak var proccedPaymentButton: UIButton!
+    
     @IBOutlet weak var classNameLabel: UILabel!
     @IBOutlet weak var classTypeLabel: UILabel!
     @IBOutlet weak var intensityLabel: UILabel!
