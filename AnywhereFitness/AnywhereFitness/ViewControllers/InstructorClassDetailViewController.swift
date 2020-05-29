@@ -85,11 +85,9 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
     @IBOutlet private var descriptionLabel: UILabel!
     @IBOutlet private var dateLabel: UILabel!
     
+    @IBOutlet private var deadLiftImage: UIImageView!
     
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         typePicker.delegate = self
@@ -111,6 +109,8 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         datePicker.minuteInterval = 15
         dismissPickerView()
         updateViews()
+        deadLiftImage.alpha = 0.80
+        
         
         let strokeTextAttributes: [NSAttributedString.Key: Any] = [
             .strokeColor: UIColor.black,
@@ -127,7 +127,6 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         maxClassSizeLabel.attributedText = NSAttributedString(string: "Max Class Size:", attributes: strokeTextAttributes)
         descriptionLabel.attributedText = NSAttributedString(string: "Description:", attributes: strokeTextAttributes)
         dateLabel.attributedText = NSAttributedString(string: "Date:", attributes: strokeTextAttributes)
-        
         
         
         // Do any additional setup after loading the view.
@@ -176,9 +175,7 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 1 {
             return typeData.count
@@ -242,19 +239,5 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         endAlert.addAction(endAction)
         present(endAlert, animated: true, completion: nil)
     }
-    
-
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+ 
 }
-
-

@@ -10,26 +10,9 @@ import UIKit
 import CoreData
 
 class InstructorClassTableViewController: UITableViewController {
-  var backendController = BackendController.shared
-//
-//  lazy var fetchedResultsController: NSFetchedResultsController<Course> = {
-//    let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
-//    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-//
-//    let context = CoreDataStack.shared.mainContext
-//    let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-//
-//    frc.delegate = self
-//    try? frc.performFetch()
-//    do {
-//      try frc.performFetch()
-//    } catch {
-//      NSLog("Error in fetching the posts.")
-//    }
-//
-//    return frc
-//  }()
     
+  var backendController = BackendController.shared
+ 
     
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(true)
@@ -61,7 +44,8 @@ class InstructorClassTableViewController: UITableViewController {
     return backendController.userCourse.count
   }
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "instructorClassCell", for: indexPath) as? InstructorCourseTableViewCell else { return UITableViewCell() }
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "instructorClassCell",
+                                                   for: indexPath) as? InstructorCourseTableViewCell else { return UITableViewCell() }
     cell.course = backendController.userCourse[indexPath.row]
     return cell
   }

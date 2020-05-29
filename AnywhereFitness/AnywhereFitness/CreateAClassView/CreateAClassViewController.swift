@@ -14,6 +14,14 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     var backendController = BackendController.shared
     
+    private let timeFormatter: DateFormatter = {
+       let formatter = DateFormatter()
+       formatter.locale = Locale(identifier: "en_US")
+       formatter.dateFormat = "h:mm a"
+       return formatter
+     }()
+     
+    
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US")
@@ -55,9 +63,7 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet private var maxClassSizeLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
     @IBOutlet private var dateLabel: UILabel!
-    
-    
-    
+    @IBOutlet private var imageFitness: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,8 +87,8 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
         dismissPickerView()
         
         let strokeTextAttributes: [NSAttributedString.Key: Any] = [
-                   .strokeColor: UIColor.black,
-                   .foregroundColor: UIColor.white,
+                   .strokeColor: UIColor.white,
+                   .foregroundColor: UIColor.black,
                    .strokeWidth: -2.8,
                    ]
 
@@ -103,6 +109,7 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
         
         let dateString = dateFormatter.string(from: datePicker.date)
+        let timeString = timeFormatter.string(from: datePicker.date)
         
         guard let className = classNameTextField.text, !className.isEmpty else { return }
         guard let instructorName = instructorNameTextField.text, !instructorName.isEmpty else { return }
@@ -118,7 +125,7 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
         backendController.createClass(name: className,
                                       type: type,
                                       date: dateString,
-                                      startTime: dateString,
+                                      startTime: timeString,
                                       duration: duration,
                                       description: description,
                                       intensityLevel: intensity,
@@ -213,16 +220,5 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+
 }

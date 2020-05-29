@@ -150,3 +150,5 @@ AnywhereFitness/AnywhereFitness.xcodeproj/project.pbxproj
 AnywhereFitness/AnywhereFitness/TableViewController/ClientClassTableViewController.swift
 
 AnywhereFitness/AnywhereFitness/Networking/BackendController.swift
+
+AnywhereFitness/AnywhereFitnessTests/AnywhereFitnessTests.swift

@@ -43,7 +43,12 @@ class BackendController {
         // swiftlint: enable all
     }
     
-    func signUp(firstName: String, lastName: String, email: String, password: String, role: String, completion: @escaping (Bool, URLResponse?, Error?) -> Void) {
+    func signUp(firstName: String,
+                lastName: String,
+                email: String,
+                password: String,
+                role: String,
+                completion: @escaping (Bool, URLResponse?, Error?) -> Void) {
         
         let newUser = UserRepresentation(firstName: firstName, lastName: lastName, email: email, password: password, role: role)
         
@@ -217,7 +222,11 @@ class BackendController {
     //location
     //maxClassSize
     
+<<<<<<< HEAD
 // MARK: - Instructor Methods
+=======
+    // MARK: - Instructor Methods
+>>>>>>> enzoWorking
     func createClass(name: String,
                      type: String,
                      date: String,
@@ -364,7 +373,8 @@ class BackendController {
                 completion(false, AnywayError.badData("Received bad data when fetching logged in user's course array."))
                 return
             }
-            // changed 
+    
+            
             let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
             
             let handleFetchedClass = BlockOperation {
@@ -544,7 +554,7 @@ class BackendController {
         })
     }
     
-    
+
     func syncCourse(completion: @escaping (Error?) -> Void) {
         var representations: [ClassRepresentation] = []
         do {

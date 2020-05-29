@@ -13,22 +13,15 @@ class ClientClassDetailViewController: UIViewController {
     var backendController = BackendController.shared
     var course: Course?
     
-    
-    @IBOutlet weak var proccedPaymentButton: UIButton!
-    
-    @IBOutlet weak var classNameLabel: UILabel!
-    @IBOutlet weak var classTypeLabel: UILabel!
-    @IBOutlet weak var intensityLabel: UILabel!
-    @IBOutlet weak var instructorNameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var descriptionLaebl: UILabel!
-    
 
-    
-    
-   
+    @IBOutlet private var classNameLabel: UILabel!
+    @IBOutlet private var classTypeLabel: UILabel!
+    @IBOutlet private var intensityLabel: UILabel!
+    @IBOutlet private var instructorNameLabel: UILabel!
+    @IBOutlet private var dateLabel: UILabel!
+    @IBOutlet private var locationLabel: UILabel!
+    @IBOutlet private var durationLabel: UILabel!
+    @IBOutlet private var descriptionLaebl: UILabel!
     
     
     override func viewDidLoad() {
@@ -36,24 +29,7 @@ class ClientClassDetailViewController: UIViewController {
         updateViews()
        
         }
-        
-        
-
-        // Do any additional setup after loading the view.
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    
+ 
    private func updateViews() {
         guard let course = course else { return }
         
@@ -67,4 +43,3 @@ class ClientClassDetailViewController: UIViewController {
         descriptionLaebl.text = course.description
     }
 }
-

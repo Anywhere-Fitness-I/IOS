@@ -10,7 +10,7 @@ import UIKit
 
 class InstructorCourseTableViewCell: UITableViewCell {
     
-    var backendController = BackendController.shared
+    var backendController = BackendController
     var course: Course? {
         didSet {
             updateViews()
@@ -18,18 +18,16 @@ class InstructorCourseTableViewCell: UITableViewCell {
     }
     var id: Int64?
     
-    @IBOutlet weak var classNameLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet private var classNameLabel: UILabel!
+    @IBOutlet private var locationLabel: UILabel!
+    @IBOutlet private var dateLabel: UILabel!
+    @IBOutlet private var timeLabel: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
-
     
     func updateViews() {
         
