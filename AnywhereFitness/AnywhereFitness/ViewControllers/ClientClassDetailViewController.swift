@@ -25,6 +25,9 @@ class ClientClassDetailViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var descriptionLaebl: UILabel!
     
+
+    
+    
    
     
     

@@ -75,6 +75,19 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
     @IBOutlet private var datePicker: UIDatePicker!
     
     
+    @IBOutlet private var classNameLabel: UILabel!
+    @IBOutlet private var instructorNameLabel: UILabel!
+    @IBOutlet private var locationLabel: UILabel!
+    @IBOutlet private var classLabel: UILabel!
+    @IBOutlet private var intesityLabel: UILabel!
+    @IBOutlet private var classDurationLabel: UILabel!
+    @IBOutlet private var maxClassSizeLabel: UILabel!
+    @IBOutlet private var descriptionLabel: UILabel!
+    @IBOutlet private var dateLabel: UILabel!
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -98,6 +111,24 @@ class InstructorClassDetailController: UIViewController, UIPickerViewDelegate, U
         datePicker.minuteInterval = 15
         dismissPickerView()
         updateViews()
+        
+        let strokeTextAttributes: [NSAttributedString.Key: Any] = [
+            .strokeColor: UIColor.black,
+            .foregroundColor: UIColor.white,
+            .strokeWidth: -2.8,
+            ]
+
+        classNameLabel.attributedText = NSAttributedString(string: "Class Name:", attributes: strokeTextAttributes)
+        instructorNameLabel.attributedText = NSAttributedString(string: "Instructor Name:", attributes: strokeTextAttributes)
+        locationLabel.attributedText = NSAttributedString(string: "Location:", attributes: strokeTextAttributes)
+        classLabel.attributedText = NSAttributedString(string: "Class Type:", attributes: strokeTextAttributes)
+        intesityLabel.attributedText = NSAttributedString(string: "Intensity Level", attributes: strokeTextAttributes)
+        classDurationLabel.attributedText = NSAttributedString(string: "Class Duration:", attributes: strokeTextAttributes)
+        maxClassSizeLabel.attributedText = NSAttributedString(string: "Max Class Size:", attributes: strokeTextAttributes)
+        descriptionLabel.attributedText = NSAttributedString(string: "Description:", attributes: strokeTextAttributes)
+        dateLabel.attributedText = NSAttributedString(string: "Date:", attributes: strokeTextAttributes)
+        
+        
         
         // Do any additional setup after loading the view.
     }
