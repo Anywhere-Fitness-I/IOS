@@ -15,7 +15,7 @@ class ClientCourseTableViewCell: UITableViewCell {
     @IBOutlet weak var instructorLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    
+    @IBOutlet weak var locationLabel: UILabel!
     
     var backendController = BackendController.shared
     var course: Course? {
@@ -43,6 +43,7 @@ class ClientCourseTableViewCell: UITableViewCell {
         instructorLabel.text = String(course.instructorId)
         dateLabel.text = course.date
         timeLabel.text = course.startTime
+        locationLabel.text = course.location
     }
 
 }

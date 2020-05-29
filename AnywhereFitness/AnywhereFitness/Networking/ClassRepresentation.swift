@@ -18,6 +18,7 @@ import Foundation
 //location
 //maxClassSize
 class ClassRepresentation: Codable {
+    
     var id: Int64?
     var name: String
     var type: String

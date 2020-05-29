@@ -167,6 +167,7 @@ class BackendController {
             
             do {
                 if let decodedUser = try self.decoder.decode([UserRepresentation].self, from: data).first {
+                    self.instructorId = decodedUser.id
                     completion(nil)
                 }
             } catch {
@@ -225,10 +226,9 @@ class BackendController {
                      maxClassSize: Int64,
                      completion: @escaping (Error?) -> Void) {
         
-        guard let id = instructorId,
-            let token = token else {
-                completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
-                return
+        guard let token = token else {
+            completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
+            return
         }
         
         let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue)
@@ -246,9 +246,8 @@ class BackendController {
                                        "description": description,
                                        "intensityLevel": intensityLevel,
                                        "location": location,
-                                       "maxClassSize": maxClassSize,
-                                       "id": id
-                                           ]
+                                       "maxClassSize": maxClassSize
+            ]
             request.httpBody = try jsonFromDicct(dict: dict)
         } catch {
             NSLog("Error turning dictionary to json: \(error)")
@@ -283,66 +282,66 @@ class BackendController {
     
     
     func createMyClass(name: String,
-                        date: String,
-                        startTime: String,
-                        location: String,
-                        completion: @escaping (Error?) -> Void) {
-           
-           guard let token = token else {
-                   completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
-                   return
-           }
-           
-           let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue)
-           var request = URLRequest(url: requestURL)
-           request.httpMethod = Method.post.rawValue
-           request.setValue(token.token, forHTTPHeaderField: "Authorization")
-           request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-           
-           do {
-               let dict: [String: Any] = ["name": name,
-                                          "date": date,
-                                          "startTime": startTime,
-                                          "location": location
-                                              ]
-               request.httpBody = try jsonFromDicct(dict: dict)
-           } catch {
-               NSLog("Error turning dictionary to json: \(error)")
-               completion(error)
-           }
-           
-           dataLoader?.loadData(from: request, completion: { data, _, error in
-               if let error = error {
-                   NSLog("Error posting new course to database : \(error)")
-                   completion(error)
-                   return
-               }
-               
-               guard let data = data else {
-                   completion(AnywayError.badData("Server send bad data when creating new course."))
-                   return
-               }
-               
-               self.bgContext.perform {
-                   do {
-                       let course = try self.decoder.decode(ClassRepresentation.self, from: data)
-                       self.syncSingleCourse(with: course)
-                       completion(nil)
-                   } catch {
-                       NSLog("Error decoding fetched course from database: \(error)")
-                       completion(error)
-                   }
-               }
-               
-           })
-       }
-
+                       date: String,
+                       startTime: String,
+                       location: String,
+                       completion: @escaping (Error?) -> Void) {
+        
+        guard let token = token else {
+            completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
+            return
+        }
+        
+        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue)
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = Method.post.rawValue
+        request.setValue(token.token, forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let dict: [String: Any] = ["name": name,
+                                       "date": date,
+                                       "startTime": startTime,
+                                       "location": location
+            ]
+            request.httpBody = try jsonFromDicct(dict: dict)
+        } catch {
+            NSLog("Error turning dictionary to json: \(error)")
+            completion(error)
+        }
+        
+        dataLoader?.loadData(from: request, completion: { data, _, error in
+            if let error = error {
+                NSLog("Error posting new course to database : \(error)")
+                completion(error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(AnywayError.badData("Server send bad data when creating new course."))
+                return
+            }
+            
+            self.bgContext.perform {
+                do {
+                    let course = try self.decoder.decode(ClassRepresentation.self, from: data)
+                    self.syncSingleCourse(with: course)
+                    completion(nil)
+                } catch {
+                    NSLog("Error decoding fetched course from database: \(error)")
+                    completion(error)
+                }
+            }
+            
+        })
+    }
+    
     
     private func loadInstructorClass(completion: @escaping (Bool, Error?) -> Void = { _, _ in }) {
         
         guard let  token = token else {
-                completion(false, AnywayError.noAuth("UserID hasn't been assigned"))
-                return
+            completion(false, AnywayError.noAuth("UserID hasn't been assigned"))
+            return
         }
         let requestURL = baseURL.appendingPathComponent("\(EndPoints.instructorClass.rawValue)")
         var request = URLRequest(url: requestURL)
@@ -360,7 +359,7 @@ class BackendController {
                 completion(false, AnywayError.badData("Received bad data when fetching logged in user's course array."))
                 return
             }
-            
+            // changed 
             let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
             
             let handleFetchedClass = BlockOperation {
@@ -429,7 +428,16 @@ class BackendController {
     }
     
     
-    func updateCourse(at course: Course, name: String, course description: String, completion: @escaping (Error?) -> Void) {
+    func updateCourse(at course: Course,
+                      name: String,
+                      type: String,
+                      date: String,
+                      startTime: String,
+                      duration: String,
+                      description: String,
+                      intensityLevel: String,
+                      location: String,
+                      maxClassSize: Int64, completion: @escaping (Error?) -> Void) {
         guard let id = instructorId,
             let token = token else {
                 completion(AnywayError.noAuth("User is not logged in."))
@@ -443,7 +451,16 @@ class BackendController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do {
-            let dict: [String: Any] = ["name": name, "course": description, "instructorId": id]
+            let dict: [String: Any] = ["name": name,
+                                       "type": type,
+                                       "date": date,
+                                       "startTime": startTime,
+                                       "duration": duration,
+                                       "description": description,
+                                       "intensityLevel": intensityLevel,
+                                       "location": location,
+                                       "maxClassSize": maxClassSize,
+                                       "instructorId": id]
             request.httpBody = try jsonFromDicct(dict: dict)
         } catch {
             NSLog("Error turning dictionary to json: \(error)")
@@ -527,19 +544,19 @@ class BackendController {
                     completion(error)
                     return
                 }
-
+                
                 guard let fetchedClass = classes else {
                     completion(AnywayError.badData("Posts array couldn't be unwrapped"))
                     return
                 }
                 representations = fetchedClass
-
+                
                 // Use this context to initialize new posts into core data.
                 self.bgContext.perform {
                     for course in representations {
                         // First if it's in the cache
                         guard let id = course.id else { return }
-
+                        
                         if self.cache.value(for: id) != nil {
                             let cachedCourse = self.cache.value(for: id)!
                             self.update(course: cachedCourse, with: course)
@@ -555,7 +572,7 @@ class BackendController {
                 }// context.perform
                 completion(nil)
             }// Fetch closure
-
+            
         } catch {
             completion(error)
         }
@@ -564,54 +581,49 @@ class BackendController {
     
     
     func deleteCourse(course: Course, completion: @escaping (Bool?, Error?) -> Void) {
-            guard let id = instructorId,
-                let token = token else {
-                    completion(nil, AnywayError.noAuth("User not logged in."))
-                    return
-            }
-
-            // Our only DELETE endpoint utilizes query parameters.
-            // Must use a new URL to construct commponents
-
-            var requestURL = URLComponents(string: "https://anywhere-fit.herokuapp.com/api/client/reservations/\(course.id)/delete")!
-        
-            requestURL.queryItems = [
-                URLQueryItem(name: "classId", value: String(id))
-            ]
-
-            var request = URLRequest(url: requestURL.url!)
-            request.httpMethod = Method.delete.rawValue
-            request.setValue(token.token, forHTTPHeaderField: "Authorization")
-
-            dataLoader?.loadData(from: request, completion: { data, _, error in
-                if let error = error {
-                    NSLog("Error from server when attempting to delete. : \(error)")
-                    completion(nil, error)
-                    return
-                }
-
-                guard let data = data else {
-                    NSLog("Error unwrapping data sent form server: \(AnywayError.badData("Bad data received from server after deleting course."))")
-                    completion(nil, AnywayError.badData("Bad data from server when deleting."))
-                    return
-                }
-
-                var success: Bool = false
-
-                do {
-                    let response = try self.decoder.decode(Int.self, from: data)
-                    success = response == 1 ? true : false
-                    if success { self.bgContext.delete(course) }
-    //                if success { CoreDataStack.shared.mainContext.delete(post) }
-                    completion(success, nil)
-                } catch {
-                    NSLog("Error decoding response from server after deleting: \(error)")
-                    completion(nil, error)
-                    return
-                }
-
-            })
+        guard let id = instructorId,
+            let token = token else {
+                completion(nil, AnywayError.noAuth("User not logged in."))
+                return
         }
+        
+        // Our only DELETE endpoint utilizes query parameters.
+        // Must use a new URL to construct commponents
+        
+        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathExtension("\(course.id)")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = Method.delete.rawValue
+        request.setValue(token.token, forHTTPHeaderField: "Authorization")
+        
+        dataLoader?.loadData(from: request, completion: { data, _, error in
+            if let error = error {
+                NSLog("Error from server when attempting to delete. : \(error)")
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error unwrapping data sent form server: \(AnywayError.badData("Bad data received from server after deleting course."))")
+                completion(nil, AnywayError.badData("Bad data from server when deleting."))
+                return
+            }
+            
+            var success: Bool = false
+            
+            do {
+                let response = try self.decoder.decode(Int.self, from: data)
+                success = response == 1 ? true : false
+                if success { self.bgContext.delete(course) }
+                //                if success { CoreDataStack.shared.mainContext.delete(post) }
+                completion(success, nil)
+            } catch {
+                NSLog("Error decoding response from server after deleting: \(error)")
+                completion(nil, error)
+                return
+            }
+            
+        })
+    }
     
     func forceLoadInstructorClass(completion: @escaping (Bool, Error?) -> Void) {
         loadInstructorClass(completion: { isEmpty, error in
