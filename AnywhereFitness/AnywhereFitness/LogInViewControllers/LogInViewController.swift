@@ -106,11 +106,11 @@ class LogInViewController: UIViewController {
                     
                 }
                 if let response = response {
-                    self.showAlertMessage(title: "Sucess", message: "Sign Up Sucessful", actiontitle: "Ok")
+                    self.showAlertMessage(title: "Sign Up Sucessful", message: "Sign Up Sucessful", actiontitle: "Ok")
                     return
                 }
                 if signUpResult {
-                    self.showAlertMessage(title: "Sucess", message: "Sign Up was sucessful", actiontitle: "Ok")
+                    self.showAlertMessage(title: "Sign Up Unsucessful", message: "Error Signing Up Please Try Again", actiontitle: "Ok")
                     
                 }
                 return
