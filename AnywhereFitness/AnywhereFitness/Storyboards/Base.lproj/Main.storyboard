@@ -15,65 +15,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="QW7-0a-J8q">
-                                <rect key="frame" x="20" y="143" width="374" height="669"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl_squatting" translatesAutoresizingMaskIntoConstraints="NO" id="wPn-62-dMu">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="180" id="YNw-DT-Lmb"/>
-                                        </constraints>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="lWD-s8-qPI">
-                                        <rect key="frame" x="0.0" y="221" width="374" height="227"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2B-1j-YqO">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="153"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <state key="normal" title="LOOKING FOR CLASSES">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="qnC-Cq-Jz4" kind="show" id="Ock-tD-rly"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EI-NY-c6U">
-                                                <rect key="frame" x="0.0" y="194" width="374" height="33"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <state key="normal" title="COACHING THE CLASSES">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="qnC-Cq-Jz4" kind="show" id="AqI-Su-LvI"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="workout_classroom" translatesAutoresizingMaskIntoConstraints="NO" id="Zrt-f6-8bm">
-                                        <rect key="frame" x="0.0" y="489" width="374" height="180"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="180" id="lGZ-kP-v2s"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="workout_classroom" translatesAutoresizingMaskIntoConstraints="NO" id="Zrt-f6-8bm">
+                                <rect key="frame" x="-300" y="0.0" width="1350" height="1036"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ANYWHERE FITNESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6J-UC-GXo">
                                 <rect key="frame" x="20" y="100" width="374" height="35"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="QW7-0a-J8q">
+                                <rect key="frame" x="9" y="375" width="397" height="147"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2B-1j-YqO">
+                                        <rect key="frame" x="0.0" y="0.0" width="397" height="53"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <state key="normal" title="LOOKING FOR CLASSES">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="qnC-Cq-Jz4" kind="show" id="Ock-tD-rly"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EI-NY-c6U">
+                                        <rect key="frame" x="0.0" y="94" width="397" height="53"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <state key="normal" title="COACHING THE CLASSES">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="qnC-Cq-Jz4" kind="show" id="AqI-Su-LvI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="QW7-0a-J8q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ncp-Fv-ygW"/>
+                            <constraint firstItem="QW7-0a-J8q" firstAttribute="top" secondItem="t6J-UC-GXo" secondAttribute="bottom" constant="240" id="9Uf-bj-I90"/>
+                            <constraint firstItem="Zrt-f6-8bm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GhT-qU-vzR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QW7-0a-J8q" secondAttribute="trailing" constant="8" id="H9L-Lb-ZXL"/>
+                            <constraint firstItem="QW7-0a-J8q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="LUt-g2-cBs"/>
                             <constraint firstItem="t6J-UC-GXo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="RSr-M8-ZqG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QW7-0a-J8q" secondAttribute="bottom" constant="340" id="ToH-WZ-Hpx"/>
                             <constraint firstItem="t6J-UC-GXo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="UWI-b7-QSh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t6J-UC-GXo" secondAttribute="trailing" constant="20" id="Wt9-bh-ikJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QW7-0a-J8q" secondAttribute="trailing" constant="20" id="XEP-D6-qB9"/>
-                            <constraint firstItem="QW7-0a-J8q" firstAttribute="top" secondItem="t6J-UC-GXo" secondAttribute="bottom" constant="8" id="crF-Mm-m9Q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QW7-0a-J8q" secondAttribute="bottom" constant="50" id="mAc-R8-Ycg"/>
+                            <constraint firstAttribute="trailing" secondItem="Zrt-f6-8bm" secondAttribute="trailing" id="h2R-Qc-4cy"/>
+                            <constraint firstItem="Zrt-f6-8bm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mJm-oB-kr9"/>
+                            <constraint firstAttribute="bottom" secondItem="Zrt-f6-8bm" secondAttribute="bottom" id="uDe-tq-xWA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -177,7 +165,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a74-Jn-Z0x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3647.826086956522" y="-439.28571428571428"/>
+            <point key="canvasLocation" x="3648" y="-309"/>
         </scene>
         <!--Client Class Detail View Controller-->
         <scene sceneID="OxE-Is-AXE">
@@ -382,12 +370,13 @@
                         <outlet property="instructorNameLabel" destination="8ao-2P-Smy" id="ykP-BB-kNj"/>
                         <outlet property="intensityLabel" destination="wBO-uS-KQt" id="jre-1z-b65"/>
                         <outlet property="locationLabel" destination="Hte-Jh-8JC" id="X0g-lr-nTZ"/>
+                        <outlet property="proccedPaymentButton" destination="xm6-S0-ypx" id="nnh-Pt-xeQ"/>
                         <segue destination="gcO-5k-rYH" kind="show" identifier="paymentMethodSegue" id="XUe-uu-wMe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yD6-s7-w7z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4646" y="-439"/>
+            <point key="canvasLocation" x="4623" y="-309"/>
         </scene>
         <!--Payment View Controller-->
         <scene sceneID="XYd-L8-hBp">
@@ -413,24 +402,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl_squatting" translatesAutoresizingMaskIntoConstraints="NO" id="r35-LA-5nh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YMn-gG-glT">
-                                <rect key="frame" x="20" y="118" width="374" height="478.5"/>
+                                <rect key="frame" x="20" y="118" width="374" height="499"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eDb-mO-Yei">
-                                        <rect key="frame" x="106.5" y="0.0" width="161" height="32"/>
-                                        <color key="backgroundColor" red="0.32489488620000001" green="0.48177522569999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="20" y="0.0" width="334" height="32"/>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <segments>
                                             <segment title="Client"/>
                                             <segment title="Instructor"/>
                                         </segments>
-                                        <color key="tintColor" red="0.32489488620000001" green="0.48177522569999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="selectedSegmentTintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="selectedSegmentTintColor" red="0.32489488620000001" green="0.48177522569999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="clientInstructorSegmentedControl:" destination="qnC-Cq-Jz4" eventType="valueChanged" id="SV7-uG-qg6"/>
                                         </connections>
                                     </segmentedControl>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QeY-Ui-ig5">
-                                        <rect key="frame" x="119.5" y="51" width="135" height="32"/>
+                                        <rect key="frame" x="40" y="51" width="294" height="32"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <segments>
                                             <segment title="Sign Up"/>
@@ -442,13 +433,13 @@
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructor Portal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gy-HV-U8t">
-                                        <rect key="frame" x="121.5" y="102" width="131" height="20.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <rect key="frame" x="71.5" y="102" width="231" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6hz-KG-gno">
-                                        <rect key="frame" x="20" y="142.5" width="334" height="196"/>
+                                        <rect key="frame" x="20" y="163" width="334" height="196"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DIt-Jn-oHO" userLabel="First Name + Last Name">
                                                 <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
@@ -477,8 +468,8 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecw-BD-HQ7">
-                                        <rect key="frame" x="60" y="358.5" width="254" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ecw-BD-HQ7">
+                                        <rect key="frame" x="60" y="379" width="254" height="50"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="hJd-yj-oqx"/>
@@ -486,12 +477,15 @@
                                         <state key="normal" title="Sign Up">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value=""/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="signUpSignIn:" destination="qnC-Cq-Jz4" eventType="touchUpInside" id="VoI-3G-yDG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iec-gi-NuW">
-                                        <rect key="frame" x="60" y="428.5" width="254" height="50"/>
+                                        <rect key="frame" x="60" y="449" width="254" height="50"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="7Ve-NZ-SF6"/>
@@ -505,9 +499,14 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="eDb-mO-Yei" secondAttribute="trailing" constant="20" id="4qo-qe-3uf"/>
+                                    <constraint firstItem="QeY-Ui-ig5" firstAttribute="leading" secondItem="YMn-gG-glT" secondAttribute="leading" constant="40" id="87r-sv-sz3"/>
                                     <constraint firstItem="6hz-KG-gno" firstAttribute="leading" secondItem="YMn-gG-glT" secondAttribute="leading" constant="20" id="8h7-N2-R75"/>
                                     <constraint firstAttribute="trailing" secondItem="6hz-KG-gno" secondAttribute="trailing" constant="20" id="EQI-ED-u4t"/>
+                                    <constraint firstItem="eDb-mO-Yei" firstAttribute="leading" secondItem="YMn-gG-glT" secondAttribute="leading" constant="20" id="WwK-e6-ecI"/>
+                                    <constraint firstItem="QeY-Ui-ig5" firstAttribute="top" secondItem="eDb-mO-Yei" secondAttribute="bottom" constant="20" id="dMp-kX-pef"/>
                                     <constraint firstAttribute="trailing" secondItem="ecw-BD-HQ7" secondAttribute="trailing" constant="60" id="iXt-dR-xCL"/>
+                                    <constraint firstAttribute="trailing" secondItem="QeY-Ui-ig5" secondAttribute="trailing" constant="40" id="nmU-NH-U9R"/>
                                     <constraint firstAttribute="trailing" secondItem="Iec-gi-NuW" secondAttribute="trailing" constant="60" id="rqd-Im-C9c"/>
                                 </constraints>
                             </stackView>
@@ -515,6 +514,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="YMn-gG-glT" firstAttribute="top" secondItem="UgQ-aW-orw" secondAttribute="top" constant="30" id="91Y-G9-MQr"/>
+                            <constraint firstItem="UgQ-aW-orw" firstAttribute="trailing" secondItem="r35-LA-5nh" secondAttribute="trailing" id="EMA-CL-0bf"/>
+                            <constraint firstItem="r35-LA-5nh" firstAttribute="leading" secondItem="UgQ-aW-orw" secondAttribute="leading" id="K9u-wc-K4O"/>
+                            <constraint firstItem="r35-LA-5nh" firstAttribute="top" secondItem="x5X-jY-gKE" secondAttribute="top" id="Pi2-KG-VKa"/>
+                            <constraint firstAttribute="bottom" secondItem="r35-LA-5nh" secondAttribute="bottom" id="QZx-Wb-Hf9"/>
                             <constraint firstItem="YMn-gG-glT" firstAttribute="leading" secondItem="UgQ-aW-orw" secondAttribute="leading" constant="20" id="eSB-i7-fHt"/>
                             <constraint firstItem="UgQ-aW-orw" firstAttribute="trailing" secondItem="YMn-gG-glT" secondAttribute="trailing" constant="20" id="fXg-AU-Km8"/>
                         </constraints>
@@ -525,6 +528,7 @@
                         <outlet property="clientInstructorSegue" destination="eDb-mO-Yei" id="zDm-Zg-g3R"/>
                         <outlet property="emailTextField" destination="xRF-Jv-al3" id="TSx-gH-EO4"/>
                         <outlet property="firstNameTextField" destination="DIt-Jn-oHO" id="nEy-bw-Alv"/>
+                        <outlet property="instructorClientLabel" destination="9Gy-HV-U8t" id="PRE-QF-EGU"/>
                         <outlet property="lastNameTextField" destination="TKM-Zn-402" id="u4b-aZ-1oK"/>
                         <outlet property="passwordTextField" destination="nwP-yj-7sH" id="J3Y-DE-AdU"/>
                         <outlet property="signInButton" destination="Iec-gi-NuW" id="Pox-kO-Qg5"/>
@@ -536,7 +540,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ab4-tj-3wO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2790" y="125"/>
+            <point key="canvasLocation" x="2789.8550724637685" y="124.55357142857142"/>
         </scene>
         <!--TEACHING CLASSES-->
         <scene sceneID="eBA-sC-oxU">
