@@ -25,10 +25,12 @@ class ClassRepresentation: Codable {
     var date: String
     var startTime: String
     var duration: String
-    var description: String
+    var overview: String
     var intensityLevel: String
     var location: String
     var maxClassSize: Int64
+   
+
    
     
     enum CodingKeys: String, CodingKey {
@@ -38,11 +40,12 @@ class ClassRepresentation: Codable {
         case date
         case startTime
         case duration
-        case description
+        case description = "description"
         case intensityLevel
         case location
         case maxClassSize
-        
+   
+   
         
     }
     
@@ -53,10 +56,12 @@ class ClassRepresentation: Codable {
         try container.encode(date, forKey: .date)
         try container.encode(startTime, forKey: .startTime)
         try container.encode(duration, forKey: .duration)
-        try container.encode(description, forKey: .description)
+        try container.encode(overview, forKey: .description)
         try container.encode(intensityLevel, forKey: .intensityLevel)
         try container.encode(location, forKey: .location)
         try container.encode(maxClassSize, forKey: .maxClassSize)
+   
+       
        
         
     }
@@ -69,10 +74,12 @@ class ClassRepresentation: Codable {
         date = try container.decode(String.self, forKey: .date)
         startTime = try container.decode(String.self, forKey: .startTime)
         duration = try container.decode(String.self, forKey: .duration)
-        description = try container.decode(String.self, forKey: .description)
+        overview = try container.decode(String.self, forKey: .description)
         intensityLevel = try container.decode(String.self, forKey: .intensityLevel)
         location = try container.decode(String.self, forKey: .location)
         maxClassSize = try container.decode(Int64.self, forKey: .maxClassSize)
+        
+       
 
     }
     

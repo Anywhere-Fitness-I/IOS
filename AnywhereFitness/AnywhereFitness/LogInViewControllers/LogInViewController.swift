@@ -21,7 +21,7 @@ class LogInViewController: UIViewController {
     
     @IBOutlet private var instructorClientLabel: UILabel!
     
-    @IBOutlet private var clientInstructorSegue: UISegmentedControl!
+    @IBOutlet var clientInstructorSegue: UISegmentedControl!
     @IBOutlet private var signUpLogInSegue: UISegmentedControl!
     @IBOutlet private var firstNameTextField: UITextField!
     @IBOutlet private var lastNameTextField: UITextField!
@@ -118,11 +118,15 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func signIn(_ sender: UIButton) {
-        
+  
         guard let email = emailTextField.text,
             let clientSegmentedControl = clientInstructorSegue,
             let password = passwordTextField.text else { return }
         
+        
+        let clientIndex = clientSegmentedControl.selectedSegmentIndex
+        
+        let role = ClientType.allCases[clientIndex]
         
         backEndController.signIn(email: email, password: password) { signInResult in
             DispatchQueue.main.async {
@@ -144,6 +148,7 @@ class LogInViewController: UIViewController {
                 }
             }
         }
+        
         
     }
     

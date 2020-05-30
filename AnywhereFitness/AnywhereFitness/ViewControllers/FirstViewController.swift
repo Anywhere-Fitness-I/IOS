@@ -45,4 +45,19 @@ class FirstViewController: UIViewController {
     }
 */
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "instructorSegue" {
+            
+            if let createTaskVC = segue.destination as? LogInViewController {
+                createTaskVC.clientInstructorSegue?.selectedSegmentIndex = 1
+            }
+        } else    if segue.identifier == "clientSegue" {
+                 
+                 if let createTaskVC = segue.destination as? LogInViewController {
+                     createTaskVC.clientInstructorSegue?.selectedSegmentIndex = 0
+                 }
+        
+    }
+}
 }
