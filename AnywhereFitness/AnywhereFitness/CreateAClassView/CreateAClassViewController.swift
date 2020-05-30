@@ -15,12 +15,12 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
     var backendController = BackendController.shared
     
     private let timeFormatter: DateFormatter = {
-       let formatter = DateFormatter()
-       formatter.locale = Locale(identifier: "en_US")
-       formatter.dateFormat = "h:mm a"
-       return formatter
-     }()
-     
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US")
+        formatter.dateFormat = "h:mm a"
+        return formatter
+    }()
+    
     
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -87,20 +87,20 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
         dismissPickerView()
         
         let strokeTextAttributes: [NSAttributedString.Key: Any] = [
-                   .strokeColor: UIColor.white,
-                   .foregroundColor: UIColor.black,
-                   .strokeWidth: -2.8,
-                   ]
-
-               classNameLabel.attributedText = NSAttributedString(string: "Class Name:", attributes: strokeTextAttributes)
-               instructorNameLabel.attributedText = NSAttributedString(string: "Instructor Name:", attributes: strokeTextAttributes)
-               locationLabel.attributedText = NSAttributedString(string: "Location:", attributes: strokeTextAttributes)
-               classLabel.attributedText = NSAttributedString(string: "Class Type:", attributes: strokeTextAttributes)
-               intesityLabel.attributedText = NSAttributedString(string: "Intensity Level", attributes: strokeTextAttributes)
-               classDurationLabel.attributedText = NSAttributedString(string: "Class Duration:", attributes: strokeTextAttributes)
-               maxClassSizeLabel.attributedText = NSAttributedString(string: "Max Class Size:", attributes: strokeTextAttributes)
-               descriptionLabel.attributedText = NSAttributedString(string: "Description:", attributes: strokeTextAttributes)
-               dateLabel.attributedText = NSAttributedString(string: "Date:", attributes: strokeTextAttributes)
+            .strokeColor: UIColor.white,
+            .foregroundColor: UIColor.black,
+            .strokeWidth: -2.8,
+        ]
+        
+        classNameLabel.attributedText = NSAttributedString(string: "Class Name:", attributes: strokeTextAttributes)
+        instructorNameLabel.attributedText = NSAttributedString(string: "Instructor Name:", attributes: strokeTextAttributes)
+        locationLabel.attributedText = NSAttributedString(string: "Location:", attributes: strokeTextAttributes)
+        classLabel.attributedText = NSAttributedString(string: "Class Type:", attributes: strokeTextAttributes)
+        intesityLabel.attributedText = NSAttributedString(string: "Intensity Level", attributes: strokeTextAttributes)
+        classDurationLabel.attributedText = NSAttributedString(string: "Class Duration:", attributes: strokeTextAttributes)
+        maxClassSizeLabel.attributedText = NSAttributedString(string: "Max Class Size:", attributes: strokeTextAttributes)
+        descriptionLabel.attributedText = NSAttributedString(string: "Description:", attributes: strokeTextAttributes)
+        dateLabel.attributedText = NSAttributedString(string: "Date:", attributes: strokeTextAttributes)
         
         // Do any additional setup after loading the view.
     }
@@ -131,15 +131,18 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
                                       intensityLevel: intensity,
                                       location: location,
                                       maxClassSize: classSize) { error in
-            if let error = error {
-                NSLog("Error creating Class: \(error)")
-                return
-            }
-            DispatchQueue.main.async {
-                self.showAlertMessage(title: "Created class", message: "Class created", actiontitle: "Ok")
-                //TO DO Perform segue
-            }
+                                        if let error = error {
+                                            NSLog("Error creating Class: \(error)")
+                                            return
+                                        }
+                                        
+                                        DispatchQueue.main.async {
+                                            self.showAlertMessage(title: "Created class", message: "Class created", actiontitle: "Ok")
+                                            //TO DO Perform segue
+                                        }
+                                        
         }
+        
         
         do {
             try CoreDataStack.shared.mainContext.save()
@@ -220,5 +223,5 @@ class CreateAClassViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         
     }
-
+    
 }

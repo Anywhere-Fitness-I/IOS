@@ -40,7 +40,7 @@ class ClassRepresentation: Codable {
         case date
         case startTime
         case duration
-        case description = "description"
+        case description 
         case intensityLevel
         case location
         case maxClassSize
