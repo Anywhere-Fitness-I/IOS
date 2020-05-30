@@ -107,7 +107,7 @@ class AnywhereFitnessTests: XCTestCase {
            }
            wait(for: [refetchUserExpect], timeout: timeout)
        }
-
+<<<<<<< HEAD
     
     func testUpdateCourse() {
          let expectUpdateCourse = expectation(description: "Testing update course.")
@@ -241,5 +241,11 @@ class AnywhereFitnessTests: XCTestCase {
            wait(for: [deletePostExpect], timeout: timeout)
        }
     
+<<<<<<< HEAD
 
+=======
+    
+=======
+>>>>>>> enzoWorking
+>>>>>>> parent of 41de5f9... Cleaned Up code
 }

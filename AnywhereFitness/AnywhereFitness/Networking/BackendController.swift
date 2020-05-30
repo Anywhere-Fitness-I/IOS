@@ -239,7 +239,15 @@ class BackendController {
     //location
     //maxClassSize
     
+<<<<<<< HEAD
     
+=======
+<<<<<<< HEAD
+// MARK: - Instructor Methods
+=======
+    // MARK: - Instructor Methods
+>>>>>>> enzoWorking
+>>>>>>> parent of 41de5f9... Cleaned Up code
     func createClass(name: String,
                      type: String,
                      date: String,
