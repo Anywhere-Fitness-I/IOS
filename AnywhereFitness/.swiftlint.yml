@@ -15,7 +15,8 @@ disabled_rules: # rule identifiers to exclude from running
   - todo
   - trailing_comma
   - vertical_parameter_alignment # does not work with tab indentation: https://github.com/realm/SwiftLint/issues/1573
-
+  - function_parameter_count
+  
 excluded: # paths to ignore during linting.
   - Carthage
   - Swift Style Guide.playground
@@ -81,4 +82,3 @@ vertical_whitespace:
   max_empty_lines: 2
 trailing_whitespace:
   ignores_empty_lines: true
-
