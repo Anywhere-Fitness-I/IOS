@@ -15,12 +15,14 @@ class InstructorCourseTableViewCell: UITableViewCell {
     }
   }
   var id: Int64?
-  @IBOutlet private var classNameLabel: UILabel!
-  @IBOutlet private var locationLabel: UILabel!
-  @IBOutlet private var dateLabel: UILabel!
-  @IBOutlet private var timeLabel: UILabel!
-    
-
+  @IBOutlet weak var classNameLabel: UILabel!
+  @IBOutlet weak var locationLabel: UILabel!
+  @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var timeLabel: UILabel!
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+  }
   func updateViews() {
     guard let course = course
       else { return }
@@ -28,6 +30,8 @@ class InstructorCourseTableViewCell: UITableViewCell {
     locationLabel.text = course.location
     dateLabel.text = course.date
     timeLabel.text = course.startTime
-   
+    
+    classNameLabel.layer.borderColor = UIColor.white.cgColor
+    classNameLabel.layer.borderWidth = 3.0
   }
 }

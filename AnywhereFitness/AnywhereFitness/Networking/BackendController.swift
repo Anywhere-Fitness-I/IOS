@@ -11,33 +11,14 @@ import CoreData
 
 class BackendController {
     
-    enum NetworkError: Error {
-        case failedSignUp, failedSignIn, noData, badData
-        case notSignedIn, failedFetch, badURL
-    }
-    
-    private enum LoginStatus {
-        case notLoggedIn
-        // if there are logged in or not, if they are then we want to access the bearer token for signing in
-        case loggedIn(Token)
-        
-        static var isLoggedIn: Self {
-            if let bearer = BackendController.token {
-                return loggedIn(bearer)
-            } else {
-                return notLoggedIn
-            }
-        }
-    }
-        
     static let shared = BackendController()
-   typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
+    
     private var baseURL: URL = URL(string: "https://anywhere-fit.herokuapp.com/")!
     
     private var encoder = JSONEncoder()
     private var decoder = JSONDecoder()
     
-    static var token: Token?
+    private var token: Token?
     var dataLoader: DataLoader?
     
     let bgContext = CoreDataStack.shared.container.newBackgroundContext()
@@ -52,23 +33,20 @@ class BackendController {
     
     var instructorId: Int64? {
         didSet {
-            loadClass()
+            loadInstructorClass()
         }
     }
     var cache = Cache<Int64, Course>()
-    
     var isSignedIn: Bool {
         // swiftlint: disable all
-        return BackendController.token != nil
+        return token != nil
         // swiftlint: enable all
     }
     
-    func signUp(firstName: String,
-                lastName: String,
-                email: String,
-                password: String,
-                role: String,
-                completion: @escaping (Bool, URLResponse?, Error?) -> Void) {
+    
+    var course: Course?
+    
+    func signUp(firstName: String, lastName: String, email: String, password: String, role: String, completion: @escaping (Bool, URLResponse?, Error?) -> Void) {
         
         let newUser = UserRepresentation(firstName: firstName, lastName: lastName, email: email, password: password, role: role)
         
@@ -101,19 +79,29 @@ class BackendController {
                 return
             }
             
-            //            guard let data = data else { return }
+//            guard let data = data else { return }
             
-            //            do {
-            //                _ = try self.decoder.decode(UserRepresentation.self, from: data)
-            //            } catch {
-            //                NSLog("Error decoding data: \(error)")
-            //                completion(false, nil, error)
-            //            }
+//            do {
+//                _ = try self.decoder.decode(UserRepresentation.self, from: data)
+//            } catch {
+//                NSLog("Error decoding data: \(error)")
+//                completion(false, nil, error)
+//            }
             
             // We'll only get down here if everything went right
             completion(true, nil, nil)
         }
     }
+    
+    func signOut() {
+        // All we check to see if we're logged in is whether or not we have a token.
+        // Therefore all we need to do to log out, is get rid of our token.
+        self.token = nil
+        // As we've added userID and Posts, clear those out on signOut as well
+        self.instructorId = nil
+        self.userCourse = []
+    }
+
     
     
     func signIn(email: String, password: String, completion: @escaping (Bool) -> Void) {
@@ -148,7 +136,7 @@ class BackendController {
             self.bgContext.perform {
                 do {
                     let tokenResult = try self.decoder.decode(Token.self, from: data)
-                    BackendController.token = tokenResult
+                    self.token = tokenResult
                     self.storeUser(email: email) { _ in
                         completion(self.isSignedIn)
                     }
@@ -184,7 +172,6 @@ class BackendController {
                 return
             }
             
-            
             guard let data = data else {
                 let error = AnywayError.badData("Invalid data returned from searching for a specific user.")
                 completion(error)
@@ -193,6 +180,8 @@ class BackendController {
             
             do {
                 if let decodedUser = try self.decoder.decode([UserRepresentation].self, from: data).first {
+                    let jsonString = String.init(data: data, encoding: .utf8)
+                    print(jsonString!)
                     self.instructorId = decodedUser.id
                     completion(nil)
                 }
@@ -240,7 +229,7 @@ class BackendController {
     //location
     //maxClassSize
     
-
+    //MARK: - Instructor Methods
     func createClass(name: String,
                      type: String,
                      date: String,
@@ -252,7 +241,7 @@ class BackendController {
                      maxClassSize: Int64,
                      completion: @escaping (Error?) -> Void) {
         
-        guard let token = BackendController.token else {
+        guard let token = token else {
             completion(AnywayError.noAuth("No userID stored in the controller. Can't create new class."))
             return
         }
@@ -269,10 +258,11 @@ class BackendController {
                                        "date": date,
                                        "startTime": startTime,
                                        "duration": duration,
-                                       "overview": description,
+                                       "description": description,
                                        "intensityLevel": intensityLevel,
                                        "location": location,
                                        "maxClassSize": maxClassSize
+                                       
             ]
             request.httpBody = try jsonFromDicct(dict: dict)
         } catch {
@@ -306,14 +296,10 @@ class BackendController {
         })
     }
     
-
     
-    
-    private func loadClass(
-        completion: @escaping (Bool,
-        Error?) -> Void = { _, _ in }) {
+    private func loadInstructorClass(completion: @escaping (Bool, Error?) -> Void = { _, _ in }) {
         
-        guard let  token = BackendController.token else {
+        guard let  token = token else {
             completion(false, AnywayError.noAuth("UserID hasn't been assigned"))
             return
         }
@@ -333,8 +319,7 @@ class BackendController {
                 completion(false, AnywayError.badData("Received bad data when fetching logged in user's course array."))
                 return
             }
-            
-            
+            // changed 
             let fetchRequest: NSFetchRequest<Course> = Course.fetchRequest()
             
             let handleFetchedClass = BlockOperation {
@@ -414,9 +399,9 @@ class BackendController {
                       location: String,
                       maxClassSize: Int64, completion: @escaping (Error?) -> Void) {
         
-        guard let token = BackendController.token else {
-            completion(AnywayError.noAuth("User is not logged in."))
-            return
+        guard let token = token else {
+                completion(AnywayError.noAuth("User is not logged in."))
+                return
         }
         
         let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathComponent("/\(course.id)")
@@ -433,12 +418,12 @@ class BackendController {
                                        "date": date,
                                        "startTime": startTime,
                                        "duration": duration,
-                                       "overview": description,
+                                       "description": description,
                                        "intensityLevel": intensityLevel,
                                        "location": location,
                                        "maxClassSize": maxClassSize,
-                                       
-            ]
+                
+                                     ]
             request.httpBody = try jsonFromDicct(dict: dict)
         } catch {
             NSLog("Error turning dictionary to json: \(error)")
@@ -477,7 +462,7 @@ class BackendController {
     func fetchAllClasses(completion: @escaping ([ClassRepresentation]?, Error?) -> Void) throws {
         
         // If there's no token, user isn't authorized. Throw custom error.
-        guard let token = BackendController.token else {
+        guard let token = token else {
             throw AnywayError.noAuth("No token in controller. User isn't logged in.")
         }
         
@@ -517,6 +502,7 @@ class BackendController {
     
     func syncCourse(completion: @escaping (Error?) -> Void) {
         var representations: [ClassRepresentation] = []
+ 
         do {
             try fetchAllClasses { classes, error in
                 if let error = error {
@@ -536,7 +522,9 @@ class BackendController {
                     for course in representations {
                         // First if it's in the cache
                         guard let id = course.id else { return }
-                        
+                     
+                     
+
                         if self.cache.value(for: id) != nil {
                             let cachedCourse = self.cache.value(for: id)!
                             self.update(course: cachedCourse, with: course)
@@ -549,7 +537,8 @@ class BackendController {
                             }
                         }
                     }
-                }// context.perform
+                }
+                // context.perform
                 completion(nil)
             }// Fetch closure
             
@@ -557,38 +546,11 @@ class BackendController {
             completion(error)
         }
     }
+    let moc: NSManagedObjectContext = CoreDataStack.shared.mainContext
     
-    
-     func deleteEntryFromServe(course: Course, completion: @escaping CompletionHandler = { _ in }) {
-      
-                 
-        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathExtension("\(course.id)")
-                 var request = URLRequest(url: requestURL)
-        request.httpMethod = Method.delete.rawValue
-                 
-                 URLSession.shared.dataTask(with: request) { data, response, error in
-                     if let error = error {
-                         NSLog("Error in getting data: \(error)")
-                         completion(.failure(.noData))
-                     }
-               
-                     
-                     completion(.success(true))
-                 }.resume()
-             }
-    
-    
-    
-    
-    func forceLoadInstructorClass(completion: @escaping (Bool?, Error?) -> Void) {
-        loadClass(completion: { isEmpty, error in
-            completion(isEmpty, error)
-        })
-    }
-    
-    func getReservation(completion: @escaping (Bool?, Error?) -> Void) {
-        guard
-            let token = BackendController.token else {
+    func deleteCourse(course: Course, completion: @escaping (Bool?, Error?) -> Void) {
+        guard let id = instructorId,
+            let token = token else {
                 completion(nil, AnywayError.noAuth("User not logged in."))
                 return
         }
@@ -596,67 +558,143 @@ class BackendController {
         // Our only DELETE endpoint utilizes query parameters.
         // Must use a new URL to construct commponents
         
-        let requestURL = baseURL.appendingPathComponent(EndPoints.clientReservation.rawValue)
+        let requestURL = baseURL.appendingPathComponent(EndPoints.instructorClass.rawValue).appendingPathExtension("\(course.id)")
         var request = URLRequest(url: requestURL)
-        request.httpMethod = Method.get.rawValue
+        request.httpMethod = Method.delete.rawValue
         request.setValue(token.token, forHTTPHeaderField: "Authorization")
         
-        dataLoader?.loadData(from: request, completion: { _, response, error in
+        dataLoader?.loadData(from: request, completion: { data, _, error in
             if let error = error {
                 NSLog("Error from server when attempting to delete. : \(error)")
                 completion(nil, error)
                 return
             }
-            if let response = response as? HTTPURLResponse {
-                NSLog("Server responded with: \(response.statusCode)")
+            
+            guard let data = data else {
+                NSLog("Error unwrapping data sent form server: \(AnywayError.badData("Bad data received from server after deleting course."))")
+                completion(nil, AnywayError.badData("Bad data from server when deleting."))
+                return
+            }
+            
+            var success: Bool = false
+            
+            do {
+                let response = try self.decoder.decode(Int.self, from: data)
+                success = response == 1 ? true : false
+                if success { self.bgContext.delete(course) }
+                //                if success { CoreDataStack.shared.mainContext.delete(post) }
+                completion(success, nil)
+            } catch {
+                NSLog("Error decoding response from server after deleting: \(error)")
+                completion(nil, error)
+                return
             }
             
         })
-        
     }
     
-    var course: Course?
-    func createReservation(_ course: Course, completion: @escaping (Result<[Course], NetworkError>) -> Void) {
-          
-        guard let token = BackendController.token else { return }
-           
-        let animalURL = baseURL.appendingPathComponent(EndPoints.clientReservation.rawValue)
+    
+    
+//    func createReservation(in messageThread: MessageThread, withText text: String, sender: String, completion: @escaping () -> Void) {
+//
+//        // This if statement and the code inside it is used for UI Testing. Disregard this when debugging.
+//        if isUITesting {
+//            createLocalMessage(in: messageThread, withText: text, sender: sender, completion: completion)
+//            return
+//        }
+//
+//        guard let index = messageThreads.index(of: messageThread) else { completion(); return }
+//
+//        let message = MessageThread.Message(text: text, sender: sender)
+//        messageThreads[index].messages.append(message)
+//
+//        let requestURL = MessageThreadController.baseURL.appendingPathComponent(messageThread.identifier).appendingPathComponent("messages").appendingPathExtension("json")
+//        var request = URLRequest(url: requestURL)
+//        request.httpMethod = HTTPMethod.post.rawValue
+//
+//        do {
+//            request.httpBody = try JSONEncoder().encode(message)
+//        } catch {
+//            NSLog("Error encoding message to JSON: \(error)")
+//        }
+//
+//        URLSession.shared.dataTask(with: request) { (data, _, error) in
+//
+//            if let error = error {
+//                NSLog("Error with message thread creation data task: \(error)")
+//                completion()
+//                return
+//            }
+//
+//            completion()
+//
+//        }.resume()
+//    }
+    
+    func createReservations(course: Course,
+        name: String,
+                     type: String,
+                     date: String,
+                     startTime: String,
+                     duration: String,
+                     description: String,
+                     intensityLevel: String,
+                     location: String,
+                     maxClassSize: Int64,
+                     completion: @escaping (Error?) -> Void) {
         
-           var request = URLRequest(url: animalURL)
+        guard let token = token
+          else { return }
+        
+        let requestURL = baseURL.appendingPathComponent(EndPoints.clientReservation.rawValue)
+        var request = URLRequest(url: requestURL)
         request.httpMethod = Method.post.rawValue
-          request.setValue(token.token, forHTTPHeaderField: "Authorization")
-         
-           URLSession.shared.dataTask(with: request) { data, response, error in
-               if let error = error {
-                   print("failed to fetchh gig with error \(error.localizedDescription)")
-                   completion(.failure(.failedFetch))
-                   return
-               }
-               guard let response = response as? HTTPURLResponse,
-                   response.statusCode == 200
-                   else {
-                       print(#file, #function, #line, "fetch gig received bad response")
-                       completion(.failure(.failedFetch))
-                       return
-               }
-               self.encoder.dateEncodingStrategy = .iso8601
-               
-                     do {
-                        let jsonData = try self.encoder.encode(course.id)
-                         request.httpBody = jsonData
-                     } catch {
-                         NSLog("Error encoding user object: \(error)")
-                         completion(.failure(.badData))
-                         return
-                     }
-               let decoder = JSONDecoder()
-               decoder.dateDecodingStrategy = .iso8601
-               
-               completion(.success([course]))
-           }
-           .resume()
-           
-       }
+        request.setValue(token.token, forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let dict: [String: Any] = [ "classId": course.id
+                                          ]
+                                       
+            request.httpBody = try jsonFromDicct(dict: dict)
+        } catch {
+            NSLog("Error turning dictionary to json: \(error)")
+            completion(error)
+        }
+        
+         dataLoader?.loadData(from: request, completion: { data, _, error in
+                  if let error = error {
+                      NSLog("Error posting new course to database : \(error)")
+                      completion(error)
+                      return
+                  }
+                  
+                  guard let data = data else {
+                      completion(AnywayError.badData("Server sent bad data when updating course."))
+                      return
+                  }
+                  
+                  self.bgContext.perform {
+                      do {
+                          let course = try self.decoder.decode(ClassRepresentation.self, from: data)
+                          self.syncSingleCourse(with: course)
+                          completion(nil)
+                      } catch {
+                          NSLog("Error decoding fetched course from database: \(error)")
+                          completion(error)
+                      }
+                  }
+                  
+              })
+    }
+    
+
+    func forceLoadInstructorClass(completion: @escaping (Bool, Error?) -> Void) {
+        loadInstructorClass(completion: { isEmpty, error in
+            completion(isEmpty, error)
+        })
+    }
+    
     
     private func jsonFromDicct(dict: [String: Any]) throws -> Data? {
         do {
@@ -668,17 +706,6 @@ class BackendController {
         }
     }
     
-    private func jsonFromDicct1(dict: String) throws -> Data? {
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
-            return jsonData
-        } catch {
-            NSLog("Error Creating JSON From username dictionary. \(error)")
-            throw error
-        }
-    }
-    
-    
     
     private func update(course: Course, with rep: ClassRepresentation) {
         course.name = rep.name
@@ -686,7 +713,7 @@ class BackendController {
         course.date = rep.date
         course.startTime = rep.startTime
         course.duration = rep.duration
-        course.overview = rep.overview
+        course.overview = rep.description
         course.intensityLevel = rep.intensityLevel
         course.location = rep.location
         course.maxClassSize = rep.maxClassSize
@@ -722,9 +749,6 @@ class BackendController {
             }
         }
     }
-    
-   
-
     
     private func populateCache() {
         
@@ -769,23 +793,10 @@ class BackendController {
     }
     func injectToken(_ token: String) {
         let token = Token(token: token)
-        BackendController.self.token = token
-    }
-    
-    func loggedUserID() -> Int64? {
-        // swiftlint:disable all
-        return self.instructorId
-        // swiftlint:enable all
-    }
-    
-    private func getRequest(for url: URL, bearer: Token) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.addValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
-        return request
+      self.token = token
     }
     
 }
-
 
 class Cache<Key: Hashable, Value> {
     private var cache: [Key: Value] = [ : ]

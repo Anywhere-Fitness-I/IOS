@@ -19,9 +19,11 @@ class LogInViewController: UIViewController {
     
     var backEndController = BackendController.shared
     
+        @IBAction func unwindLoginSegue(segue: UIStoryboardSegue) { }
+    
     @IBOutlet private var instructorClientLabel: UILabel!
     
-    @IBOutlet var clientInstructorSegue: UISegmentedControl!
+    @IBOutlet private var clientInstructorSegue: UISegmentedControl!
     @IBOutlet private var signUpLogInSegue: UISegmentedControl!
     @IBOutlet private var firstNameTextField: UITextField!
     @IBOutlet private var lastNameTextField: UITextField!
@@ -39,6 +41,7 @@ class LogInViewController: UIViewController {
         
         signInButton.layer.cornerRadius = 12
         signUpButton.layer.cornerRadius = 12
+        
         
         
         // Do any additional setup after loading the view.
@@ -100,16 +103,16 @@ class LogInViewController: UIViewController {
         firstName: firstName, lastName: lastName, email: email, password: password, role: role.rawValue) { signUpResult, response, error in
             DispatchQueue.main.async {
                 if let error = error {
-                    self.showAlertMessage(title: "Error Signing In", message: "Plese Try Again", actiontitle: "Ok")
+                    self.showAlertMessage(title: "Try Again", message: "Error Signing Up or Signing In", actiontitle: "Ok")
                     return
                     
                 }
                 if let response = response {
-                    self.showAlertMessage(title: "Error Signing Up", message: "User Already Exists", actiontitle: "Ok")
+                    self.showAlertMessage(title: "Sucess", message: "Sign Up Sucessful", actiontitle: "Ok")
                     return
                 }
                 if signUpResult {
-                    self.showAlertMessage(title: "Sign Up Sucessful", message: "Signing Up Sucessful", actiontitle: "Ok")
+                    self.showAlertMessage(title: "Sucess", message: "Sign Up was sucessful", actiontitle: "Ok")
                     
                 }
                 return
@@ -118,15 +121,11 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func signIn(_ sender: UIButton) {
-  
+        
         guard let email = emailTextField.text,
             let clientSegmentedControl = clientInstructorSegue,
             let password = passwordTextField.text else { return }
         
-        
-        let clientIndex = clientSegmentedControl.selectedSegmentIndex
-        
-        let role = ClientType.allCases[clientIndex]
         
         backEndController.signIn(email: email, password: password) { signInResult in
             DispatchQueue.main.async {
@@ -148,7 +147,6 @@ class LogInViewController: UIViewController {
                 }
             }
         }
-        
         
     }
     

@@ -44,13 +44,12 @@ extension Course {
         self.intensityLevel = intensityLevel
         self.location = location
         self.maxClassSize = maxClassSize
-   
-        
+       
     }
     @discardableResult convenience init?(representation: ClassRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 
-        guard let id = representation.id  else {
+        guard let id = representation.id else {
             NSLog("Representation passed in with invalid id")
             return nil
         }
@@ -60,7 +59,7 @@ extension Course {
                   date: representation.date,
                   startTime: representation.startTime,
                   duration: representation.duration,
-                  overview: representation.overview,
+                  overview: representation.description,
                   intensityLevel: representation.intensityLevel,
                   location: representation.location,
                   maxClassSize: representation.maxClassSize,

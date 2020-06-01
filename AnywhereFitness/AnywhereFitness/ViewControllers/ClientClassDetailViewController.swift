@@ -12,61 +12,71 @@ class ClientClassDetailViewController: UIViewController {
     
     var backendController = BackendController.shared
     var course: Course?
+    var id: Int64?
     
+    @IBOutlet weak var proccedPaymentButton: UIButton!
     
-    @IBOutlet private var classNameLabel: UILabel!
-    @IBOutlet private var classTypeLabel: UILabel!
-    @IBOutlet private var intensityLabel: UILabel!
-    @IBOutlet private var instructorNameLabel: UILabel!
-    @IBOutlet private var dateLabel: UILabel!
-    @IBOutlet private var locationLabel: UILabel!
-    @IBOutlet private var durationLabel: UILabel!
-    @IBOutlet private var descriptionLaebl: UILabel!
+    @IBOutlet weak var classNameLabel: UILabel!
+    @IBOutlet weak var classTypeLabel: UILabel!
+    @IBOutlet weak var intensityLabel: UILabel!
+    @IBOutlet weak var instructorNameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var descriptionLaebl: UILabel!
     
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+       
+        }
         
+        
+    @IBAction func bookingReserved(_ sender: UIButton) {
+        
+        guard let className = classNameLabel.text,
+        let type = classTypeLabel.text,
+            let course = course,
+        let intensity = intensityLabel.text,
+        let instructor = instructorNameLabel.text,
+            let id = id,
+        let date = dateLabel.text,
+        let location = locationLabel.text,
+        let duration = durationLabel.text,
+            let description = descriptionLaebl.text else { return }
+        
+    
+        
+        backendController.createReservations(course: course, name: className, type: type, date: date, startTime: date, duration: duration, description: description, intensityLevel: intensity, location: location, maxClassSize: id) { error in
+            if let error = error {
+                NSLog("error in booking the reservation: \(error)")
+                return
+            }
+            DispatchQueue.main.async {
+                self.showAlertMessage(title: "Congratulations!", message: "Reservation Confirmed", actiontitle: "Ok")
+            }
+        }
     }
     
-    var id: Int64?
+        // Do any additional setup after loading the view.
     
-    @IBAction func confirmBookingTapped(_ sender: UIButton) {
-        guard let className =  classNameLabel.text,
-            let course = course,
-            let id = id,
-            let classType = classTypeLabel.text,
-            let intensity = intensityLabel.text,
-            let instructor = instructorNameLabel.text,
-            let date = dateLabel.text,
-            let location = locationLabel.text,
-            let duration = durationLabel.text,
-            let description = descriptionLaebl.text
-            else { return }
-        
-        let newCourse = Course(id: id, name: className,
-                               type: classType,
-                               date: date,
-                               startTime: date,
-                               duration: duration,
-                               overview: description,
-                               intensityLevel: intensity,
-                               location: location,
-                               maxClassSize: id)
-        
-        if backendController.isSignedIn {
-        backendController.createReservation(course) { result in
-                          DispatchQueue.main.async {
-                              self.backendController.userCourse.append(newCourse)
-                            
-                          }
-                      }
-        } else {
-            print(course)
-        }
-}
-    private func updateViews() {
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+    
+   private func updateViews() {
         guard let course = course else { return }
         
         classNameLabel.text = course.name
@@ -78,6 +88,7 @@ class ClientClassDetailViewController: UIViewController {
         durationLabel.text = course.duration
         descriptionLaebl.text = course.description
     }
+    
     func showAlertMessage(title: String, message: String, actiontitle: String) {
         let endAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let endAction = UIAlertAction(title: actiontitle, style: .default) { (action: UIAlertAction ) in
@@ -85,5 +96,5 @@ class ClientClassDetailViewController: UIViewController {
         endAlert.addAction(endAction)
         present(endAlert, animated: true, completion: nil)
     }
-
 }
+

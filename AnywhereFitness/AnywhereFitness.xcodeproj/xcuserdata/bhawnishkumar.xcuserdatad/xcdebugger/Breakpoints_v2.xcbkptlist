@@ -3,4 +3,54 @@
    uuid = "65C26105-28DB-4DC4-B23D-7F2F4B493C36"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45794CD3-35F1-46B9-B3BC-99CED9C9334B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnywhereFitness/ViewControllers/ClientClassDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "bookingReserved(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "45794CD3-35F1-46B9-B3BC-99CED9C9334B - 2f9c3af0ed164a07"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnywhereFitness.ClientClassDetailViewController.bookingReserved(__C.UIButton) -&gt; ()"
+                  moduleName = "AnywhereFitness"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhawnishkumar/Documents/DevelopmentiOS16/IOS%202/AnywhereFitness/AnywhereFitness/ViewControllers/ClientClassDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "4854">
+               </Location>
+               <Location
+                  uuid = "45794CD3-35F1-46B9-B3BC-99CED9C9334B - e5164b5d4c1054e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in AnywhereFitness.ClientClassDetailViewController.bookingReserved(__C.UIButton) -&gt; ()"
+                  moduleName = "AnywhereFitness"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhawnishkumar/Documents/DevelopmentiOS16/IOS%202/AnywhereFitness/AnywhereFitness/ViewControllers/ClientClassDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "187">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -26,10 +26,6 @@ class FirstViewController: UIViewController {
 
     anywhereFitnessLabel.attributedText = NSAttributedString(string: "ANYWHERE FITNESS", attributes: strokeTextAttributes)
         
-        lookingForClassesLabel.layer.cornerRadius = 15
-        coachingClassesLabel.layer.cornerRadius = 15
-
-        
         //lookingForClassesLabel.attributedText = NSAttributedString(string: "LOOKING FOR CLASSES", attributes: strokeTextAttributes)
         
         // Do any additional setup after loading the view.
@@ -45,19 +41,4 @@ class FirstViewController: UIViewController {
     }
 */
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "instructorSegue" {
-            
-            if let createTaskVC = segue.destination as? LogInViewController {
-                createTaskVC.clientInstructorSegue?.selectedSegmentIndex = 1
-            }
-        } else    if segue.identifier == "clientSegue" {
-                 
-                 if let createTaskVC = segue.destination as? LogInViewController {
-                     createTaskVC.clientInstructorSegue?.selectedSegmentIndex = 0
-                 }
-        
-    }
-}
 }
