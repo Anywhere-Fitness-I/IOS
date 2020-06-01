@@ -30,7 +30,7 @@ class AnywhereFitnessTests: XCTestCase {
     
     func testEncodeUserRepresentation() {
         
-        let user = UserRepresentation(firstName: "Bharat", lastName: "Kumar", email: "test12@test12.com", password: "pass1", role: [Role.client.rawValue])
+        let user = UserRepresentation(firstName: "Bharat", lastName: "Kumar", email: "test12@test12.com", password: "pass1", role: "client")
         
         let encoder = JSONEncoder()
         do {
@@ -45,7 +45,7 @@ class AnywhereFitnessTests: XCTestCase {
     
     func testSignUp() {
         let expectSignUp = expectation(description: "got it")
-        backend.signUp(firstName: "Bhawnish", lastName: "Kumar", email: "mohan12@gmail.com", password: "mohan123", role: [Role.instructor.rawValue]) { newUser, response, _ in
+        backend.signUp(firstName: "Bhawnish", lastName: "Kumar", email: "bharat@gmail.com", password: "bharat123", role: "intructor") { newUser, response, _ in
             if let response = response as? HTTPURLResponse,
             response.statusCode == 500 {
                 NSLog("User already exists in the database. Therefore user data was sent successfully to database.")
@@ -66,7 +66,7 @@ class AnywhereFitnessTests: XCTestCase {
     func testSignIn() {
         let expectSignIn = expectation(description: "got it")
         
-        backend.signIn(email: "test@test.com", password: "pass") { logged in
+        backend.signIn(email: "bharat@gmail.com", password: "bharat123") { logged in
             XCTAssertTrue(logged)
             expectSignIn.fulfill()
         }
@@ -75,5 +75,59 @@ class AnywhereFitnessTests: XCTestCase {
         XCTAssertTrue(backend.isSignedIn)
         
     }
+
+    func testCreatePost() {
+           let expectCreatePost = expectation(description: "Testing create new post.")
+        backend.signIn(email: "test@test.com", password: "pass") { _ in
+               expectCreatePost.fulfill()
+           }
+           wait(for: [expectCreatePost], timeout: timeout)
+        let count = backend.userCourse.count
+           print(count)
+           let createExpect = expectation(description: "Expectation for creating post")
+        backend.createClass(name: "Yoga Closs",
+                            type: "Musles",
+                            date: "Today",
+                            startTime: "Right now",
+                            duration: "A month",
+                            description: "A lot of relaxing exercises",
+                            intensityLevel: "easy",
+                            location: "san diego",
+                            maxClassSize: 10) { error in
+        
+               createExpect.fulfill()
+           }
+           wait(for: [createExpect], timeout: timeout)
+
+           let refetchUserExpect = expectation(description: "Last expectation for testing create post")
+           backend.forceLoadInstructorClass { isEmpty, error in
+             
+               refetchUserExpect.fulfill()
+           }
+           wait(for: [refetchUserExpect], timeout: timeout)
+       }
+    
+    
+//    func testUpdateCourse() {
+//         let expectUpdateCourse = expectation(description: "Testing update post.")
+//         backend.signIn(email: "test@test.com", password: "pass") { _ in
+//             expectUpdateCourse.fulfill()
+//         }
+//         wait(for: [expectUpdateCourse], timeout: timeout)
+//
+//         let refetchUserExpectation = expectation(description: "Last method call for testing update post")
+//         backend.forceLoadInstructorClass { _, _ in
+//             refetchUserExpectation.fulfill()
+//         }
+//         wait(for: [refetchUserExpectation], timeout: timeout)
+//         print(backend.userCourse)
+//
+//         let updateExpect = expectation(description: "Expectation for updating post")
+//        backend.updateCourse(at: backend.userCourse, name: "gym", type: "12", date: "12", startTime: "12", duration: "12", description: "12", intensityLevel: "12", location: "12", maxClassSize: 12) { error in
+//             XCTAssertNil(error)
+//             updateExpect.fulfill()
+//         }
+//         wait(for: [updateExpect], timeout: timeout)
+//     }
     
 }
